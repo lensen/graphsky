@@ -5,7 +5,7 @@
   &nbsp;
   <form name="opts" method="get" action="index.php">
     &nbsp;Environment:&nbsp;
-    <select name="env" onchange="document.opts.c.value = ''; document.opts.h.value = ''; document.opts.g.value = ''; document.opts.submit()">
+    <select name="env" onchange="document.opts.c.value = ''; document.opts.h.value = ''; document.opts.submit()">
       <option value="">Select environment</option>
 <?php
 $environment_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "*"), TRUE);
