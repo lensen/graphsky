@@ -1,0 +1,11 @@
+{
+    "report_name" : "disk",
+    "service_name" : "Disks",
+    "title" : "Disk usage",
+    "vertical_label" : "bytes",
+    "units": "binary",
+    "series" : [
+        { "metric": "df.*.df_complex.used.value", "color": "dd0000", "label": "Used", "type": "stack" },
+        { "metric": "df.*.df_complex.free.value", "color": "33cc33", "label": "Free", "type": "stack" }
+    ]
+}

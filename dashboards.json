@@ -1,0 +1,35 @@
+{ "dashboards": [
+    {
+        "name": "default",
+        "included_reports": [
+            "load",
+            "cpu",
+            "mem",
+            "network",
+            "packets",
+            "disk_ops",
+            "disk",
+            "ntpd"
+        ],
+        "environments": "/.*/",
+        "clusters": "/.*/"
+    },
+    {
+        "name": "mysql",
+        "included_reports": [
+            "mysql"
+        ],
+        "environments": "/.*/",
+        "clusters": "/^(dbslaves|dbmasters)$/"
+    },
+    {
+        "name": "virtual",
+        "included_reports": [
+            "virt_cpu",
+            "virt_network",
+            "virt_disk_ops"
+        ],
+        "environments": "/^virtual$/",
+        "clusters": "/.*/"
+    }
+] }

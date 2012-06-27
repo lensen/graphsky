@@ -1,0 +1,13 @@
+{
+    "report_name" : "cpu",
+    "service_name" : "CPU",
+    "title" : "CPU Report",
+    "vertical_label" : "percentage",
+    "series" : [
+        { "metric": "cpu.*.cpu.user.value", "color": "3333bb", "label": "User", "type": "stack", "function": "averageSeries" },
+        { "metric": "cpu.*.cpu.nice.value", "color": "ffea00", "label": "Nice", "type": "stack", "function": "averageSeries" },
+        { "metric": "cpu.*.cpu.system.value", "color": "dd0000", "label": "System", "type": "stack", "function": "averageSeries" },
+        { "metric": "cpu.*.cpu.wait.value", "color": "ff8a60", "label": "Wait", "type": "stack", "function": "averageSeries" },
+        { "metric": "cpu.*.cpu.idle.value", "color": "e2e2f2AA", "label": "Idle", "type": "stack", "function": "averageSeries" }
+    ]
+}

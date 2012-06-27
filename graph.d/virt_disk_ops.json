@@ -1,0 +1,8 @@
+{
+    "report_name": "virt_disk_ops",
+    "title": "Disk Operations",
+    "series": [
+        { "metric": "libvirt.disk_ops.vda.read", "color": "purple", "label": "Read", "type": "line", "line_width": "2" },
+        { "metric": "libvirt.disk_ops.vda.write", "color": "orange", "label": "Write", "type": "line", "line_width": "2" }
+    ]
+}

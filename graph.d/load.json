@@ -1,0 +1,11 @@
+{
+    "report_name" : "load",
+    "service_name" : "Load",
+    "title" : "Load",
+    "vertical_label" : "loads",
+    "series" : [
+        { "metric": "load.load.shortterm", "color": "BBBBBB", "label": "1-min", "type": "stack" },
+        { "metric": "load.load.midterm", "color": "00FF00", "label": "5-min", "line_width": "2", "type": "line" },
+        { "metric": "load.load.longterm", "color": "FF0000", "label": "10-min", "line_width": "2", "type": "line" }
+    ]
+}

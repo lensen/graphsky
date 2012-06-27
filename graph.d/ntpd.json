@@ -1,0 +1,9 @@
+{
+    "report_name": "ntpd",
+    "service_name": "NTP",
+    "title": "NTPd",
+    "vertical_label": "seconds",
+    "series": [
+        { "metric": "ntpd.delay.*.*.*.*.value", "label": "Average Delay", "color": "orange", "type": "stack", "function": "averageSeries" }
+    ]
+}

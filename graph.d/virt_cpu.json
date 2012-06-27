@@ -1,0 +1,7 @@
+{
+    "report_name": "virt_cpu",
+    "title": "vCPU Report",
+    "series": [
+        { "metric": "libvirt.virt_cpu_total.value", "color": "blue", "label": "vCPU Total", "type": "stack" }
+    ]
+}

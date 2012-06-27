@@ -1,0 +1,10 @@
+{
+    "report_name" : "disk_ops",
+    "title" : "Disk Operations",
+    "vertical_label": "operations",
+    "series": [
+        { "metric": "cpu.*.cpu.wait.value", "color": "ff8a60aa", "label": "IOWait", "type": "stack", "function": "averageSeries" },
+        { "metric": "disk.sd[a|b].disk_ops.read", "color": "magenta", "label": "Read", "type": "line" },
+        { "metric": "disk.sd[a|b].disk_ops.write", "color": "darkblue", "label": "Write", "type": "line" }
+    ]
+}

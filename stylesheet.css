@@ -1,0 +1,128 @@
+body {
+    background-color: #FFF;
+    color: #000;
+    margin: 0px;
+    font-family: helvetica;
+    min-width: 1200px;
+}
+
+a, a:visited {
+    text-decoration: none;
+}
+
+div#header {
+    display: table;
+    height: 30px;
+    width: 100%;
+    background-color: #030303;
+    color: #FFF;
+/*    color: #D3D3D3; */
+    border-bottom: 2px solid #33B5E5;
+}
+
+div#header_title {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+div#header_title a {
+    color: #FFF; 
+    font-weight: bold;
+}
+
+h1{
+    padding: 0px;
+    margin: 0px;
+    font-weight: bold;
+    color: #FF8B00;
+}
+
+h2 {
+    color: #33B5E5;
+}
+
+h3,
+h3 a a:visited {
+    color: #585858;
+    padding-left: 5px;
+    background: #EEE;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+}
+
+div#main {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+div#footer {
+    width: 100%;
+    background-color: #222;
+    bottom: 0px;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 11px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #FFF;
+}
+
+div#footer a{
+    color: #CCC;
+    font-weight: bold;
+}
+
+input {
+    border: solid 1px #CCC;
+    font-size: small;
+}
+
+button {
+    border: 0px;
+    background-color: #33B5E5;
+    width: 60px;
+    height: 30px;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+}
+
+select {
+    padding: 0.5em;
+    width: 120px;
+    border: solid 1px #CCC;
+    color: black;
+    overflow: hidden;
+    background: url(/img/arrow_down.png) no-repeat 93% 50% #EEE;
+    -webkit-border-radius: 0.0em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+div#menu {
+    display: table;
+    background-color: #E8E8E8;
+    color: #222;
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid #CCC;
+}
+
+div#menu_row {
+    display: table-row;
+}
+
+div#menu_cell {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+

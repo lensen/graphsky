@@ -1,0 +1,13 @@
+{
+    "report_name" : "mem",
+    "service_name" : "Memory",
+    "title" : "Memory Report",
+    "vertical_label" : "bytes",
+    "units": "binary",
+    "series": [
+        { "metric": "memory.memory.used.value", "color": "5555cc", "label": "Used", "type": "stack" },
+        { "metric": "memory.memory.cached.value", "color": "33cc33", "label": "Cached", "type": "stack" },
+        { "metric": "memory.memory.buffered.value", "color": "99ff33", "label": "Buffered", "type": "stack" },
+        { "metric": "memory.memory.free.value", "color": "e2e2f2AA", "label": "Free", "type": "stack" }
+     ]
+}
