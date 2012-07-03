@@ -1,5 +1,6 @@
 <?php
 $graph_args = "env=$env&z=$z&c=$c";
+if (isset($dn)) { $graph_args = "$graph_args&dn=$dn"; }
 
 print "<a name=\"reports\"></a><a href=\"#reports\"><h2>Reports:</h2></a>";
 
