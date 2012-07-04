@@ -3,9 +3,9 @@
     "title" : "MySQL",
     "vertical_label" : "actions/sec",
     "series" : [
-        { "metric": "db.mysql_commands.select", "color": "5555cc", "label": "Selects", "line_width": "2", "type": "line" },
-        { "metric": "db.mysql_commands.insert", "color": "33cc33", "label": "Inserts", "line_width": "2", "type": "line" },
-        { "metric": "db.mysql_commands.delete", "color": "ff0000", "label": "Deletes", "line_width": "2", "type": "line" },
-        { "metric": "db.mysql_commands.update", "color": "cccccc", "label": "Updates", "line_width": "2", "type": "line" }
+        { "metric": "mysql.db.mysql_commands.select.value", "color": "5555cc", "label": "Selects", "line_width": "2", "type": "line" },
+        { "metric": "mysql.db.mysql_commands.insert.value", "color": "33cc33", "label": "Inserts", "line_width": "2", "type": "line" },
+        { "metric": "mysql.db.mysql_commands.delete.value", "color": "ff0000", "label": "Deletes", "line_width": "2", "type": "line" },
+        { "metric": "mysql.db.mysql_commands.update.value", "color": "cccccc", "label": "Updates", "line_width": "2", "type": "line" }
     ]
 }
