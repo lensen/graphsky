@@ -21,7 +21,7 @@ if (isset($g))              { $title = "$title ($g)"; }
 <body>
   <div id="header">
     <div id="header_title">
-      <?php print "<a href=\"/\">[$name]</a> $title" ?>
+      <?php print "<a href=\"/\">$name</a> $title" ?>
     </div>
   </div>
 

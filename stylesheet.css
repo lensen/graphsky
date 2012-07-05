@@ -15,9 +15,8 @@ div#header {
     height: 30px;
     width: 100%;
     background-color: #030303;
-    color: #FFF;
-/*    color: #D3D3D3; */
-    border-bottom: 2px solid #33B5E5;
+    color: #EEE;
+    border-bottom: 4px solid #33B5E5;
 }
 
 div#header_title {
@@ -29,7 +28,7 @@ div#header_title {
 }
 
 div#header_title a {
-    color: #FFF; 
+    color: #EEE;
     font-weight: bold;
 }
 
@@ -40,8 +39,11 @@ h1{
     color: #FF8B00;
 }
 
-h2 {
+h2,
+h2 a a:visited {
     color: #33B5E5;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 h3,
@@ -97,7 +99,7 @@ select {
     border: solid 1px #CCC;
     color: black;
     overflow: hidden;
-    background: url(/img/arrow_down.png) no-repeat 93% 50% #EEE;
+    background: url(/img/arrow_down.png) no-repeat 93% 50% #FFFFFF;
     -webkit-border-radius: 0.0em;
     -moz-appearance: none;
     -webkit-appearance: none;
