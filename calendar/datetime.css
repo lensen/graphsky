@@ -1,0 +1,97 @@
+/*===== CSS theme file for CalendarXP 9.0 (Totally configurable) =====*/
+/* NOTE: Better use numbered color values instead of literal ones, because opera has problem with the latter in certain cases. */
+
+/* Calendar Day Header - the cells showing "Sunday", "Monday" .... */
+.CalHead {cursor:default; text-align:center; border-bottom:1px solid #808080;}
+/* Day of Week - the Anchor inside CalHead showing the day of week */
+.DoWAnchor {text-decoration:none; font:10pt verdana; color:black;}
+/* Day Column Cell - the TD cell of each day */
+.CalCol {}
+/* Day Cell - the DIV cell inside TD */
+.CalCell {cursor:pointer; text-align:center;}
+/* Day Number - the Anchor inside DIV showing the day number  */
+.CellAnchor {text-decoration:none; font:10pt Arial;}
+
+/* WeekNo Header - the top header cell of the week number column */
+.WeekHead {cursor:default; text-align:center; font:8.5pt verdana; color:black;}
+/* WeekNo Column Cell - the cells of the week number column */
+.WeekCol {cursor:default; text-align:center;}
+/* WeekNo Anchor style */
+.WeekAnchor {text-decoration:none; font:8pt verdana; color:black;}
+
+/* Month navigators - the "<" or ">" used to move to previous or next month */
+.MonthNav {cursor:pointer; vertical-align:baseline;}
+A.MonthNav:hover {color:#D4D0C8}
+A.MonthNav:active {color:#D4D0C8}
+
+/* styles for the 3 calendar sections (actually 3 table TDs) */
+.CalTop {text-align:center;}
+.CalMiddle {border-bottom:1px solid #CCC;}
+.CalBottom {text-align:center;}
+
+/* Calendar title - showing year and month. when giDCStyle=0, it's the style of the year/month dropdowns; giDCStyle>0, it's the style to show gsCalTitle.  */
+.CalTitle {text-align:center; font:8pt hevetica; cursor:default; color:#EEE; background-color:#444; border-bottom:1px solid #33B5E5; width:78%;}
+
+/* The style of internal floating div/layer tags, which are usually used to create the artificial dropdown selectors. */
+.FreeDiv {border:1px solid #808080;}
+
+/* The style of the outer TABLE tag which is the outer calendar panel. */
+#outerTable {border:1px solid black;}
+/* The style of the inner DIV tag that holds the inner panel of all calendar cells. */
+#innerDiv {}
+/*===== Above CSS styles are commonly used in the script engine =====*/
+
+/*====== Following are additional per-theme styles, e.g. the inner dropdown selectors and today etc. You may have your own defined. ======*/
+.BottomAnchor {font:8pt arial; color:black;}
+A.BottomAnchor:hover {color:orange;}
+A.BottomAnchor:active {color:red;}
+
+
+.PopAnchor {text-decoration:none; color:white;}
+A.PopAnchor:hover {color:#D4D0C8;}
+A.PopAnchor:active {color:#D4D0C8;}
+.PopMenu {background:white; text-align:center; cursor:pointer;}
+.PopMenuItem {text-decoration:none; text-align:center; font:8pt arial; color:black;}
+.PopMenuItem:hover {color:#D4D0C8;}
+
+.TimeBox {text-align:center; cursor:pointer; border:1px solid #d8e0e4; width:25px;}
+
+div#arrow-up {
+  width:0px;
+  height:0px;
+  border-left:4px solid transparent;  /* left arrow slant */
+  border-right:4px solid transparent; /* right arrow slant */
+  border-bottom:4px solid #2f2f2f; /* bottom, add background color here */
+  font-size:0px;
+  line-height:0px;
+}
+
+div#arrow-down {
+  width:0px;
+  height:0px;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:4px solid #2f2f2f;
+  font-size:0px;
+  line-height:0px;
+}
+
+div#arrow-left {
+  width:0px;
+  height:0px;
+  border-bottom:5px solid transparent;
+  border-top:5px solid transparent;
+  border-right:5px solid #2f2f2f;
+  font-size:0px;
+  line-height:0px;
+}
+
+div#arrow-right {
+  width:0px;
+  height:0px;
+  border-bottom:4px solid transparent;
+  border-top:4px solid transparent;
+  border-left:4px solid #2f2f2f;
+  font-size:0px;
+  line-height:0px;
+}

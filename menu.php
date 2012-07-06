@@ -5,7 +5,7 @@
   &nbsp;
   <form name="opts" method="get" action="index.php">
     &nbsp;Environment:&nbsp;
-    <select name="env" onchange="document.opts.c.value = ''; document.opts.h.value = ''; document.opts.submit()">
+    <div id="select"><select name="env" onchange="document.opts.c.value = ''; document.opts.h.value = ''; document.opts.submit()">
       <option value="">Select environment</option>
 <?php
 $environment_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "*"), TRUE);
@@ -16,9 +16,9 @@ foreach ($environment_search['results'] as $environment) {
     print "<option value=\"$environment_name\" $selected>$environment_name</option>\n";
 }
 ?>
-    </select>
+    </select></div>
     &nbsp;Cluster:&nbsp;
-    <select name="c" onchange="document.opts.h.value = ''; document.opts.submit()">
+    <div id="select"><select name="c" onchange="document.opts.h.value = ''; document.opts.submit()">
 <?php
 $cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
 if (sizeof($cluster_search['results']) < 1) { $default = "None"; }
@@ -31,9 +31,9 @@ foreach ($cluster_search['results'] as $cluster) {
     print "<option value=\"$cluster_name\" $selected>$cluster_name</option>\n";
 }
 ?>
-    </select>
+    </select></div>
     &nbsp;Host:&nbsp;
-    <select name="h" onchange="document.opts.submit()">
+    <div id="select"><select name="h" onchange="document.opts.submit()">
 <?php
 $host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.$c.*"), TRUE);
 if (sizeof($host_search['results']) < 1) { $default = "None"; }
@@ -46,12 +46,12 @@ foreach ($host_search['results'] as $host) {
     print "<option value=\"$host_name\" $selected>$host_name</option>\n";
 }
 ?>
-    </select>
+    </select></div>
 <?php
 if (isset($h)) {
 ?>
     &nbsp;Jump to:&nbsp;
-    <select name="jumpto" onchange="location = this.options[this.selectedIndex].value;">
+    <div id="select"><select name="jumpto" onchange="location = this.options[this.selectedIndex].value;">
       <option value="#reports" selected="selected">Metric group</option>
 <?php
     foreach (find_metrics("$env.$c.$h", $conf['host_metric_group_depth']) as $metric_group => $metric_array) {
@@ -61,7 +61,7 @@ if (isset($h)) {
 else {
 ?>
     &nbsp;Report:&nbsp;
-    <select name="g" onchange="document.opts.submit()">
+    <div id="select"><select name="g" onchange="document.opts.submit()">
       <option value="" selected="selected">All</option>
 <?php
     foreach (find_dashboards($env, $c) as $graph_report) {
@@ -71,13 +71,13 @@ else {
     }
 }
 ?>
-    </select>
+    </select></div>
   </div>
   <div id="menu_cell" style="width:250px; height:55px;">
     <div id="menu_row">
       <div id="menu_cell">Graph size:</div>
       <div id="menu_cell">
-        <select name="z" onchange="document.opts.submit()">
+        <div id="select"><select name="z" onchange="document.opts.submit()">
 <?php
 foreach (array_keys($conf['graph_sizes']) as $graph_size) {
     if ($graph_size == $z) { $selected = "selected=\"selected\""; }
@@ -85,13 +85,13 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
     print "<option value=\"$graph_size\" $selected>$graph_size</option>\n";
 }
 ?>
-        </select>
+        </select></div>
       </div>
     </div>
     <div id="menu_row">
       <div id="menu_cell">Graph scaling:</div>
       <div id="menu_cell">
-        <select name="l" onchange="document.opts.submit()">
+        <div id="select"><select name="l" onchange="document.opts.submit()">
 <?php
     if ($h == "" & $g != "") {
         if ($l == "no") { $selected = "selected=\"selected\""; }
@@ -103,10 +103,11 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
     }
     else { print "<option value=\"no\" selected=\"selected\">No</option>\n"; }
 ?>
-        </select>
+        </select></div>
       </div>
     </div>
   </div>
+<!--
   <div id="menu_cell" style="width:230px; height:55px;">
     <div id="menu_row">
       <div id="menu_cell" style="width: 50px;">From:</div>
@@ -119,8 +120,26 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
       <div id="menu_cell" style="width: 30px;">ago</div>
     </div>
   </div>
+-->
+  <div id="menu_cell" style="width:200px; height:55px;">
+    <div id="menu_row">
+      <div id="menu_cell" style="width: 40px;">Start:</div>
+      <div id="menu_cell" style="width: 160px;">
+      <input name="from" value="<?php print $gs; ?>" style="width: 120px;"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.from);return false;" > <img name="popcal" align="absmiddle" src="img/calendar.png" width="16" height="16" border="0" alt=""></a>
+      </div>
+    </div>
+    <div id="menu_row">
+      <div id="menu_cell" style="width: 40px;">End:</div>
+      <div id="menu_cell" style="width: 160px;">
+      <input name="until" value="<?php print $ge; ?>" style="width: 120px;"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.until);return false;" > <img name="popcal" align="absmiddle" src="img/calendar.png" width="16" height="16" border="0" alt=""></a>
+      </div>
+    </div>
+  </div>
+
   <div id="menu_cell" style="width:75px; text-align:right;"><button type="submit">Go</button></div>
   </form>
 </div>
 
 </div></div>
+<iframe width=188 height=166 name="gToday:datetime:agenda.js:gfPop:plugins_time.js" id="gToday:datetime:agenda.js:gfPop:plugins_time.js" src="calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:visible; z-index:999; position:absolute; top:-500px; left:-500px;">
+</iframe>

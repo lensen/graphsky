@@ -14,7 +14,7 @@ div#header {
     display: table;
     height: 30px;
     width: 100%;
-    background-color: #030303;
+    background-color: #444;
     color: #EEE;
     border-bottom: 4px solid #33B5E5;
 }
@@ -63,7 +63,8 @@ div#main {
 
 div#footer {
     width: 100%;
-    background-color: #222;
+    background-color: #444;
+    border-top: 2px solid #33B5E5;
     bottom: 0px;
     text-align: center;
     margin-top: 15px;
@@ -81,6 +82,8 @@ div#footer a{
 input {
     border: solid 1px #CCC;
     font-size: small;
+    height: 28px;
+    margin-bottom: 1px;
 }
 
 button {
@@ -96,14 +99,32 @@ button {
 select {
     padding: 0.5em;
     width: 120px;
+    height: 28px;
     border: solid 1px #CCC;
     color: black;
     overflow: hidden;
-    background: url(/img/arrow_down.png) no-repeat 93% 50% #FFFFFF;
+    background: #FFFFFF;
     -webkit-border-radius: 0.0em;
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
+}
+
+#select:before {
+    border-right: 8px solid #CCC;
+    border-top: 8px solid transparent;
+    content: "";
+    position: absolute;
+    left: 90%;
+    bottom: 12%;
+}
+
+#select {
+    display: inline-block;
+    position: relative;
+    width: 120px;
+    height: 28px;
+    margin-bottom: 1px;
 }
 
 div#menu {
@@ -112,8 +133,6 @@ div#menu {
     color: #222;
     width: 100%;
     height: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
     border-bottom: 1px solid #CCC;
 }
 
@@ -126,5 +145,25 @@ div#menu_cell {
     vertical-align: middle;
     padding-left: 5px;
     padding-right: 5px;
+}
+
+div#arrow-up {
+  width:0px;
+  height:0px;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-bottom:5px solid #2f2f2f;
+  font-size:0px;
+  line-height:0px;
+}
+
+div#arrow-down {
+  width:0px;
+  height:0px;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:5px solid #2f2f2f;
+  font-size:0px;
+  line-height:0px;
 }
 
