@@ -107,31 +107,17 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
       </div>
     </div>
   </div>
-<!--
-  <div id="menu_cell" style="width:230px; height:55px;">
-    <div id="menu_row">
-      <div id="menu_cell" style="width: 50px;">From:</div>
-      <div id="menu_cell" style="width: 150px;"><input type="text" name="from" value="<?php print $gs; ?>"/></div>
-      <div id="menu_cell" style="width: 30px;">ago</div>
-    </div>
-    <div id="menu_row">
-      <div id="menu_cell" style="width: 50px;">Until:</div>
-      <div id="menu_cell" style="width: 150px;"><input type="text" name="until" value="<?php print $ge; ?>"/></div>
-      <div id="menu_cell" style="width: 30px;">ago</div>
-    </div>
-  </div>
--->
   <div id="menu_cell" style="width:200px; height:55px;">
     <div id="menu_row">
       <div id="menu_cell" style="width: 40px;">Start:</div>
       <div id="menu_cell" style="width: 160px;">
-      <input name="from" value="<?php print $gs; ?>" style="width: 120px;"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.from);return false;" > <img name="popcal" align="absmiddle" src="img/calendar.png" width="16" height="16" border="0" alt=""></a>
+      <input name="from" value="<?php print $gs; ?>" style="width: 120px;"><a class="calendar" href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.from);return false;" ></a>
       </div>
     </div>
     <div id="menu_row">
       <div id="menu_cell" style="width: 40px;">End:</div>
       <div id="menu_cell" style="width: 160px;">
-      <input name="until" value="<?php print $ge; ?>" style="width: 120px;"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.until);return false;" > <img name="popcal" align="absmiddle" src="img/calendar.png" width="16" height="16" border="0" alt=""></a>
+      <input name="until" value="<?php print $ge; ?>" style="width: 120px;"><a class="calendar" href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.until);return false;" ></a>
       </div>
     </div>
   </div>
