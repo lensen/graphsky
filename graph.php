@@ -101,7 +101,7 @@ if ( isset($report_name) ) {
     if ( isset($graph_config) ) {
         if ( isset($graph_config['report_type']) ) {
             if ( $graph_config['report_type'] == "template" ) {
-                $target = str_replace("HOST_CLUSTER", $conf['graphite_prefix'] . "$host_cluster", $graph_config['graphite']);
+                $target = str_replace("HOST_CLUSTER", "$host_cluster", $graph_config['graphite']);
             }
         }
         else {
