@@ -4,6 +4,7 @@ include_once "./functions.php";
 
 $env    = isset($_GET['env']) ? $_GET['env'] : $conf['graphite_default_env'];
 $c      = (isset($_GET['c']) && $_GET['c'] != "") ? $_GET['c'] : NULL;
+$m      = (isset($_GET['m']) && $_GET['m'] != "") ? $_GET['m'] : NULL;
 $h      = (isset($_GET['h']) && $_GET['h'] != "") ? $_GET['h'] : NULL;
 $g      = (isset($_GET['g']) && $_GET['g'] != "") ? $_GET['g'] : NULL;
 $l      = (isset($_GET['l']) && $_GET['l'] != "") ? $_GET['l'] : "no";

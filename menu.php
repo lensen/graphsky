@@ -47,6 +47,17 @@ foreach ($host_search['results'] as $host) {
 }
 ?>
     </select></div>
+    &nbsp;Report:&nbsp;
+    <div id="select"><select name="g" onchange="document.opts.submit();">
+      <option value="" selected="selected">All</option>
+<?php
+    foreach (find_dashboards($env, $c) as $graph_report) {
+        if ($graph_report == $g) { $selected = "selected=\"selected\""; }
+        else { $selected = ""; }
+        print "<option value=\"$graph_report\" $selected>$graph_report</option>\n";
+    }
+?>
+    </select></div>
 <?php
 if (isset($h)) {
 ?>
@@ -57,21 +68,22 @@ if (isset($h)) {
     foreach (find_metrics("$env.$c.$h", $conf['host_metric_group_depth']) as $metric_group => $metric_array) {
         print "<option value=\"#$metric_group\">$metric_group</option>\n";
     }
+    print "</select></div>";
 }
-else {
+elseif (isset($c)) {
 ?>
-    &nbsp;Report:&nbsp;
-    <div id="select"><select name="g" onchange="document.opts.submit()">
-      <option value="" selected="selected">All</option>
+    &nbsp;Metrics:&nbsp;
+    <div id="select"><select name="m" onchange="document.opts.g.value = ''; document.opts.submit()">
+      <option value="" selected="selected">None</option>
 <?php
-    foreach (find_dashboards($env, $c) as $graph_report) {
-        if ($graph_report == $g) { $selected = "selected=\"selected\""; }
+    foreach (find_metrics("$env.$c.*", "10") as $metric => $metric_array) {
+        if ($metric == $m) { $selected = "selected=\"selected\""; }
         else { $selected = ""; }
-        print "<option value=\"$graph_report\" $selected>$graph_report</option>\n";
+        print "<option value=\"$metric\" $selected>$metric</option>\n";
     }
+    print "</select></div>";
 }
 ?>
-    </select></div>
   </div>
   <div id="menu_cell" style="width:250px; height:55px;">
     <div id="menu_row">

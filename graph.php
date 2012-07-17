@@ -122,7 +122,7 @@ if ( isset($report_name) ) {
 }
 elseif ( isset($metric_name) ) {
   // It's a simple metric graph
-  $target = "target=alias(" . $conf['graphite_prefix'] . "$host_cluster.$metric_name,'$metric_name')&vtitle=" . urlencode($vlabel) . "&areaMode=all&colorList=". $conf['default_metric_color'];
+  $target = "target=alias(sumSeries(" . $conf['graphite_prefix'] . "$host_cluster.$metric_name),'$metric_name')&vtitle=" . urlencode($vlabel) . "&areaMode=all&colorList=". $conf['default_metric_color'];
   $title = "$title_prefix - $metric_name";
 }
 else {
