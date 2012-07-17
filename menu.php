@@ -48,7 +48,7 @@ foreach ($host_search['results'] as $host) {
 ?>
     </select></div>
     &nbsp;Report:&nbsp;
-    <div id="select"><select name="g" onchange="document.opts.submit();">
+    <div id="select"><select name="g" onchange="document.opts.m.value = ''; document.opts.submit();">
       <option value="" selected="selected">All</option>
 <?php
     foreach (find_dashboards($env, $c) as $graph_report) {

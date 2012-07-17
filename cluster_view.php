@@ -7,15 +7,16 @@ if (isset($g)) { $graph_reports = array($g); }
 elseif (isset($m)) { $metric_graph = $m; }
 else { $graph_reports = find_dashboards($env, $c); }
 
-foreach ($graph_reports as $graph_report) {
-    $cluster_graph_args = "$graph_args&g=$graph_report";
-    print "<a href=\"/graph_all_periods.php?$cluster_graph_args\"><img src=\"". get_graph_domainname() . "/graph.php?$cluster_graph_args&from=$from&until=$until\" /></a>";
-}
 if (isset($m)) {
     $cluster_graph_args = $graph_args . "&m=$metric_graph";
     print "<a href=\"/graph_all_periods.php?$cluster_graph_args\"><img src=\"". get_graph_domainname() . "/graph.php?$cluster_graph_args&from=$from&until=$until\" /></a>";
 }
-
+elseif (isset($graph_reports)) {
+    foreach ($graph_reports as $graph_report) {
+        $cluster_graph_args = "$graph_args&g=$graph_report";
+        print "<a href=\"/graph_all_periods.php?$cluster_graph_args\"><img src=\"". get_graph_domainname() . "/graph.php?$cluster_graph_args&from=$from&until=$until\" /></a>";
+    }
+}
 print "<a name=\"hosts\"></a><a href=\"#hosts\"><h2>Hosts:</h2></a>";
 $host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.$c.*"), TRUE);
 foreach ($host_search['results'] as $host) {
