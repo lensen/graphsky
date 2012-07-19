@@ -47,8 +47,15 @@ foreach ($host_search['results'] as $host) {
 }
 ?>
     </select></div>
+<?php
+if (isset($m)) {
+    $onchange = "document.opts.m.value = ''; document.opts.submit();";
+} else {
+    $onchange = "document.opts.submit();";
+}
+?>
     &nbsp;Report:&nbsp;
-    <div id="select"><select name="g" onchange="document.opts.m.value = ''; document.opts.submit();">
+    <div id="select"><select name="g" onchange="<?php echo $onchange; ?>">
       <option value="" selected="selected">All</option>
 <?php
     foreach (find_dashboards($env, $c) as $graph_report) {
@@ -62,7 +69,7 @@ foreach ($host_search['results'] as $host) {
 if (isset($h)) {
 ?>
     &nbsp;Jump to:&nbsp;
-    <div id="select"><select name="jumpto" onchange="location = this.options[this.selectedIndex].value;">
+    <div id="select"><select onchange="location = this.options[this.selectedIndex].value;">
       <option value="#reports" selected="selected">Metric group</option>
 <?php
     foreach (find_metrics("$env.$c.$h", $conf['host_metric_group_depth']) as $metric_group => $metric_array) {

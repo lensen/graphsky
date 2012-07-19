@@ -13,8 +13,8 @@ foreach ($cluster_search['results'] as $cluster) {
 
     if (!isset($g)) { print "<a href=\"/?$graph_args&c=$cluster_name&from=$gs&until=$ge\"><h3>$cluster_name</h3></a>"; }
     foreach ($graph_reports as $graph_report) {
-        $cluster_graph_args = "$graph_args&g=$graph_report&c=$cluster_name";
-        print "<a href=\"/graph_all_periods.php?$cluster_graph_args\"><img src=\"". get_graph_domainname() . "/graph.php?$cluster_graph_args&from=$from&until=$until\" /></a>";
+        $cluster_graph_args = "$graph_args&g=$graph_report&c=$cluster_name&from=$from&until=$until";
+        print "<a href=\"/?$cluster_graph_args\"><img src=\"". get_graph_domainname() . "/graph.php?$cluster_graph_args\" /></a>";
     }
     if (!isset($g)){ print "<br /><br />"; }
 }
