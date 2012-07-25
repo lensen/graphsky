@@ -34,20 +34,25 @@ function get_graph_domainname() {
 function build_graphite_series( $config, $host_cluster = "" ) {
     $targets = array();
     $colors = array();
+    $function = array();
     // Keep track of stacked items
     $stacked = 0;
   
     foreach( $config[ 'series' ] as $item ) {
         if ( $item['type'] == "stack" )
             $stacked++;
-        if ( isset($item['function']) )
-            $function = $item['function'];
+        if ( isset($item['functions']) )
+            $functions = $item['functions'];
         else
-            $function = "sumSeries";
+            $functions[] = "sumSeries";
         if ( isset($item['hostname']) && isset($item['clustername']) )
             $host_cluster = $item['clustername'] . "." . str_replace(".","_", $item['hostname']);
+        $metric = "$host_cluster.${item['metric']}";
+        foreach( $functions as $function ) {
+            $metric = "$function($metric)";
+        }
 
-        $targets[] = "target=". urlencode( "alias($function($host_cluster.${item['metric']}),'${item['label']}')" );
+        $targets[] = "target=". urlencode( "alias($metric,'${item['label']}')" );
         $colors[] = $item['color'];
     }
 
