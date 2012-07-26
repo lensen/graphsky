@@ -141,13 +141,10 @@ if ($graphite_url) {
     header ("Cache-Control: no-cache, must-revalidate");   // HTTP/1.1
     header ("Pragma: no-cache");                     // HTTP/1.0
     header ("Content-type: image/png");
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $graphite_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-    $data = curl_exec($ch);
-    curl_close($ch);
-    echo $data;
+    $im = imagecreatefrompng($graphite_url);
+    imagepng($im, NULL, 9);
+    imagedestroy($im);
 }
 
 ?>
+
