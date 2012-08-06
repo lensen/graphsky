@@ -37,10 +37,13 @@ function build_graphite_series( $config, $host_cluster = "" ) {
     $function = array();
     // Keep track of stacked items
     $stacked = 0;
+    $pie = 0;
   
     foreach( $config[ 'series' ] as $item ) {
         if ( $item['type'] == "stack" )
             $stacked++;
+        if ( $item['type'] == "pie" )
+            $pie++;
         if ( isset($item['functions']) )
             $functions = $item['functions'];
         else
@@ -70,6 +73,9 @@ function build_graphite_series( $config, $host_cluster = "" ) {
             $output .= "&areaMode=stacked";
         else
             $output .= "&areaMode=first";
+    }
+    elseif ( $pie > 0 ) {
+        $output .= "&graphType=pie";
     }
 
     return $output;
