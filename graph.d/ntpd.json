@@ -4,6 +4,6 @@
     "title": "NTPd",
     "vertical_label": "seconds",
     "series": [
-        { "metric": "ntpd.delay.*.*.*.*.value", "label": "Average Delay", "color": "orange", "type": "stack", "function": "averageSeries" }
+        { "metric": "ntpd.delay.*.*.*.*.value", "label": "Average Delay", "color": "orange", "type": "stack", "functions": ["averageSeries"] }
     ]
 }

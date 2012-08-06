@@ -4,7 +4,7 @@
     "vertical_label": "bytes/sec",
     "units": "binary",
     "series": [
-        { "metric": "libvirt.if_octets.vnet*.rx", "color": "33cc33", "label": "In", "type": "stack" },
-        { "metric": "libvirt.if_octets.vnet*.tx", "color": "5555cc", "label": "Out", "line_width": "2", "type": "line" }
+        { "metric": "libvirt.if_octets.vnet*.rx", "color": "33cc33", "label": "In", "type": "stack", "functions": ["sumSeries","keepLastValue"] },
+        { "metric": "libvirt.if_octets.vnet*.tx", "color": "5555cc", "label": "Out", "line_width": "2", "type": "line", "functions": ["sumSeries","keepLastValue"] }
     ]
 }
