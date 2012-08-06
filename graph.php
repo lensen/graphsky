@@ -66,10 +66,6 @@ elseif ($host != "*" && $host != "")
 else
     $title_prefix = "";
 
-$height += 70;
-if ($size == "small")
-    $width += 20;
-
 if ( isset($_GET['s'])) {
     $service_name = sanitize($_GET['s']);
   
@@ -86,9 +82,6 @@ if ( isset($_GET['g']) )
 
 $host_cluster = $env . "." . $clustername . "." . $host;
 if ( isset($report_name) ) {
-    // if it's a report increase the height for additional 40 pixels
-    $height += 40;
-
     $report_definition_file = $conf['graph_template_dir'] . "/" . $report_name . ".json";
     // Check whether report is defined in graph.d directory
     if ( is_file($report_definition_file) ) {
