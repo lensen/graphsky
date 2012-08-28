@@ -4,7 +4,7 @@ $graph_args = "env=$env&z=$z";
 $height = $conf['graph_sizes'][$z]['height'];
 $width = $conf['graph_sizes'][$z]['width'];
 
-print "<a name=\"clusters\"></a><a href=\"#clusters\"><h2>Clusters:</h2></a>";
+print "<a name=\"clusters\"></a><a href=\"#clusters\"><h2>Clusters</h2></a>";
 
 $cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
 foreach ($cluster_search['results'] as $cluster) {
