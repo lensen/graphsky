@@ -126,7 +126,7 @@ if ($max == 0) $max = "";
 if ($sourcetime) $title = "$title last " . str_replace(" ago","",$sourcetime);
 if ($puppetrun == "yes" && isset( $_GET['h']) && $host != "*") $target = "target=alias(color(drawAsInfinite(" .$conf['graphite_puppet_prefix'] . $env . "." . $host . "_*),'FF00FFAA'),'puppetrun')&" . $target;
 
-$graphite_url = $conf['graphite_render_url'] . "?width=$width&height=$height&" . $target . "&from=" . $start . "&until=" . $end . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&title=" . urlencode($title);
+$graphite_url = $conf['graphite_render_url'] . "?width=$width&height=$height&" . $target . "&from=" . urlencode($start) . "&until=" . urlencode($end) . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&title=" . urlencode($title);
 
 if ($graphite_url) {
     header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");   // Date in the past
