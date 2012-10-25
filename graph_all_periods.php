@@ -17,8 +17,9 @@ if ( $cluster == "\*" )
 
 include_once "./header.php";
 
-foreach ($conf["graph_all_periods_timeframes"] as $tf) {
-    print "<img src=\"". get_graph_domainname() . "/graph.php?${graph}${metric}&z=large&env=${env}&h=${host}&c=${cluster}&st=${tf}+ago\" />";
+foreach ($conf["graph_all_periods_timeframes"] as $tf) {i
+    $graph_args = get_graph_domainname() . "/graph.php?${graph}${metric}&env=${env}&h=${host}&c=${cluster}&st=${tf}+ago";
+    print "<a href=\"${graph_args}&z=xlarge\"><img src=\"${graph_args}&z=large\" /></a>";
 }
 
 include_once "./footer.php";
