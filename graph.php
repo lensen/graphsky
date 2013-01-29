@@ -108,6 +108,9 @@ if ( isset($report_name) ) {
         }
 
         $title = $title_prefix . " - " . $graph_config['title'];
+        if ( isset($graph_config['graph_max']) ) {
+            $max = $graph_config['graph_max'];
+        }
     } else {
         error_log("Configuration file to $report_name exists however it doesn't appear it's a valid JSON file");
         exit(1);

@@ -3,6 +3,7 @@
     "service_name" : "CPU",
     "title" : "CPU Report",
     "vertical_label" : "percentage",
+    "graph_max" : "100",
     "series" : [
         { "metric": "cpu.*.cpu.user.value", "color": "3333bb", "label": "User", "type": "stack", "functions": ["averageSeries"] },
         { "metric": "cpu.*.cpu.nice.value", "color": "ffea00", "label": "Nice", "type": "stack", "functions": ["averageSeries"] },
