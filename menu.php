@@ -9,7 +9,18 @@
       <option value="">Select environment</option>
 <?php
 $environment_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "*"), TRUE);
-foreach ($environment_search['results'] as $environment) {
+$environments = $environment_search['results'];
+natsort($environments);
+
+$cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
+$clusters = $cluster_search['results'];
+natsort($clusters);
+
+$host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.$c.*"), TRUE);
+$hosts = $host_search['results'];
+natsort($hosts);
+
+foreach ($environments as $environment) {
     $environment_name = str_replace($conf['graphite_prefix'], "", $environment);
     if ($environment_name == $env) { $selected = "selected=\"selected\""; }
     else { $selected = ""; }
@@ -20,11 +31,11 @@ foreach ($environment_search['results'] as $environment) {
     &nbsp;Cluster:&nbsp;
     <div id="select"><select name="c" onchange="document.opts.h.value = ''; document.opts.submit()">
 <?php
-$cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
-if (sizeof($cluster_search['results']) < 1) { $default = "None"; }
+
+if (sizeof($clusters) < 1) { $default = "None"; }
 else { $default = "All"; }
 print "<option value=\"\">$default</option>";
-foreach ($cluster_search['results'] as $cluster) {
+foreach ($clusters as $cluster) {
     $cluster_name = str_replace($conf['graphite_prefix'] . "$env.", "", $cluster);
     if ($cluster_name == $c) { $selected = "selected=\"selected\""; }
     else { $selected = ""; }
@@ -35,11 +46,11 @@ foreach ($cluster_search['results'] as $cluster) {
     &nbsp;Host:&nbsp;
     <div id="select"><select name="h" onchange="document.opts.submit()">
 <?php
-$host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.$c.*"), TRUE);
-if (sizeof($host_search['results']) < 1) { $default = "None"; }
+
+if (sizeof($hosts) < 1) { $default = "None"; }
 else { $default = "All"; }
 print "<option value=\"\">$default</option>";
-foreach ($host_search['results'] as $host) {
+foreach ($hosts as $host) {
     $host_name = str_replace($conf['graphite_prefix'] . "$env.$c.", "", $host);
     if ($host_name == $h) { $selected = "selected=\"selected\""; }
     else { $selected = ""; }
