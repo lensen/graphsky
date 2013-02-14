@@ -22,7 +22,9 @@ elseif (isset($graph_reports)) {
 }
 print "<a name=\"hosts\"></a><a href=\"#hosts\"><h2>Hosts</h2></a>";
 $host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.$c.*"), TRUE);
-foreach ($host_search['results'] as $host) {
+$hosts = $host_search['results'];
+natsort($hosts);
+foreach ($hosts as $host) {
     $host_name = str_replace($conf['graphite_prefix'] . "$env.$c.", "", $host);
     if ($host_name == $conf['cluster_hostname']) { continue; }
     if (isset($graph_reports)) {

@@ -7,9 +7,11 @@ $width = $conf['graph_sizes'][$z]['width'];
 print "<a name=\"clusters\"></a><a href=\"#clusters\"><h2>Clusters</h2></a>";
 
 $cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
-foreach ($cluster_search['results'] as $cluster) {
+$clusters = $cluster_search['results'];
+natsort($clusterss);
+foreach ($clusters as $cluster) {
     $cluster_name = str_replace($conf['graphite_prefix'] . "$env.", "", $cluster);
-    
+
     $graph_reports = array();
     if (isset($g)) { $graph_reports = array($g); }
     else { $graph_reports = find_dashboards($env, $cluster_name); }
