@@ -104,7 +104,7 @@ elseif (isset($c)) {
 ?>
   </div>
   <div id="menu_cell" style="width:250px; height:55px;">
-    <div id="menu_row">
+<!--    <div id="menu_row"> -->
       <div id="menu_cell">Graph size:</div>
       <div id="menu_cell">
         <div id="select"><select name="z" onchange="document.opts.submit()">
@@ -117,7 +117,7 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
 ?>
         </select></div>
       </div>
-    </div>
+<!--    </div>
     <div id="menu_row">
       <div id="menu_cell">Graph scaling:</div>
       <div id="menu_cell">
@@ -135,7 +135,7 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
 ?>
         </select></div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div id="menu_cell" style="width:200px; height:55px;">
     <div id="menu_row">

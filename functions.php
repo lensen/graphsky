@@ -47,7 +47,7 @@ function build_graphite_series( $config, $host_cluster = "" ) {
         if ( isset($item['functions']) )
             $functions = $item['functions'];
         else
-            $functions[] = "sumSeries";
+            $functions[0] = "sumSeries";
         if ( isset($item['hostname']) && isset($item['clustername']) )
             $host_cluster = $item['clustername'] . "." . str_replace(".","_", $item['hostname']);
         $metric = "$host_cluster.${item['metric']}";
