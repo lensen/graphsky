@@ -1,6 +1,6 @@
 <?php
 $name = "Graphsky";
-if (isset($env))            { $title = ":: $env"; }
+if (isset($env))            { $title = "| $env"; }
 if (isset($c))              { $title = "$title - $c"; }
 if (isset($c) && isset($h)) {
   if (isset($dn)) { $title = "$title - $dn"; }

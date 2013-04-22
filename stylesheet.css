@@ -24,12 +24,10 @@ div#header_title {
     vertical-align: middle;
     padding-left: 20px;
     font-size: 18px;
-    font-weight: bold;
 }
 
 div#header_title a {
     color: #EEE;
-    font-weight: bold;
 }
 
 h1{
@@ -96,20 +94,8 @@ button {
     font-weight: bold;
 }
 
-.calendar {
-    background-color: transparent;
-    border-top: 5px solid #444;
-    border-bottom: 1px solid #444;
-    border-left: 1px solid #444;
-    border-right: 1px solid #444;
-    display: inline-block;
-    width: 10px;
-    height: 7px;
-    margin-left: 5px;
-}
-.calendar:active {
-    position: relative;
-    top: 1px;
+img#calendar {
+	vertical-align: middle;
 }
 
 select {
@@ -163,6 +149,11 @@ div#menu_cell {
     padding-right: 5px;
 }
 
+div#menu_cell a {
+	color: #33B5E5;
+	font-weight: bold;
+}
+	
 div#arrow-up {
   width:0px;
   height:0px;

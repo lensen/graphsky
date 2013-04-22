@@ -137,22 +137,22 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
       </div>
     </div> -->
   </div>
-  <div id="menu_cell" style="width:200px; height:55px;">
+  <div id="menu_cell" style="width:210px; height:55px;">
     <div id="menu_row">
       <div id="menu_cell" style="width: 40px;">Start:</div>
-      <div id="menu_cell" style="width: 160px;">
-      <input name="from" value="<?php print $gs; ?>" style="width: 120px;"><a class="calendar" href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.from);return false;" ></a>
+      <div id="menu_cell" style="width: 150px;">
+      <input name="from" value="<?php print $gs; ?>" style="width: 120px;"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.from);return false;" ><img src="img/calendar_holo_24.png" id="calendar" width="24" height="24"/></a>
       </div>
     </div>
     <div id="menu_row">
       <div id="menu_cell" style="width: 40px;">End:</div>
-      <div id="menu_cell" style="width: 160px;">
-      <input name="until" value="<?php print $ge; ?>" style="width: 120px;"><a class="calendar" href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.until);return false;" ></a>
+      <div id="menu_cell" style="width: 150px;">
+      <input name="until" value="<?php print $ge; ?>" style="width: 120px;"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.until);return false;" ><img src="img/calendar_holo_24.png" id="calendar" width="24" height="24"/></a>
       </div>
     </div>
   </div>
 
-  <div id="menu_cell" style="width:75px; text-align:right;"><button type="submit">Go</button></div>
+  <div id="menu_cell" style="width:65px; text-align:right;"><button type="submit">Go</button></div>
   </form>
 </div>
 

@@ -7,19 +7,29 @@ $metric     = isset($_GET['m']) ? "&m=" . $_GET['m'] : "";
 $sourcetime = isset($_GET['st']) ? sanitize($_GET['st']) : NULL;
 $env        = isset($_GET['env']) ? $_GET['env'] : $conf['graphite_default_env'];
 
-$host       = isset($_GET['h']) ? $_GET['h'] : $conf['cluster_hostname'];
-if ( $host == "\*" )
-    $host = "*";
+$h        = isset($_GET['h']) ? $_GET['h'] : $conf['cluster_hostname'];
+$realhost = $_GET['h'];
+if ( $h == "\*" )
+    $h = "*";
 
-$cluster = isset($_GET['c']) ? sanitize($_GET['c']) : "*";
-if ( $cluster == "\*" )
-    $cluster = "*";
+$c           = isset($_GET['c']) ? sanitize($_GET['c']) : "*";
+$realcluster = $_GET['c'];
+if ( $c == "\*" )
+    $c = "*";
 
 include_once "./header.php";
 
+print "
+<div id=\"container\"><div id=\"menu\"><div id=\"menu_row\">
+	<div id=\"menu_cell\">
+		<a href=\"/?env=$env&c=$realcluster&h=$realhost\">Go to $realcluster $realhost overview</a>
+	</div>
+</div></div></div>
+";
+
 foreach ($conf["graph_all_periods_timeframes"] as $tf) {
-    $graph_args = get_graph_domainname() . "/graph.php?${graph}${metric}&env=${env}&h=${host}&c=${cluster}&st=${tf}+ago";
-    print "<a href=\"${graph_args}&z=xlarge\"><img src=\"${graph_args}&z=large\" /></a>";
+    $graph_args = get_graph_domainname() . "/graph.php?$graph$metric&env=$env&h=$h&c=$c&st=$tf+ago";
+    print "<a href=\"$graph_args&z=xlarge\"><img src=\"$graph_args&z=large\" /></a>";
 }
 
 include_once "./footer.php";
