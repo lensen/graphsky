@@ -95,7 +95,7 @@ button {
 }
 
 img#calendar {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 select {
@@ -150,10 +150,10 @@ div#menu_cell {
 }
 
 div#menu_cell a {
-	color: #33B5E5;
-	font-weight: bold;
+    color: #33B5E5;
+    font-weight: bold;
 }
-	
+    
 div#arrow-up {
   width:0px;
   height:0px;

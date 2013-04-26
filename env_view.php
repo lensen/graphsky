@@ -1,6 +1,6 @@
 <a name="clusters"></a>
 <a href="#clusters">
-	<h2>Clusters</h2>
+    <h2>Clusters</h2>
 </a>
 
 <?php
@@ -11,7 +11,7 @@ $width = $conf['graph_sizes'][$z]['width'];
 
 $cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
 $clusters = $cluster_search['results'];
-natsort($clusterss);
+natsort($clusters);
 foreach ($clusters as $cluster) {
     $cluster_name = str_replace($conf['graphite_prefix'] . "$env.", "", $cluster);
 
@@ -22,7 +22,7 @@ foreach ($clusters as $cluster) {
     if (!isset($g)) { print "<a href=\"/?$graph_args&c=$cluster_name&from=$gs&until=$ge\"><h3>$cluster_name</h3></a>"; }
     foreach ($graph_reports as $graph_report) {
         $current_graph_args = "$graph_args&c=$cluster_name";
-		print print_graph($current_graph_args, "g=$graph_report", $width, $height, $from, $until);
+        print print_graph($current_graph_args, "g=$graph_report", $width, $height, $from, $until);
     }
     if (!isset($g)){ print "<br /><br />"; }
 }

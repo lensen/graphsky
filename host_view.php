@@ -1,6 +1,6 @@
 <a name="reports"></a>
 <a href="#reports">
-	<h2>Reports</h2>
+    <h2>Reports</h2>
 </a>
 
 <?php
@@ -15,13 +15,13 @@ $width = $conf['graph_sizes'][$z]['width'];
 
 foreach ($graph_reports as $graph_report) {
     $current_graph_args = $graph_args . "&h=$h";
-	print print_zoom_graph($current_graph_args, "g=$graph_report", $width, $height, $from, $until);
+    print print_zoom_graph($current_graph_args, "g=$graph_report", $width, $height, $from, $until);
 }
 ?>
 
 <a name="metrics"></a>
 <a href="#metrics">
-	<h2>Metrics</h2>
+    <h2>Metrics</h2>
 </a>
 
 <?php

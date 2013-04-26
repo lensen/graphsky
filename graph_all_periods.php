@@ -21,9 +21,9 @@ include_once "./header.php";
 
 print "
 <div id=\"container\"><div id=\"menu\"><div id=\"menu_row\">
-	<div id=\"menu_cell\">
-		<a href=\"/?env=$env&c=$realcluster&h=$realhost\">Go to $realcluster $realhost overview</a>
-	</div>
+    <div id=\"menu_cell\">
+        <a href=\"/?env=$env&c=$realcluster&h=$realhost\">Go to $realcluster $realhost overview</a>
+    </div>
 </div></div></div>
 ";
 
