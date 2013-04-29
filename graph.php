@@ -42,7 +42,7 @@ else
 if ($sourcetime) {
     $start = "-" . $sourcetime;
 } elseif ($from) {
-	$start = sanitize_datetime($from);
+    $start = sanitize_datetime($from);
 } else {
     $start = $conf['default_time_range'];
 }

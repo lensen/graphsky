@@ -14,11 +14,11 @@ function sanitize ( $string ) {
 
 function sanitize_datetime ( $dt ) {
     if (preg_match("/^(\d{4}[-\/]\d{2}[-\/]\d{2}|\d{2}[-\/]\d{2}[-\/]\d{4}) \d{1,2}:\d{2}/", $dt)) {
-		return date('H:i_Ymd', strtotime($dt));
-	}
-	else {
-		return $dt;
-	}
+        return date('H:i_Ymd', strtotime($dt));
+    }
+    else {
+        return $dt;
+    }
 }
 #------------------------------------------------------------------------------
 # If arg is a valid number, return it.  Otherwise, return null.

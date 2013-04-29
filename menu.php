@@ -142,7 +142,7 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
       <div id="menu_cell" style="width: 40px;">Start:</div>
       <div id="menu_cell" style="width: 200px;">
         <input name="from" value="<?php print $gs; ?>" id="from_calendar"/>
-	  </div>
+      </div>
     </div>
     <div id="menu_row">
       <div id="menu_cell" style="width: 40px;">End:</div>
