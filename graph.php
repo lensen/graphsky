@@ -42,13 +42,13 @@ else
 if ($sourcetime) {
     $start = "-" . $sourcetime;
 } elseif ($from) {
-    $start = $from;
+	$start = sanitize_datetime($from);
 } else {
     $start = $conf['default_time_range'];
 }
 
 if ($until) {
-    $end = $until;
+    $end = sanitize_datetime($until);
 } else {
     $end = "now";
 }
@@ -143,4 +143,5 @@ if ($graphite_url) {
 }
 
 ?>
+
 

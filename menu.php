@@ -103,7 +103,7 @@ elseif (isset($c)) {
 }
 ?>
   </div>
-  <div id="menu_cell" style="width:250px; height:55px;">
+  <div id="menu_cell" style="width:230px; height:55px;">
 <!--    <div id="menu_row"> -->
       <div id="menu_cell">Graph size:</div>
       <div id="menu_cell">
@@ -137,17 +137,17 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
       </div>
     </div> -->
   </div>
-  <div id="menu_cell" style="width:210px; height:55px;">
+  <div id="menu_cell" style="width:250px; height:55px;">
     <div id="menu_row">
       <div id="menu_cell" style="width: 40px;">Start:</div>
-      <div id="menu_cell" style="width: 150px;">
-      <input name="from" value="<?php print $gs; ?>" style="width: 120px;"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.from);return false;" ><img src="img/calendar_holo_24.png" id="calendar" width="24" height="24"/></a>
-      </div>
+      <div id="menu_cell" style="width: 200px;">
+        <input name="from" value="<?php print $gs; ?>" id="from_calendar"/>
+	  </div>
     </div>
     <div id="menu_row">
       <div id="menu_cell" style="width: 40px;">End:</div>
-      <div id="menu_cell" style="width: 150px;">
-      <input name="until" value="<?php print $ge; ?>" style="width: 120px;"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.opts.until);return false;" ><img src="img/calendar_holo_24.png" id="calendar" width="24" height="24"/></a>
+      <div id="menu_cell" style="width: 200px;">
+        <input name="until" value="<?php print $ge; ?>" id="until_calendar"/>
       </div>
     </div>
   </div>
@@ -157,5 +157,3 @@ foreach (array_keys($conf['graph_sizes']) as $graph_size) {
 </div>
 
 </div></div>
-<iframe width=188 height=166 name="gToday:datetime:agenda.js:gfPop:plugins_time.js" id="gToday:datetime:agenda.js:gfPop:plugins_time.js" src="calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:visible; z-index:999; position:absolute; top:-500px; left:-500px;">
-</iframe>
