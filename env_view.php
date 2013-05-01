@@ -21,8 +21,10 @@ foreach ($clusters as $cluster) {
 
     if (!isset($g)) { print "<a href=\"/?$graph_args&c=$cluster_name&from=$gs&until=$ge\"><h3>$cluster_name</h3></a>"; }
     foreach ($graph_reports as $graph_report) {
-        $current_graph_args = "$graph_args&c=$cluster_name";
-        print print_graph($current_graph_args, "g=$graph_report", $width, $height, $from, $until);
+        if ( show_on_dashboard($graph_report, $env, $cluster_name) ) {
+            $current_graph_args = "$graph_args&c=$cluster_name";
+            print print_graph($current_graph_args, "g=$graph_report", $width, $height, $from, $until);
+        }
     }
     if (!isset($g)){ print "<br /><br />"; }
 }

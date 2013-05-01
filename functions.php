@@ -170,6 +170,20 @@ function find_dashboards($environment, $cluster="") {
     return $graph_reports;
 }
 
+function show_on_dashboard($report_name, $environment, $cluster) {
+    global $conf;
+
+    $dash_config = json_decode(file_get_contents($conf['dashboard_config']), TRUE);
+    foreach ($dash_config['dashboards'] as $dash) {
+        if ( preg_match($dash['environments'], $environment) && preg_match($dash['clusters'], $cluster) ){
+            if ( in_array($report_name, $dash['included_reports']) ) {
+                return True;
+            }
+        }
+    }
+    return False;
+}
+
 function find_metrics($search_string, $group_depth=0) {
     global $conf;
 
