@@ -8,12 +8,12 @@ $sourcetime = isset($_GET['st']) ? sanitize($_GET['st']) : NULL;
 $env        = isset($_GET['env']) ? $_GET['env'] : $conf['graphite_default_env'];
 
 $h        = isset($_GET['h']) ? $_GET['h'] : $conf['cluster_hostname'];
-$realhost = $_GET['h'];
+$realhost = isset($_GET['h']) ? $_GET['h'] : "";
 if ( $h == "\*" )
     $h = "*";
 
 $c           = isset($_GET['c']) ? sanitize($_GET['c']) : "*";
-$realcluster = $_GET['c'];
+$realcluster = isset($_GET['c']) ? $_GET['c'] : "";
 if ( $c == "\*" )
     $c = "*";
 
