@@ -32,23 +32,23 @@ $conf['default_foreground_color'] = '000000';
 $conf['graph_sizes'] = array(
   'default'=>array(
     'height'=>200,
-    'width'=>400
+    'width'=>395
   ),
   'small'=>array(
     'height'=>150,
-    'width'=>300
+    'width'=>315
   ),
   'medium'=>array(
     'height'=>250,
-    'width'=>480
+    'width'=>535
   ),
   'large'=>array(
     'height'=>400,
-    'width'=>650
+    'width'=>800
   ),
   'xlarge'=>array(
     'height'=>900,
-    'width'=>1200
+    'width'=>1280
   )
 );
 $conf['graph_sizes_keys'] = array_keys( $conf['graph_sizes'] );
