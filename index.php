@@ -19,19 +19,19 @@ $view   = NULL;
 $from   = $gs;
 $until  = ($ge == "now") ? $ge : $ge;
 
-if ($env)     { $view = "env_view"; }
-if ($c)       { $view = "cluster_view"; }
-if ($c && $h) { $view = "host_view"; }
+if ($env)     { $view = "env"; }
+if ($c)       { $view = "cluster"; }
+if ($c && $h) { $view = "host"; }
 
 include_once "./header.php";
 include_once "./menu.php";
 
-print "<div id=\"container\"><div id=\"main\">";
+print "<div id=\"main\">";
 
 if ($view)
-    include_once "./$view.php";
+    include_once "./${view}_view.php";
 
-print "</div></div>";
+print "</div>";
 include_once "./footer.php";
 ?>
 

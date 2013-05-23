@@ -1,75 +1,90 @@
 body {
-    background-color: #FFF;
     color: #000;
     margin: 0px;
     font-family: helvetica;
+#    min-width: 1024px;
     min-width: 1200px;
+    height: 100%;
 }
 
 a, a:visited {
     text-decoration: none;
 }
 
+div#container {
+    background-color: #F3F3F3;
+    min-height:100%;
+    position:relative;
+}
+
 div#header {
-    display: table;
-    height: 30px;
+    vertical-align: middle;
     width: 100%;
-    background-color: #444;
-    color: #EEE;
+    height: 25px;
+    background-color: #323232;
     border-bottom: 4px solid #33B5E5;
 }
 
-div#header_title {
+div.header_text,
+div.header_text a {
+    font-size: 18px;
+    color: #EEE;
+    padding: 2px 0px 0px 5px;
+    text-decoration: none;
+}
+
+a.small_menu_button {
+    margin: 0px 10px 0px 0px;
+}
+
+#small_menu {
+    display: none;
+}
+#small_menu.show {
+    background-color: #E8E8E8;
+    border: 1px solid #CCC;
+    display: block;
+    right: 1%;
+    position: absolute;
+    overflow: auto;
+    padding: 5px;
+}
+
+div.small_menu_cell {
     display: table-cell;
     vertical-align: middle;
-    padding-left: 20px;
+    height: 30px;
+}
+
+div.small_menu_title {
     font-size: 18px;
+    color: #555;
 }
 
-div#header_title a {
-    color: #EEE;
-}
-
-h1{
-    padding: 0px;
-    margin: 0px;
-    font-weight: bold;
-    color: #FF8B00;
-}
-
-h2,
-h2 a a:visited {
+hr {
     color: #33B5E5;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-h3,
-h3 a a:visited {
-    color: #585858;
-    padding-left: 5px;
-    background: #EEE;
-    border-top: 1px solid #DDD;
-    border-bottom: 1px solid #DDD;
+    background-color: #33B5E5;
+    width: 90%;
+    height: 1px;
+    border: 0px;
 }
 
 div#main {
-    margin-left: 10px;
-    margin-right: 10px;
     padding: 10px;
+    padding-bottom: 50px;
 }
 
 div#footer {
     width: 100%;
-    background-color: #444;
+    background-color: #323232;
     border-top: 2px solid #33B5E5;
-    bottom: 0px;
+    bottom: 0;
+    height: 20px;
     text-align: center;
-    margin-top: 15px;
     font-size: 11px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px 0px 5px 0px;
     color: #FFF;
+    position: absolute;
 }
 
 div#footer a{
@@ -81,17 +96,20 @@ input {
     border: solid 1px #CCC;
     font-size: small;
     height: 28px;
-    margin-bottom: 1px;
+    width: 130px;
 }
 
 button {
     border: 0px;
+    border-radius: 2px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,.2);
     background-color: #33B5E5;
     width: 60px;
-    height: 30px;
+    height: 25px;
     color: white;
     font-size: small;
     font-weight: bold;
+    margin: 0px 5px 0px 5px;
 }
 
 select {
@@ -102,13 +120,13 @@ select {
     color: black;
     overflow: hidden;
     background: #FFFFFF;
-    -webkit-border-radius: 0.0em;
+    border-radius: 0.0em;
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
 }
 
-#select:before {
+.select:before {
     border-right: 8px solid #CCC;
     border-top: 8px solid transparent;
     content: "";
@@ -117,39 +135,81 @@ select {
     bottom: 12%;
 }
 
-#select {
+.select {
     display: inline-block;
     position: relative;
     width: 120px;
     height: 28px;
-    margin-bottom: 1px;
 }
 
 div#menu {
     display: table;
-    background-color: #E8E8E8;
-    color: #222;
+    background-color: #DDD;
     width: 100%;
-    height: 50px;
-    border-bottom: 1px solid #CCC;
+    height: 32px;
+    padding-top: 2px;
+    border-bottom: 1px solid #D2D2D2;
 }
 
-div#menu_row {
+div.menu_row {
     display: table-row;
+    vertical-align: middle;
 }
 
-div#menu_cell {
+div.menu_cell {
     display: table-cell;
     vertical-align: middle;
-    padding-left: 5px;
-    padding-right: 5px;
+    height: 30px;
+    padding: 0px 0px 0px 5px;
+    color: #444;
 }
 
-div#menu_cell a {
-    color: #33B5E5;
-    font-weight: bold;
+div.left {
+    float: left;
 }
-    
+
+div.right {
+    float: right;
+}
+
+div.block_title,
+div.block_title a {
+    color: #33B5E5;
+    margin: 10px 0px 5px 0px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+div.banner_text,
+div.banner_text a {
+    color: #9A9A9A;
+    font-weight: 300;
+    background: #FFF;
+    padding: 5px;
+    border-bottom: 1px solid #D1D1D1
+}
+
+div.graph_block {
+    padding-left: 10px;
+}
+
+div.graph_card {
+    background-color: #FFF;
+    display: inline-block;
+    border-radius: 2px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,.2);
+    margin: 10px 5px 0px 0px;
+    padding: 3px;
+}
+
+div.graph_img {
+#    margin: 5px;
+}
+
+div.graph_buttons {
+    float: right;
+    margin-right: 5px;
+}
 
 /* css for timepicker */
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
@@ -162,5 +222,4 @@ div#menu_cell a {
 .ui-timepicker-rtl dl { text-align: right; }
 .ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
 .ui-datepicker-trigger { vertical-align: middle; }
-
 

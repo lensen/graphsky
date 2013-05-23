@@ -1,17 +1,13 @@
 <?php
 
 #------------------------------------------------------------------------------
-# Return a version of the string which is safe for display on a web page.
-# Potentially dangerous characters are converted to HTML entities.  
-# Resulting string is not URL-encoded.
+# Functions to make strings compatible
 function clean_string( $string ) {
     return htmlentities( $string );
 }
-#------------------------------------------------------------------------------
 function sanitize ( $string ) {
     return escapeshellcmd( clean_string( rawurldecode( $string ) ) ) ;
 }
-
 function sanitize_datetime ( $dt ) {
     if (preg_match("/^(\d{4}[-\/]\d{2}[-\/]\d{2}|\d{2}[-\/]\d{2}[-\/]\d{4}) \d{1,2}:\d{2}/", $dt)) {
         return date('H:i_Ymd', strtotime($dt));
@@ -20,11 +16,25 @@ function sanitize_datetime ( $dt ) {
         return $dt;
     }
 }
+
 #------------------------------------------------------------------------------
-# If arg is a valid number, return it.  Otherwise, return null.
-function clean_number( $value ) {
-    return is_numeric( $value ) ? $value : null;
+# Function to print options for dropdown menus
+function print_dropdown_menus($options, $choice, $default) {
+    if ( $default != "" ) {
+        $option_values = "                <option value=\"\">$default</option>\n";
+    }
+    foreach ($options as $option) {
+        if ($option == $choice) {
+            $selected = "selected=\"selected\"";
+        }
+        else {
+            $selected = "";
+        }
+        $option_values .= "                <option value=\"$option\" $selected>$option</option>\n";
+    }
+    return $option_values;
 }
+
 
 #------------------------------------------------------------------------------
 # Function to return graph  domainname.
@@ -46,7 +56,7 @@ function build_graphite_series( $config, $host_cluster = "" ) {
     // Keep track of stacked items
     $stacked = 0;
     $pie = 0;
-  
+
     foreach( $config[ 'series' ] as $item ) {
         if ( $item['type'] == "stack" )
             $stacked++;
@@ -89,42 +99,66 @@ function build_graphite_series( $config, $host_cluster = "" ) {
     return $output;
 }
 
-function print_graph($args, $metric_report, $width, $height, $from, $until) {
+#------------------------------------------------------------------------------
+# Functions for printing graph (cards)
+function print_graph($args, $metric_report, $graph_size, $from, $until) {
+    global $conf;
+    $width  = $conf['graph_sizes'][$graph_size]['width'];
+    $height = $conf['graph_sizes'][$graph_size]['height'];
+
     $graph_html = "
-        <div style=\"display:inline-block\">
-        <div style=\"display:inline-block; width:$width;\">
-        <a href=\"?$args&from=$from&until=$until\">
-            <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&$metric_report&from=$from&until=$until\" />
-        </a>
+      <div class=\"graph_card\">
+        <div class=\"graph_img\">
+          <a href=\"?$args&from=$from&until=$until\">
+            <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&$metric_report&z=$graph_size&from=$from&until=$until\" />
+          </a>
         </div>
-    " . show_graph_buttons("$args&$metric_report", $from, $until) . "</div>";
+        " . show_graph_buttons("$args&$metric_report", $from, $until) . "</div>";
     return $graph_html;
 }
 
-function print_zoom_graph($args, $metric_report, $width, $height, $from, $until) {
+function print_zoom_graph($args, $metric_report, $graph_size, $from, $until) {
+    global $conf;
+    $width  = $conf['graph_sizes'][$graph_size]['width'];
+    $height = $conf['graph_sizes'][$graph_size]['height'];
+
     $graph_html = "
-        <div style=\"display:inline-block\">
-        <div style=\"display:inline-block; width:$width;\">
-        <a href=\"/graph.php?$args&$metric_report&from=$from&until=$until&z=xlarge\">
-            <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&$metric_report&from=$from&until=$until\" />
-        </a>
+      <div class=\"graph_card\">
+        <div class=\"graph_img\">
+          <a href=\"graph.php?$args&$metric_report&from=$from&until=$until&z=xlarge\">
+            <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&$metric_report&z=$graph_size&from=$from&until=$until\" />
+          </a>
         </div>
-    " . show_graph_buttons("$args&$metric_report", $from, $until) . "</div>";
+        " . show_graph_buttons("$args&$metric_report", $from, $until) . "</div>";
     return $graph_html;
 }
 
 function show_graph_buttons($args, $from, $until) {
-    $button_html = "
-        <div style=\"display:inline-block; width:16px;\">
-            <a href=\"/graph_all_periods.php?$args\">
-                <img src=\"img/periods_holo_16.png\" width=\"16\" height=\"16\" title=\"Show periodic graphs\">
-            </a>
-            <a href=\"/graph.php?$args&from=$from&until=$until&z=xlarge\">
-                <img src=\"img/zoom_holo_16.png\" width=\"16\" height=\"16\" title=\"Show XL graph\">
-            </a>
+    $button_html = "<div class=\"graph_buttons\">
+          <a href=\"graph_all_periods.php?$args\">
+            <img src=\"img/periods_holo_16.png\" width=\"16\" height=\"16\" title=\"Show periodic graphs\">
+          </a>
+          <a href=\"graph.php?$args&from=$from&until=$until&z=xlarge\">
+            <img src=\"img/zoom_holo_16.png\" width=\"16\" height=\"16\" title=\"Show XL graph\">
+          </a>
         </div>
-    ";
+      ";
     return $button_html;
+}
+
+function print_period_graph($args, $metric_report, $timeframe) {
+    global $conf;
+    $width  = $conf['graph_sizes']["large"]['width'];
+    $height = $conf['graph_sizes']["large"]['height'];
+
+    $graph_html = "
+      <div class=\"graph_card\">
+        <div class=\"graph_img\">
+          <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&$metric_report&z=large&st=$timeframe+ago\" />
+        </div>
+      </div>
+      ";
+    return $graph_html;
 }
 
 
@@ -149,6 +183,8 @@ function find_limits($environment, $cluster, $metricname, $start, $end) {
     return $max;
 }
 
+#------------------------------------------------------------------------------
+# Finds dashboards to specific environment/cluster
 function find_dashboards($environment, $cluster="") {
     global $conf;
 
@@ -170,6 +206,8 @@ function find_dashboards($environment, $cluster="") {
     return $graph_reports;
 }
 
+#------------------------------------------------------------------------------
+# Determines of report graphs should be shows in this dashboard
 function show_on_dashboard($report_name, $environment, $cluster) {
     global $conf;
 
@@ -184,6 +222,8 @@ function show_on_dashboard($report_name, $environment, $cluster) {
     return False;
 }
 
+#------------------------------------------------------------------------------
+# Find graphite metrics matching regex
 function find_metrics($search_string, $group_depth=0) {
     global $conf;
 
