@@ -52,9 +52,12 @@ if (isset($h)) {
             <div class="menu_cell">&gt;</div>
             <div class="menu_cell">
               <div class="select"><select onchange="location = this.options[this.selectedIndex].value;">
+                <option value="#reports" selected="selected">Go to metricgroup</option>
 <?php
 $host_metrics=array_keys(find_metrics("$env.$c.$h", $conf['host_metric_group_depth']));
-print print_dropdown_menus($host_metrics, "", "Go to metricgroup");
+foreach ($host_metrics as $metric_group) {
+	print "				<option value=\"#$metric_group\">$metric_group</option>\n";
+}
 ?>
               </select></div>
             </div>
