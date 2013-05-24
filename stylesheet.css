@@ -2,8 +2,7 @@ body {
     color: #000;
     margin: 0px;
     font-family: helvetica;
-#    min-width: 1024px;
-    min-width: 1200px;
+    min-width: 1080px;
     height: 100%;
 }
 
@@ -12,7 +11,7 @@ a, a:visited {
 }
 
 div#container {
-    background-color: #F3F3F3;
+    background-color: #E5E5E5;
     min-height:100%;
     position:relative;
 }
@@ -41,8 +40,9 @@ a.small_menu_button {
     display: none;
 }
 #small_menu.show {
-    background-color: #E8E8E8;
+    background-color: #DDD;
     border: 1px solid #CCC;
+    box-shadow: 0px 2px 4px rgba(0,0,0,.2);
     display: block;
     right: 1%;
     position: absolute;
@@ -69,29 +69,6 @@ hr {
     border: 0px;
 }
 
-div#main {
-    padding: 10px;
-    padding-bottom: 50px;
-}
-
-div#footer {
-    width: 100%;
-    background-color: #323232;
-    border-top: 2px solid #33B5E5;
-    bottom: 0;
-    height: 20px;
-    text-align: center;
-    font-size: 11px;
-    padding: 5px 0px 5px 0px;
-    color: #FFF;
-    position: absolute;
-}
-
-div#footer a{
-    color: #CCC;
-    font-weight: bold;
-}
-
 input {
     border: solid 1px #CCC;
     font-size: small;
@@ -113,7 +90,7 @@ button {
 }
 
 select {
-    padding: 0.5em;
+    padding-left: 0.5em;
     width: 120px;
     height: 28px;
     border: solid 1px #CCC;
@@ -127,7 +104,7 @@ select {
 }
 
 .select:before {
-    border-right: 8px solid #CCC;
+    border-right: 8px solid #7C7C7C;
     border-top: 8px solid transparent;
     content: "";
     position: absolute;
@@ -148,7 +125,7 @@ div#menu {
     width: 100%;
     height: 32px;
     padding-top: 2px;
-    border-bottom: 1px solid #D2D2D2;
+    border-bottom: 1px solid #CCC;
 }
 
 div.menu_row {
@@ -170,6 +147,11 @@ div.left {
 
 div.right {
     float: right;
+}
+
+div#main {
+    padding: 10px;
+    padding-bottom: 50px;
 }
 
 div.block_title,
@@ -209,6 +191,24 @@ div.graph_img {
 div.graph_buttons {
     float: right;
     margin-right: 5px;
+}
+
+div#footer {
+    width: 100%;
+    background-color: #323232;
+    border-top: 2px solid #33B5E5;
+    bottom: 0;
+    height: 20px;
+    text-align: center;
+    font-size: 11px;
+    padding: 5px 0px 5px 0px;
+    color: #FFF;
+    position: absolute;
+}
+
+div#footer a{
+    color: #CCC;
+    font-weight: bold;
 }
 
 /* css for timepicker */
