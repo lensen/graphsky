@@ -86,7 +86,8 @@ if ( isset($report_name) ) {
     // Check whether report is defined in graph.d directory
     if ( is_file($report_definition_file) ) {
         $graph_config = json_decode(file_get_contents($report_definition_file), TRUE);
-    } else {
+    }
+    else {
         error_log("There is no JSON config file specifying $report_name.");
         exit(1);
     }
@@ -98,34 +99,31 @@ if ( isset($report_name) ) {
             }
         }
         else {
-            if ( isset($host) && ($host != "*") && ($setmax == "yes") ) { 
-                foreach( $graph_config[ 'series' ] as $item ) {
-                    $metric_max = find_limits($env, $clustername, $item['metric'], $start, $end);
-                    if ($metric_max > $max) { $max = $metric_max; }
-                }
-            }
-            $target = build_graphite_series( $graph_config, $conf['graphite_prefix'] . "$host_cluster" );
+                    $target = build_graphite_series( $graph_config, $conf['graphite_prefix'] . "$host_cluster" );
         }
 
         $title = $title_prefix . " - " . $graph_config['title'];
-        if ( isset($graph_config['graph_max']) ) {
-            $max = $graph_config['graph_max'];
-        }
-    } else {
+    }
+    else {
         error_log("Configuration file to $report_name exists however it doesn't appear it's a valid JSON file");
         exit(1);
     }
 }
 elseif ( isset($metric_name) ) {
-  // It's a simple metric graph
-  $target = "target=alias(sumSeries(" . $conf['graphite_prefix'] . "$host_cluster.$metric_name),'$metric_name')&vtitle=" . urlencode($vlabel) . "&areaMode=all&colorList=". $conf['default_metric_color'];
-  $title = "$title_prefix - $metric_name";
+    if ( isset($host) && ($host != "*") && ($setmax == "yes") ) { 
+        $max = find_limits($env, $clustername, $metric_name, $start, $end);
+    }
+    else {
+        $max = "";
+    }
+    // It's a simple metric graph
+    $target = "target=alias(sumSeries(" . $conf['graphite_prefix'] . "$host_cluster.$metric_name),'$metric_name')&vtitle=" . urlencode($vlabel) . "&areaMode=all&colorList=". $conf['default_metric_color'];
+    $title = "$title_prefix - $metric_name";
 }
 else {
   error_log("I don't know what to do");
 }
 
-if ($max == 0) $max = "";
 if ($sourcetime) $title = "$title last " . str_replace(" ago","",$sourcetime);
 if ($puppetrun == "yes" && isset( $_GET['h']) && $host != "*") $target = "target=alias(color(drawAsInfinite(" .$conf['graphite_puppet_prefix'] . $env . "." . $host . "_*),'FF00FFAA'),'puppetrun')&" . $target;
 
@@ -143,5 +141,3 @@ if ($graphite_url) {
 }
 
 ?>
-
-

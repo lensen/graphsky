@@ -56,7 +56,7 @@ if (isset($h)) {
 <?php
 $host_metrics=array_keys(find_metrics("$env.$c.$h", $conf['host_metric_group_depth']));
 foreach ($host_metrics as $metric_group) {
-	print "				<option value=\"#$metric_group\">$metric_group</option>\n";
+    print "             <option value=\"#$metric_group\">$metric_group</option>\n";
 }
 ?>
               </select></div>
@@ -91,22 +91,30 @@ print print_dropdown_menus($all_metrics, $m, "All metrics");
             <div class="menu_cell">
               <a href="javascript:;" class="small_menu_button"><img src="img/small_menu_holo.png" width="16" height="20"/></a>
               <div id="small_menu">
-                <div class="smell_menu_cell small_menu_title">
+                <div class="small_menu_cell small_menu_title">
                   Graph settings
                 </div>
                 <hr />
-                <div class="smell_menu_cell">
+                <div class="small_menu_row"><div class="small_menu_cell">
                   size:
-                </div>
-                <div class="smell_menu_cell">
+                </div></div>
+                <div class="small_menu_row"><div class="small_menu_cell">
                   <div class="select"><select name="z" onchange="document.opts.submit()">
 <?php
 print print_dropdown_menus(array_keys($conf['graph_sizes']), $z, "");
 ?>
                   </select></div>
-                </div>
-                </div>
+                </div></div>
+<?php
+    if ($l == "yes" ) { $checked = "checked"; } else { $checked = ""; }
+?>
+                <hr />
+                <div class="small_menu_row"><div class="small_menu_cell">
+                  <input id="scalebox" type="checkbox" name="l" value="yes" onchange="document.opts.submit()" <?php print $checked ?>/>
+                  <label for="scalebox">metric graph scaling<label/>
+                </div></div>
               </div>
+            </div>
           </div>
         </form>
       </div></div>

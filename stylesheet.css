@@ -2,7 +2,7 @@ body {
     color: #000;
     margin: 0px;
     font-family: helvetica;
-    min-width: 1080px;
+    min-width: 1200px;
     height: 100%;
 }
 
@@ -50,10 +50,15 @@ a.small_menu_button {
     padding: 5px;
 }
 
+div.small_menu_row {
+    display: table-row;
+}
+
 div.small_menu_cell {
     display: table-cell;
     vertical-align: middle;
-    height: 30px;
+    height: 20px;
+    font-size: 14px;
 }
 
 div.small_menu_title {
@@ -69,7 +74,8 @@ hr {
     border: 0px;
 }
 
-input {
+input#from_calendar,
+input#until_calendar {
     border: solid 1px #CCC;
     font-size: small;
     height: 28px;
@@ -126,6 +132,7 @@ div#menu {
     height: 32px;
     padding-top: 2px;
     border-bottom: 1px solid #CCC;
+    box-shadow: 0px 1px 5px rgba(0,0,0,.1);
 }
 
 div.menu_row {
@@ -185,7 +192,6 @@ div.graph_card {
 }
 
 div.graph_img {
-#    margin: 5px;
 }
 
 div.graph_buttons {
