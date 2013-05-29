@@ -32,8 +32,8 @@ div.header_text a {
     text-decoration: none;
 }
 
-a.small_menu_button {
-    margin: 0px 15px 0px 0px;
+.small_menu_button {
+    padding-right: 10px;
 }
 
 #small_menu {
@@ -87,7 +87,7 @@ button {
     border-radius: 2px;
     box-shadow: 0px 2px 4px rgba(0,0,0,.2);
     background-color: #33B5E5;
-    width: 60px;
+    width: 40px;
     height: 25px;
     color: white;
     font-size: small;
@@ -145,7 +145,7 @@ div.menu_cell a {
     display: table-cell;
     vertical-align: middle;
     height: 30px;
-    padding: 0px 0px 0px 5px;
+    padding-left: 5px;
     color: #444;
     text-decoration: none;
 }
