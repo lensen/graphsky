@@ -146,7 +146,7 @@ function show_graph_buttons($args, $from, $until) {
     return $button_html;
 }
 
-function print_period_graph($args, $metric_report, $timeframe) {
+function print_period_graph($args, $timeframe) {
     global $conf;
     $width  = $conf['graph_sizes']["large"]['width'];
     $height = $conf['graph_sizes']["large"]['height'];
@@ -154,7 +154,9 @@ function print_period_graph($args, $metric_report, $timeframe) {
     $graph_html = "
       <div class=\"graph_card\">
         <div class=\"graph_img\">
-          <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&$metric_report&z=large&st=$timeframe+ago\" />
+          <a href=\"graph.php?$args&z=xlarge&st=$timeframe+ago\">
+            <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&z=large&st=$timeframe+ago\" />
+          </a>
         </div>
       </div>
       ";

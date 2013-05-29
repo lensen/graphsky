@@ -17,22 +17,23 @@ $realcluster = isset($_GET['c']) ? $_GET['c'] : "";
 if ( $c == "\*" )
     $c = "*";
 
-$graph_args = "env=$env&c=$realcluster&h=$realhost";
+$graph_args = "env=$env&c=$realcluster&h=$realhost&$graph$metric";
 
 include_once "./header.php";
 
 print "
-<div id=\"container\"><div id=\"menu\"><div id=\"menu_row\">
-    <div id=\"menu_cell\">
-        <a href=\"?$graph_args\">Go to $realcluster $realhost overview</a>
-    </div>
-</div></div></div>
+      <div id=\"menu\"><div class=\"menu_row\">
+        <div class=\"menu_cell\">
+          <a href=\"/?$graph_args\">Go to $realcluster $realhost overview</a>
+        </div>
+      </div></div>
+      <div id=\"main\">
 ";
 
 foreach ($conf["graph_all_periods_timeframes"] as $tf) {
-    $graph_args = get_graph_domainname() . "/graph.php?$graph$metric&env=$env&h=$h&c=$c&st=$tf+ago";
-    print print_period_graph($graph_args, "$graph$metric", $tf);
+    print print_period_graph($graph_args, $tf);
 }
 
+print "</div>";
 include_once "./footer.php";
 ?>

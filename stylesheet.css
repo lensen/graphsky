@@ -140,12 +140,14 @@ div.menu_row {
     vertical-align: middle;
 }
 
-div.menu_cell {
+div.menu_cell,
+div.menu_cell a {
     display: table-cell;
     vertical-align: middle;
     height: 30px;
     padding: 0px 0px 0px 5px;
     color: #444;
+    text-decoration: none;
 }
 
 div.left {
