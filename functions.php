@@ -246,8 +246,10 @@ function find_metrics($search_string, $group_depth=0) {
     }
     $search_query = implode("", $search_query_array);
     curl_setopt($ch, CURLOPT_URL, $search_url . $search_query);
-    $results = json_decode(curl_exec($ch), TRUE);
-    foreach ($results['results'] as $metric) {
+    $search_result = json_decode(curl_exec($ch), TRUE);
+    $results = $search_result['results'];
+    natsort($results);
+    foreach ($results as $metric) {
         $metric_string = preg_replace("/^$search_prefix\./", "", $metric);
         $arr = explode('.',trim($metric_string));
         $metric_group = join(".", array_slice($arr, 0, $group_depth));
