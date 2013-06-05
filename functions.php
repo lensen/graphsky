@@ -136,7 +136,7 @@ function print_zoom_graph($args, $metric_report, $graph_size, $from, $until) {
 function show_graph_buttons($args, $from, $until) {
     $button_html = "<div class=\"graph_buttons\">
           <a href=\"graph_all_periods.php?$args\">
-            <img src=\"img/periods_holo_16.png\" width=\"16\" height=\"16\" title=\"Show periodic graphs\">
+            <img src=\"img/history_holo_16.png\" width=\"16\" height=\"16\" title=\"Show periodic graphs\">
           </a>
           <a href=\"graph.php?$args&from=$from&until=$until&z=xlarge\">
             <img src=\"img/zoom_holo_16.png\" width=\"16\" height=\"16\" title=\"Show XL graph\">

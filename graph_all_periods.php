@@ -17,7 +17,7 @@ $realcluster = isset($_GET['c']) ? $_GET['c'] : "";
 if ( $c == "\*" )
     $c = "*";
 
-$graph_args = "env=$env&c=$realcluster&h=$realhost&$graph$metric";
+$graph_args = "env=$env&c=$c&h=$h$graph$metric";
 
 include_once "./header.php";
 
