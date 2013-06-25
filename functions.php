@@ -83,9 +83,9 @@ function build_graphite_series( $config, $host_cluster = "" ) {
 
     if ( isset($config['units']) )
         $output .= "&yUnitSystem=" . $config['units'];
+    if ( isset($config['graph_max']) )
+        $output .= "&max=" . $config['graph_max'];
 
-    // Do we have any stacked elements. We assume if there is only one element
-    // that is stacked that rest of it is line graphs
     if ( $stacked > 0 ) {
         if ( $stacked > 1 )
             $output .= "&areaMode=stacked";
