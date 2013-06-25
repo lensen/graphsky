@@ -33,7 +33,8 @@ div.header_text a {
 }
 
 .small_menu_button {
-    padding-right: 10px;
+    padding-right: 30px;
+    background: url(img/small_menu_holo.png) no-repeat;
 }
 
 #small_menu {
@@ -78,7 +79,7 @@ input#from_calendar,
 input#until_calendar {
     border: solid 1px #CCC;
     font-size: small;
-    height: 28px;
+    padding: 5px;
     width: 130px;
 }
 
@@ -96,9 +97,11 @@ button {
 }
 
 select {
-    padding-left: 0.5em;
+#    padding-left: 0.5em;
     width: 120px;
-    height: 28px;
+#    height: 32px;
+    font-size: small;
+    padding: 5px;
     border: solid 1px #CCC;
     color: black;
     overflow: hidden;
@@ -122,29 +125,26 @@ select {
     display: inline-block;
     position: relative;
     width: 120px;
-    height: 28px;
+    height: 30px;
 }
 
 div#menu {
     display: table;
     background-color: #DDD;
     width: 100%;
-    height: 32px;
-    padding-top: 2px;
+    height: 40px;
     border-bottom: 1px solid #CCC;
     box-shadow: 0px 1px 5px rgba(0,0,0,.1);
 }
 
 div.menu_row {
     display: table-row;
-    vertical-align: middle;
 }
 
-div.menu_cell,
-div.menu_cell a {
+div.menu_cell {
     display: table-cell;
     vertical-align: middle;
-    height: 30px;
+    height: 32px;
     padding-left: 5px;
     color: #444;
     text-decoration: none;

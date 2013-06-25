@@ -1,4 +1,4 @@
-      <div id="menu"><div class="menu_row">
+      <div id="menu"><div class="menu_cell">
         <form name="opts" method="get" action="index.php">
           <div class="menu_cell left">
             <div class="menu_cell">
@@ -88,8 +88,8 @@ print print_dropdown_menus($all_metrics, $m, "All metrics");
               <input name="until" value="<?php print $ge; ?>" id="until_calendar"/>
             </div>
             <div class="menu_cell"><button type="submit">Go</button></div>
-            <div class="menu_cell small_menu_button">
-              <a href="javascript:;" class="small_menu_button"><img src="img/small_menu_holo.png" width="16" height="20"/></a>
+            <div class="menu_cell">
+              <a href="javascript:;" class="small_menu_button"></a>
               <div id="small_menu">
                 <div class="small_menu_cell small_menu_title">
                   Graph settings

@@ -3,7 +3,7 @@ $name = "Graphsky";
 $title_array = array($env,$c,$h,$g);
 $title = implode(" > ", array_filter($title_array));
 ?>
-
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
