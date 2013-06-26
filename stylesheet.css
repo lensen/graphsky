@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 body {
     color: #000;
     margin: 0px;
@@ -157,7 +161,7 @@ select {
 }
 
 div#main {
-    padding: 0px 10px 0px 10px;
+    padding: 0px 10px 20px 10px;
 }
 
 div.block_title,
@@ -202,6 +206,7 @@ div#footer {
     width: 100%;
     bottom: 0;
     height: 20px;
+    position: absolute;
     text-align: center;
     font-size: 11px;
     color: #888;
