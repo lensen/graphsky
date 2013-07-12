@@ -1,5 +1,10 @@
 <?php
 $name = "Graphsky";
+$env  = (isset($_GET['env']) && $_GET['env'] != "") ? $_GET['env'] : NULL;
+$c    = (isset($_GET['c']) && $_GET['c'] != "") ? $_GET['c'] : NULL;
+$m    = (isset($_GET['m']) && $_GET['m'] != "") ? $_GET['m'] : NULL;
+$h    = (isset($_GET['h']) && $_GET['h'] != "") ? $_GET['h'] : NULL;
+$g    = (isset($_GET['g']) && $_GET['g'] != "") ? $_GET['g'] : NULL;
 $title_array = array($env,$c,$h,$g);
 $title = implode(" > ", array_filter($title_array));
 ?>

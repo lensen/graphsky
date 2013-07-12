@@ -52,9 +52,13 @@ div.menu_cell {
     display: table-cell;
     vertical-align: middle;
     height: 32px;
-    padding-left: 5px;
+    padding-left: 2px;
     color: #444;
     text-decoration: none;
+}
+
+div.menu_cell a {
+    color: #33B5E5;
 }
 
 div.left {
