@@ -129,15 +129,15 @@ if ($puppetrun == "yes" && isset( $_GET['h']) && $host != "*") $target = "target
 
 $graphite_url = $conf['graphite_render_url'] . "?width=$width&height=$height&" . $target . "&from=" . urlencode($start) . "&until=" . urlencode($end) . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&title=" . urlencode($title);
 
-if ($graphite_url) {
+if ($im = @imagecreatefrompng($graphite_url)) {
     header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");   // Date in the past
     header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // always modified
     header ("Cache-Control: no-cache, must-revalidate");   // HTTP/1.1
     header ("Pragma: no-cache");                     // HTTP/1.0
     header ("Content-type: image/png");
-    $im = imagecreatefrompng($graphite_url);
     imagepng($im, NULL, 9);
     imagedestroy($im);
+} else {
+    echo "<h1>Image creation error</h1>";
+    echo '<p>Graphite URL: <a href="' . $graphite_url . '">' . $graphite_url . '</a></p>';
 }
-
-?>
