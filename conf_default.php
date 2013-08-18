@@ -65,5 +65,3 @@ $conf['graph_all_periods_timeframes'] = array(
     "6+months",
     "12+months"
 );
-
-?>

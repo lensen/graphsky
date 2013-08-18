@@ -33,5 +33,3 @@ if ($view)
 
 print "</div>";
 include_once "./footer.php";
-?>
-
