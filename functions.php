@@ -261,5 +261,3 @@ function find_metrics($search_string, $group_depth=0) {
     curl_close($ch);
     return $metrics;
 }
-
-?>
