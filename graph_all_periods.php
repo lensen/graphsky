@@ -36,4 +36,3 @@ foreach ($conf["graph_all_periods_timeframes"] as $tf) {
 
 print "</div>";
 include_once "./footer.php";
-?>

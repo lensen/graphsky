@@ -7,4 +7,3 @@ require_once $base_dir . "/conf_default.php";
 if( file_exists( $base_dir . "/conf.php" ) ) {
     include_once $base_dir . "/conf.php";
 }
-?>
