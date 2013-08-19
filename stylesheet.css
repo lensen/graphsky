@@ -206,6 +206,12 @@ div.graph_buttons {
     margin-right: 5px;
 }
 
+div.graph_name {
+    float: left;
+    color: #FFF;
+    font-size: 5px;
+}
+
 div#footer {
     width: 100%;
     bottom: 0;

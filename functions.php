@@ -128,7 +128,7 @@ function print_zoom_graph($args, $metric_report, $graph_size, $from, $until) {
           <a href=\"graph.php?$args&$metric_report&from=$from&until=$until&z=xlarge\">
             <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&$metric_report&z=$graph_size&from=$from&until=$until\" />
           </a>
-        </div>
+        </div><div class=\"graph_name\">$metric_report</div>
         " . show_graph_buttons("$args&$metric_report", $from, $until) . "</div>";
     return $graph_html;
 }
