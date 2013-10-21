@@ -109,7 +109,7 @@ function print_graph($args, $metric_report, $graph_size, $from, $until) {
     $graph_html = "
       <div class=\"graph_card\">
         <div class=\"graph_img\">
-          <a href=\"?$args&from=$from&until=$until\">
+          <a href=\"?$args&z=$graph_size&from=$from&until=$until\">
             <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&$metric_report&z=$graph_size&from=$from&until=$until\" />
           </a>
         </div>
