@@ -18,16 +18,18 @@ if ( $c == "\*" )
     $c = "*";
 
 $graph_args = "env=$env&c=$c&h=$h$graph$metric";
+$graph_args_real = "env=$env&c=$realcluster&h=$realhost$graph$metric";
 
 include_once "./header.php";
 
 print "
-      <div id=\"menu\"><div class=\"menu_row\">
+      <div id=\"menu\">
         <div class=\"menu_cell\">
-          <a href=\"/?$graph_args\">Go to $realcluster $realhost overview</a>
+          <a href=\"/?$graph_args_real\">Go to $realcluster $realhost overview</a>
         </div>
-      </div></div>
-      <div id=\"main\">
+      </div>
+    </div>
+    <div id=\"main\">
 ";
 
 foreach ($conf["graph_all_periods_timeframes"] as $tf) {
