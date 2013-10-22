@@ -23,6 +23,9 @@ function print_dropdown_menus($options, $choice, $default) {
     if ( $default != "" ) {
         $option_values = "                <option value=\"\">$default</option>\n";
     }
+    else {
+        $option_values = "";
+    }
     foreach ($options as $option) {
         if ($option == $choice) {
             $selected = "selected=\"selected\"";
