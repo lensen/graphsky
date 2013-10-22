@@ -16,7 +16,13 @@ Works best with Collectd 5.1 and the write_graphite plugin with the following op
 - StoreRates true
 - AlwaysAppendDS true
 
-![Sample dashboard](https://github.com/hyves-org/graphsky/raw/master/img/Graphsky%20screenshot.png)
+Web interface:
+![Sample dashboard](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot.png)
+
+Mobile interface:
+
+![Mobile dashboard](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot%20mobile.png)
+![Mobile dashboard menu](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot%20mobile%20menu.png)
 
 ## Nagios/Icinga/Icinga-web integration
 
