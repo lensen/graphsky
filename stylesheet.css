@@ -6,80 +6,129 @@ body {
     color: #000;
     margin: 0px;
     font-family: helvetica;
-    min-width: 1200px;
+    width: 100%;
     height: 100%;
 }
 
 a, a:visited {
     text-decoration: none;
+    color: #33B5E5;
+}
+a img {border: none; }
+
+.anchor {
+    display: block;
+    height: 45px;
+    margin-top: -45px;
+    visibility: hidden;
 }
 
-div#container {
+#container {
     background-color: #E5E5E5;
     min-height:100%;
-    position:relative;
+    overflow-x: hidden;
 }
 
-div#header {
+#top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 66px;
+}
+
+#header {
     width: 100%;
     height: 26px;
     background-color: #323232;
     border-bottom: 4px solid #33B5E5;
 }
 
-div.header_text,
-div.header_text a {
+.header_text,
+.header_text a {
     font-size: 18px;
     color: #EEE;
-    padding: 2px 0px 0px 5px;
+    padding: 1px 0px 0px 5px;
     text-decoration: none;
+    float: left;
 }
 
-div#menu {
+#menu {
     display: table;
     background-color: #DDD;
     width: 100%;
     height: 40px;
-    border-bottom: 1px solid #CCC;
-    box-shadow: 0px 1px 5px rgba(0,0,0,.1);
+    border-bottom: 2px solid #CCC;
+    z-index: 101;
 }
 
-div.menu_row {
-    display: table-row;
+.sticky {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-top: 0;
 }
 
-div.menu_cell {
+#index_button {
+    display: none;
+}
+
+#selection_menu {
     display: table-cell;
     vertical-align: middle;
-    height: 32px;
+    height: 40px;
+    color: #444;
+    text-decoration: none;
+    float: left;
+}
+
+#from_menu_cell,
+#until_menu_cell,
+#date_sep_menu_cell,
+.selection_menu_cell,
+.menu_cell {
+    display: table-cell;
+    vertical-align: middle;
+    height: 40px;
     padding-left: 2px;
     color: #444;
     text-decoration: none;
 }
-
-div.menu_cell a {
-    color: #33B5E5;
+.selection_menu_gt_cell {
+    display: table-cell;
+    vertical-align: middle;
+    height: 38px;
+    color: #444;
+    text-decoration: none;
+}
+#date_sep_menu_cell {
+    display: none;
 }
 
-div.left {
+.left {
     float: left;
 }
 
-div.right {
+.right {
     float: right;
 }
 
+#menu-checkbox {
+    display: none;
+}
 
 .small_menu_button {
-    padding-right: 30px;
+    padding: 10px 35px 10px 0px;
     background: url(img/small_menu_holo.png) no-repeat;
+    background-position: 0% 50%;
+    background-size: 30px 30px;
 }
 
 #small_menu {
     display: none;
 }
 #small_menu.show {
-    background-color: #DDD;
+    background-color: #E8E8E8;
     border: 1px solid #CCC;
     box-shadow: 0px 2px 4px rgba(0,0,0,.2);
     display: block;
@@ -89,17 +138,17 @@ div.right {
     padding: 5px;
 }
 
-div.small_menu_row {
+.small_menu_row {
     display: table-row;
 }
 
-div.small_menu_cell {
+.small_menu_cell {
     display: table-cell;
     height: 20px;
     font-size: 14px;
 }
 
-div.small_menu_title {
+.small_menu_title {
     font-size: 18px;
     color: #555;
 }
@@ -116,26 +165,26 @@ input#until_calendar {
     border: solid 1px #CCC;
     font-size: small;
     padding: 5px;
-    width: 130px;
+    width: 125px;
 }
 
-button {
+#go_button {
     border: 0px;
+    width: 30px;
+    height: 25px;
+    margin: 0px 5px 0px 5px;
+    padding: 0px;
     border-radius: 2px;
     box-shadow: 0px 2px 4px rgba(0,0,0,.2);
     background-color: #33B5E5;
-    width: 40px;
-    height: 25px;
     color: white;
     font-size: small;
     font-weight: bold;
-    margin: 0px 5px 0px 5px;
 }
 
 select {
-#    padding-left: 0.5em;
     width: 120px;
-#    height: 32px;
+    vertical-align: middle;
     font-size: small;
     padding: 5px;
     border: solid 1px #CCC;
@@ -145,7 +194,9 @@ select {
     border-radius: 0.0em;
     -moz-appearance: none;
     -webkit-appearance: none;
-    appearance: none;
+}
+select::-ms-expand {
+    display: none;
 }
 
 .select:before {
@@ -153,31 +204,32 @@ select {
     border-top: 8px solid transparent;
     content: "";
     position: absolute;
-    left: 90%;
-    bottom: 15%;
+    left: 110px;
+    bottom: 10px;
 }
 
 .select {
-    display: inline-block;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 2px;
+    height: 38px;
     position: relative;
-    width: 120px;
-    height: 32px;
 }
 
-div#main {
-    padding: 0px 10px 20px 10px;
+#main {
+    padding: 10px 10px 20px 10px;
 }
 
-div.block_title,
-div.block_title a {
+.block_title,
+.block_title a {
     color: #33B5E5;
-    margin: 10px 0px 5px 0px;
+    margin: 5px 0px 5px 0px;
     font-weight: bold;
     font-size: 25px;
 }
 
-div.banner_text,
-div.banner_text a {
+.banner_text,
+.banner_text a {
     color: #9A9A9A;
     font-weight: 300;
     background: #FFF;
@@ -185,36 +237,36 @@ div.banner_text a {
     border-bottom: 1px solid #D1D1D1
 }
 
-div.graph_block {
-    padding-left: 10px;
+.graph_block {
+    padding: 10px 0px 10px 0px;
 }
 
-div.graph_card {
+.graph_card {
     background-color: #FFF;
     display: inline-block;
     border-radius: 2px;
     box-shadow: 0px 2px 4px rgba(0,0,0,.2);
-    margin: 5px 5px 5px 0px;
+    margin: 5px 3px 5px 3px;
     padding: 3px;
 }
 
-div.graph_img {
+.graph_img {
 }
 
-div.graph_buttons {
+.graph_buttons {
     float: right;
     margin-right: 5px;
 }
 
-div.graph_name {
+.graph_name {
     float: left;
     color: #FFF;
     font-size: 5px;
 }
 
-div#footer {
+#footer {
+    background-color: #E5E5E5;
     width: 100%;
-    bottom: 0;
     height: 20px;
     position: absolute;
     text-align: center;
@@ -222,20 +274,143 @@ div#footer {
     color: #888;
 }
 
-div#footer a{
+#footer a{
     color: #888;
     font-weight: bold;
 }
 
 /* css for timepicker */
+#ui-datepicker-div { width: 200px; box-shadow: 0px 2px 4px rgba(0,0,0,.2); }
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div dl dt { float: left; clear:left; padding: 3px 0 0 5px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 40%; }
 .ui-timepicker-div td { font-size: 90%; }
+.ui-timepicker-select { padding: 2px; width: 100%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-.ui-timepicker-rtl{ direction: rtl; }
-.ui-timepicker-rtl dl { text-align: right; }
-.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+.ui_tpicker_time { margin: 7px 10px 10px 68px; padding-top: 4px; }
 .ui-datepicker-trigger { vertical-align: middle; }
+
+/* CSS adjustments for "mobile" screens */
+@media screen and (max-width: 1024px) {
+    #top {
+        height: 42px;
+    }
+    #header {
+        display: none;
+    }
+    #menu {
+        position: fixed;
+    }
+    #overlay {
+        visibility: hidden;
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.7);
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        -webkit-transition: visibility 0s 0.5s, opacity 0.3s linear;
+        transition: visibility 0s 0.5s, opacity 0.3s linear;
+    }
+
+    input#from_calendar,
+    input#until_calendar {
+        width: 100px;
+    }
+
+    #from_menu_cell,
+    #until_menu_cell {
+        display: none;
+    }
+    #date_sep_menu_cell {
+        display: table-cell;
+    }
+
+    .selection_menu_cell {
+        display: inline-block;
+    }
+
+    .selection_menu_gt_cell {
+        display: none;
+    }
+
+    #selection_menu {
+        position: fixed;
+        height: 100%;
+        top: 42px;
+        left: 0px;
+        z-index: 101;
+        visibility: hidden;
+        width: 180px;
+        padding: 10px;
+        color: black;
+        background-color: #323232;
+        font-size: 20px;
+        line-height: 25px;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    #index_button {
+        display: inline;
+        border: none;
+        float: left;
+        height: 40px;
+        width: 20px;
+        left: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        background-color: transparent;
+        background-image: url("img/menu_button.png");
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+    #index_button:checked,
+    #index_button:focus {
+        outline: none;
+    }
+    #menu-checkbox:checked ~ div form div#selection_menu {
+        visibility: visible;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    #menu-checkbox:checked ~ div label button#index_button {
+        position: relative;
+        left: -7px;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+    #menu-checkbox:checked ~ #overlay {
+        visibility: visible;
+        opacity: 1;
+        -webkit-transition: opacity 0.3s linear;
+        transition: opacity 0.3s linear;
+    }
+
+    select {
+        width: 160px;
+        height: 35px;
+    }
+    .select:before {
+        left: 150px;
+    }
+
+    .graph_block {
+        text-align: center;
+    }
+}
+
 

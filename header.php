@@ -11,8 +11,10 @@ $title = implode(" > ", array_filter($title_array));
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta http-equiv="refresh" content="<?php print $conf['dashboard_refresh_interval']; ?>" >
+    <meta name="viewport" content="initial-scale=0.8,minimum-scale=0.8,maximum-scale=0.8,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
+    <meta name="mobile-web-app-capable" content="yes">
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
     <link href="js/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" type="text/css">
     <link href="img/favicon.ico" rel="icon" type="text/x-icon">
@@ -21,24 +23,28 @@ $title = implode(" > ", array_filter($title_array));
     <script type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-    Image1= new Image(24,24)
+    Image1 = new Image(24,24)
     Image1.src = "img/calendar_holo_24.png"
     $(function(){
         $('#from_calendar').datetimepicker({
             timeFormat: "HH:mm",
             dateFormat: "yy-mm-dd",
             showOn: "button",
+            showTime: false,
             constrainInput: false,
             buttonImage: "img/calendar_holo_24.png",
-            buttonImageOnly: true
+            buttonImageOnly: true,
+            controlType: "select"
         });
         $('#until_calendar').datetimepicker({
             timeFormat: "HH:mm",
             dateFormat: "yy-mm-dd",
             showOn: "button",
+            showTime: false,
             constrainInput: false,
             buttonImage: "img/calendar_holo_24.png",
-            buttonImageOnly: true
+            buttonImageOnly: true,
+            controlType: "select"
         });
         $(document).ready(function(){
             $('a.small_menu_button').click(function() {
@@ -46,13 +52,29 @@ $title = implode(" > ", array_filter($title_array));
             });
         });
     });
+    $(document).ready(function() {
+        var stickyNavTop = $('#menu').offset().top;
+        var stickyNav = function(){
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > stickyNavTop) {
+                $('#menu').addClass('sticky');
+            } else {
+                $('#menu').removeClass('sticky');
+            }
+        };
+        stickyNav();
+        $(window).scroll(function() {
+            stickyNav();
+        });
+    });
     </script>
     <title><?php print "$name | $title" ?></title>
   </head>
   <body>
     <div id="container">
-      <div id="header">
-        <div class="header_text left">
-          <?php print "<a href=\"/\">$name</a>" ?>
+      <div id="top">
+        <div id="header">
+          <div class="header_text">
+            <?php print "<a href=\"/\">$name</a>" ?>
+          </div>
         </div>
-      </div>

@@ -1,7 +1,6 @@
-<a name="clusters"></a>
-<a href="#clusters">
-    <div class="block_title">Clusters</div>
-</a>
+<span class="anchor" id="clusters"></span>
+<div class="block_title"><a href="#clusters">Clusters</a></div>
+
 <?php
 $graph_args = "env=$env";
 
@@ -21,7 +20,7 @@ foreach ($clusters as $cluster) {
             print print_graph($current_graph_args, "g=$graph_report", $z, $from, $until);
         }
     }
-    if (!isset($g)){ print "<br /><br /></div>"; }
+    if (!isset($g)){ print "</div>"; }
 }
 
 ?>
