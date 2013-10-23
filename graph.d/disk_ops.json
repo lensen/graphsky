@@ -4,7 +4,7 @@
     "vertical_label": "operations",
     "series": [
         { "metric": "cpu.*.cpu.wait.value", "color": "ff8a60aa", "label": "IOWait", "type": "stack", "functions": ["averageSeries"] },
-        { "metric": "disk.sd[a|b].disk_ops.read", "color": "purple", "label": "Read", "type": "line" },
-        { "metric": "disk.sd[a|b].disk_ops.write", "color": "orange", "label": "Write", "type": "line" }
+        { "metric": "disk.[h|s|v]d[a|b|c].disk_ops.read", "color": "purple", "label": "Read", "type": "line" },
+        { "metric": "disk.[h|s|v]d[a|b|c].disk_ops.write", "color": "orange", "label": "Write", "type": "line" }
     ]
 }
