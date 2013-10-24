@@ -18,7 +18,8 @@ $title = implode(" > ", array_filter($title_array));
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
     <link href="js/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" type="text/css">
     <link href="img/favicon.ico" rel="icon" type="text/x-icon">
-    <link href="img/favicon.ico" rel="shortcut icon" type="text/x-icon">
+    <link href="img/logo.png" rel="shortcut icon" sizes="196x196">
+    <link href="img/logo.png" rel="apple-touch-icon" sizes="196x196">
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>

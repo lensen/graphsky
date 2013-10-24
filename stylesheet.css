@@ -40,7 +40,12 @@ a img {border: none; }
     width: 100%;
     height: 26px;
     background-color: #323232;
+    padding-left: 25px;
     border-bottom: 4px solid #33B5E5;
+    background-image: url("img/logo.png");
+    background-size: 20px;
+    background-position: 5px 50%;
+    background-repeat: no-repeat;
 }
 
 .header_text,
@@ -54,11 +59,11 @@ a img {border: none; }
 
 #menu {
     display: table;
-    background-color: #DDD;
     width: 100%;
     height: 40px;
     border-bottom: 2px solid #CCC;
     z-index: 101;
+    background-color: #DDD;
 }
 
 .sticky {
@@ -290,6 +295,10 @@ select::-ms-expand {
     }
     #menu {
         position: fixed;
+        background-image: url("img/logo.png");
+        background-size: 30px;
+        background-position: 20px 50%;
+        background-repeat: no-repeat;
     }
     #overlay {
         visibility: hidden;
@@ -350,9 +359,9 @@ select::-ms-expand {
         border: none;
         float: left;
         height: 40px;
-        width: 20px;
+        width: 45px;
         left: 0;
-        background-position: center;
+        background-position: 0% 50%;
         background-repeat: no-repeat;
         background-size: 20px 20px;
         background-color: transparent;
