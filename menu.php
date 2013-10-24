@@ -1,10 +1,8 @@
-<input id="menu-checkbox" type="checkbox">
-<label for="menu-checkbox" id="overlay"></label>
 <div id="menu">
-  <label for="menu-checkbox">
-    <button id="index_button"></button>
-  </label>
+  <input id="menu-checkbox" type="checkbox">
+  <label for="menu-checkbox"></label>
   <form name="opts" method="get" action="index.php">
+    <div id="overlay"></div>
     <div id="selection_menu">
       <div class="selection_menu_cell"><div class="selection_menu_gt_cell"></div>
         <div class="select"><select name="env" onchange="document.opts.c.value = ''; document.opts.h.value = ''; document.opts.submit()">
@@ -78,14 +76,13 @@ print print_dropdown_menus($all_metrics, $m, "All metrics");
 }
 ?>
     </div>
-  </nav>
-    <div class="menu_cell right">
-      <div id="from_menu_cell">from</div>
+    <div id="datetime_menu">
+      <div id="datetime_nm_menu_cell">from</div>
       <div class="menu_cell">
         <input name="from" value="<?php print $gs; ?>" id="from_calendar"/>
       </div>
-      <div id="date_sep_menu_cell"> - </div>
-      <div id="until_menu_cell">until</div>
+      <div id="datetime_sep_menu_cell"> - </div>
+      <div id="datetime_nm_menu_cell">until</div>
       <div class="menu_cell">
         <input name="until" value="<?php print $ge; ?>" id="until_calendar"/>
       </div>
@@ -97,24 +94,24 @@ print print_dropdown_menus($all_metrics, $m, "All metrics");
             Graph settings
           </div>
           <hr />
-          <div class="small_menu_row"><div class="small_menu_cell">
-            size:
-          </div></div>
-          <div class="small_menu_row"><div class="small_menu_cell">
+          <div class="small_menu_cell">
+            size: 
+          </div>
+          <div class="small_menu_cell">
             <div class="select"><select name="z" onchange="document.opts.submit()">
 <?php
 print print_dropdown_menus(array_keys($conf['graph_sizes']), $z, "");
 ?>
             </select></div>
-          </div></div>
+          </div>
 <?php
 if ($l == "yes" ) { $checked = "checked"; } else { $checked = ""; }
 ?>
           <hr />
-          <div class="small_menu_row"><div class="small_menu_cell">
-            <input id="scalebox" type="checkbox" name="l" value="yes" onchange="document.opts.submit()" <?php print $checked ?>/>
-            <label for="scalebox">metric graph scaling<label/>
-          </div></div>
+          <div class="small_menu_cell">
+            <input id="scalebox" type="checkbox" name="l" value="yes" onchange="document.opts.submit()" <?php print $checked ?>>
+            <label for="scalebox">scale metric graphs<label/>
+          </div>
         </div>
       </div>
     </div>

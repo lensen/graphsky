@@ -69,48 +69,28 @@ a img {border: none; }
     border-top: 0;
 }
 
-#index_button {
-    display: none;
-}
-
-#selection_menu {
-    display: table-cell;
-    vertical-align: middle;
-    height: 40px;
-    color: #444;
-    text-decoration: none;
-    float: left;
-}
-
-#from_menu_cell,
-#until_menu_cell,
-#date_sep_menu_cell,
+#selection_menu,
 .selection_menu_cell,
+.selection_menu_gt_cell,
+#datetime_menu,
+#datetime_nm_menu_cell,
+#datetime_sep_menu_cell,
 .menu_cell {
     display: table-cell;
     vertical-align: middle;
-    height: 40px;
     padding-left: 2px;
+    height: 40px;
     color: #444;
     text-decoration: none;
 }
-.selection_menu_gt_cell {
-    display: table-cell;
-    vertical-align: middle;
-    height: 38px;
-    color: #444;
-    text-decoration: none;
-}
-#date_sep_menu_cell {
-    display: none;
-}
-
-.left {
+#selection_menu {
     float: left;
 }
-
-.right {
+#datetime_menu {
     float: right;
+}
+#datetime_sep_menu_cell {
+    display: none;
 }
 
 #menu-checkbox {
@@ -136,10 +116,7 @@ a img {border: none; }
     position: absolute;
     overflow: auto;
     padding: 5px;
-}
-
-.small_menu_row {
-    display: table-row;
+    z-index: 100;
 }
 
 .small_menu_cell {
@@ -151,6 +128,18 @@ a img {border: none; }
 .small_menu_title {
     font-size: 18px;
     color: #555;
+}
+
+.small_menu_cell .select,
+.small_menu_cell .select select {
+    display: block;
+    width: 115px;
+    height: 30px;
+}
+
+.small_menu_cell .select:before {
+    left: 105px;
+    bottom: 4px;
 }
 
 hr {
@@ -211,8 +200,8 @@ select::-ms-expand {
 .select {
     display: table-cell;
     vertical-align: middle;
-    padding: 2px;
-    height: 38px;
+    padding: 0px 2px 0px 2px;
+    height: 40px;
     position: relative;
 }
 
@@ -310,8 +299,7 @@ select::-ms-expand {
         background-color: rgba(0,0,0,0.7);
         overflow: hidden;
         position: fixed;
-        top: 0;
-        left: 0;
+        top: 42px;
         z-index: 100;
         -webkit-transition: visibility 0s 0.5s, opacity 0.3s linear;
         transition: visibility 0s 0.5s, opacity 0.3s linear;
@@ -322,11 +310,10 @@ select::-ms-expand {
         width: 100px;
     }
 
-    #from_menu_cell,
-    #until_menu_cell {
+    #datetime_nm_menu_cell {
         display: none;
     }
-    #date_sep_menu_cell {
+    #datetime_sep_menu_cell {
         display: table-cell;
     }
 
@@ -357,8 +344,9 @@ select::-ms-expand {
         transform: translate3d(-100%, 0, 0);
     }
 
-    #index_button {
-        display: inline;
+    #menu-checkbox + label {
+        display: inline-block;
+        position: absolute;
         border: none;
         float: left;
         height: 40px;
@@ -378,22 +366,21 @@ select::-ms-expand {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
-    #index_button:checked,
-    #index_button:focus {
+    #menu-checkbox:focus {
         outline: none;
     }
-    #menu-checkbox:checked ~ div form div#selection_menu {
+    #menu-checkbox:checked ~ form div#selection_menu {
         visibility: visible;
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
-    #menu-checkbox:checked ~ div label button#index_button {
+    #menu-checkbox:checked + label {
         position: relative;
         left: -7px;
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
-    #menu-checkbox:checked ~ #overlay {
+    #menu-checkbox:checked ~ form div#overlay {
         visibility: visible;
         opacity: 1;
         -webkit-transition: opacity 0.3s linear;
@@ -406,6 +393,7 @@ select::-ms-expand {
     }
     .select:before {
         left: 150px;
+        bottom: 7px;
     }
 
     .graph_block {
