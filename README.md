@@ -29,4 +29,7 @@ Mobile interface:
 Integrate your graphs in your monitoring tool by including a graph.php link:
  - http://[domainname]/graph.php?s={service_name}&c={hostgroup_name}&h={host_name}&width=1000&height=600&from=-1%20hour
 
-Make sure you specify a "service_name" matching the service_name given by your monitoring solution in your json graph template.
+Make sure you specify a "service_name" matching the service_name given by your monitoring solution in your json graph template.  
+
+***
+Icon was made using the boilerplates from www.androidicons.com
