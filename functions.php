@@ -180,7 +180,7 @@ function find_limits($environment, $cluster, $metricname, $start, $end) {
     foreach ( $data as $data_target ) {
         $highestMaxDatapoints = $data_target['datapoints'];
         foreach ( $highestMaxDatapoints as $datapoint ) {
-            array_push($maxdatapoints, $datapoint[0]);
+            $maxdatapoints[] = $datapoint[0];
         }
     }
     sort($maxdatapoints);
@@ -191,10 +191,12 @@ function find_limits($environment, $cluster, $metricname, $start, $end) {
 #------------------------------------------------------------------------------
 # Finds dashboards to specific environment/cluster
 function find_dashboards($environment, $cluster="") {
-    global $conf;
+    global $conf, $dash_config;
+
+    if ( ! isset( $dash_config ) )
+    	$dash_config = json_decode(file_get_contents($conf['dashboard_config']), TRUE);
 
     $graph_reports = array();
-    $dash_config = json_decode(file_get_contents($conf['dashboard_config']), TRUE);
     foreach ($dash_config['dashboards'] as $dash) {
         if (! preg_match($dash['environments'], $environment) ) {
             continue;
@@ -205,7 +207,7 @@ function find_dashboards($environment, $cluster="") {
             }
         }
         foreach ($dash['included_reports'] as $dashboard) {
-            array_push($graph_reports, $dashboard);
+            $graph_reports[] = $dashboard;
         }
     }
     return $graph_reports;
@@ -214,9 +216,10 @@ function find_dashboards($environment, $cluster="") {
 #------------------------------------------------------------------------------
 # Determines of report graphs should be shows in this dashboard
 function show_on_dashboard($report_name, $environment, $cluster) {
-    global $conf;
+    global $conf, $dash_config;
 
-    $dash_config = json_decode(file_get_contents($conf['dashboard_config']), TRUE);
+    if ( ! isset( $dash_config ) )
+    	$dash_config = json_decode(file_get_contents($conf['dashboard_config']), TRUE);
     foreach ($dash_config['dashboards'] as $dash) {
         if ( preg_match($dash['environments'], $environment) && preg_match($dash['clusters'], $cluster) ){
             if ( in_array($report_name, $dash['included_reports']) ) {
@@ -244,7 +247,7 @@ function find_metrics($search_string, $group_depth=0) {
     while ($i <= 10) {
         $search_query_wildcard = $search_query_wildcard . ".*";
         $search_query_item = "&query=" . $search_prefix . $search_query_wildcard;
-        array_push($search_query_array, $search_query_item);
+        $search_query_array[] = $search_query_item;
         $i++;
     }
     $search_query = implode("", $search_query_array);
@@ -258,7 +261,7 @@ function find_metrics($search_string, $group_depth=0) {
         $metric_group = join(".", array_slice($arr, 0, $group_depth));
         if (!isset($metrics[$metric_group]) )
             $metrics[$metric_group] = array();
-        array_push($metrics[$metric_group], $metric_string);
+        $metrics[$metric_group][] = $metric_string;
     }
 
     curl_close($ch);
