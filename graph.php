@@ -63,6 +63,8 @@ elseif ($clustername != "*" && $clustername != "") {
 }
 elseif ($host != "*" && $host != "")
     $title_prefix = $host;
+elseif ($env != "*" && $env != "")
+    $title_prefix = $env;
 else
     $title_prefix = "";
 

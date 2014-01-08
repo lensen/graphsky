@@ -17,6 +17,7 @@ $view   = NULL;
 $from   = $gs;
 $until  = ($ge == "now") ? $ge : $ge;
 
+$view   = "over";
 if ($env)     { $view = "env"; }
 if ($c)       { $view = "cluster"; }
 if ($c && $h) { $view = "host"; }
@@ -26,12 +27,7 @@ include_once "./menu.php";
 
 print "<div id=\"main\">";
 
-if ($view) {
-    include_once "./${view}_view.php";
-}
-else {
-    print "<div class=\"block_title\">Please select one of your environments</div>";
-}
+include_once "./${view}_view.php";
 
 print "</div>";
 include_once "./footer.php";

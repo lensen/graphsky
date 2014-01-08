@@ -17,7 +17,7 @@ $host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $con
 $hosts = $host_search['results']; natsort($hosts);
 $hosts = str_replace($conf['graphite_prefix'] . "$env.$c.", "", $hosts);
 
-print print_dropdown_menus($environments, $env, "Select environment");
+print print_dropdown_menus($environments, $env, "All environments");
 ?>
         </select></div>
       </div>
