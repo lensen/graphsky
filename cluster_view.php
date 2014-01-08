@@ -1,5 +1,5 @@
 <span class="anchor" id="overview"></span>
-<div class="block_title"><a href="#overview">Overview</a></div>
+<div class="block_title"><a href="#overview">Cluster overview</a></div>
 
 <div class="graph_block">
 <?php
