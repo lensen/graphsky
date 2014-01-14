@@ -20,7 +20,6 @@ $conf['graphite_render_url'] = $conf['graphite_url_base'] . "/render";
 $conf['graphite_search_url'] = $conf['graphite_url_base'] . "/metrics/expand/?query=";
 # Don't forget the trailing . when specifying a prefix
 $conf['graphite_prefix'] = "collectd.";
-$conf['graphite_puppet_prefix'] = "puppet.";
 $conf['graphite_default_env'] = "";
 
 # Graph settings
