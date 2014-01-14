@@ -57,7 +57,7 @@ if ($until) {
 if (isset($_GET['dn']))
     $title_prefix = $_GET['dn'];
 elseif ($clustername != "*" && $clustername != "") {
-    $title_prefix = "$clustername";
+    $title_prefix = $clustername;
     if ($host != "*" && $host != "")
         $title_prefix .= " - $host";
 }
@@ -74,7 +74,7 @@ if ( isset($_GET['s'])) {
     $json_templates = glob($conf['graph_template_dir'] . "/*.json");
     foreach ( $json_templates as $json_template) {
         $template = json_decode(file_get_contents($json_template), TRUE);
-        if ( $template['service_name'] == "$service_name")
+        if ( $template['service_name'] == $service_name)
             $report_name = $template['report_name'];
     }
 }
@@ -97,11 +97,11 @@ if ( isset($report_name) ) {
     if ( isset($graph_config) ) {
         if ( isset($graph_config['report_type']) ) {
             if ( $graph_config['report_type'] == "template" ) {
-                $target = str_replace("HOST_CLUSTER", "$host_cluster", $graph_config['graphite']);
+                $target = str_replace("HOST_CLUSTER", $host_cluster, $graph_config['graphite']);
             }
         }
         else {
-                    $target = build_graphite_series( $graph_config, $conf['graphite_prefix'] . "$host_cluster" );
+                    $target = build_graphite_series( $graph_config, $conf['graphite_prefix'] . $host_cluster );
         }
 
         $title = $title_prefix . " - " . $graph_config['title'];
@@ -135,12 +135,9 @@ header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");   // Date in the past
 header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // always modified
 header ("Cache-Control: no-cache, must-revalidate");   // HTTP/1.1
 header ("Pragma: no-cache");                     // HTTP/1.0
+header ("Content-type: image/png");
 
-if ($im = @imagecreatefrompng($graphite_url)) {
-    header ("Content-type: image/png");
-    imagepng($im, NULL, 9);
-    imagedestroy($im);
-} else {
-    echo "<h1>Image creation error</h1>";
-    echo '<p>Graphite URL: <a href="' . $graphite_url . '">' . $graphite_url . '</a></p>';
+ob_clean(); flush();
+if ( readfile( $graphite_url ) === False ) {
+    error_log( "Image creation error, Graphite URL $graphite_url" );
 }
