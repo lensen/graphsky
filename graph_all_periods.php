@@ -21,16 +21,20 @@ include_once "./header.php";
 print "
       <div id=\"menu\">
         <div class=\"menu_cell\">
-          <a href=\"/?$graph_args_real\">Go to $env $realcluster $realhost overview</a>
+          <div class=\"menu_title\">
+            <a href=\"/?$graph_args_real\">Go to $env $realcluster $realhost overview</a>
+          </div>
         </div>
       </div>
     </div>
     <div id=\"main\">
+      <div class=\"block_title\">Timeperiod overview</div>
+      <div class=\"graph_block\">
 ";
 
 foreach ($conf["graph_all_periods_timeframes"] as $tf) {
     print print_period_graph($graph_args, $tf);
 }
 
-print "</div>";
+print "</div></div>";
 include_once "./footer.php";
