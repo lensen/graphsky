@@ -125,13 +125,13 @@ else {
 
 if ($sourcetime) $title = "$title last " . str_replace(" ago","",$sourcetime);
 
-$graphite_url = $conf['graphite_render_url'] . "?width=$width&height=$height&" . $target . "&from=" . urlencode($start) . "&until=" . urlencode($end) . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&title=" . urlencode($title);
+$graphite_url = $conf['graphite_render_url'] . "?width=$width&height=$height&" . $target . "&from=" . urlencode($start) . "&until=" . urlencode($end) . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&title=" . urlencode($title) . "&format=svg";
 
 header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");   // Date in the past
 header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // always modified
 header ("Cache-Control: no-cache, must-revalidate");   // HTTP/1.1
 header ("Pragma: no-cache");                     // HTTP/1.0
-header ("Content-type: image/png");
+header ("Content-type: image/svg+xml");
 
 
 ob_clean(); flush();
