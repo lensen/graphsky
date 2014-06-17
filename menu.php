@@ -19,7 +19,7 @@ $hosts = str_replace($conf['graphite_prefix'] . "$env.$c.", "", $hosts);
 ?>
       <!-- Environments -->
       <div class="selection_menu_cell">
-        <div class="select"><select name="env" title="Select environment" onchange="document.opts.c.value = ''; document.opts.h.value = ''; document.opts.submit()">
+        <div class="select"><select name="env" title="Select environment" onchange="if (typeof document.opts.c != 'undefined') { document.opts.c.value = '' }; if (typeof document.opts.h != 'undefined') { document.opts.h.value = '' }; document.opts.submit()">
 <?php
 print print_dropdown_menus($environments, $env, "All environments");
 ?>
