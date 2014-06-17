@@ -15,12 +15,16 @@ $conf['host_metric_group_depth'] = 2;
 $conf['cluster_hostname'] = "*";
 
 # Graphite settings
-$conf['graphite_url_base'] = "http://graphite." . $conf['dashboard_domainname'];
+$conf['graphite_url_base'] = "http://graphite.example.com";
 $conf['graphite_render_url'] = $conf['graphite_url_base'] . "/render";
 $conf['graphite_search_url'] = $conf['graphite_url_base'] . "/metrics/expand/?query=";
 # Don't forget the trailing . when specifying a prefix
 $conf['graphite_prefix'] = "collectd.";
 $conf['graphite_default_env'] = "";
+
+# If your Graphite installation supports Graphlot, set the following
+# in your conf.php file:
+# $conf['graphlot_url_base'] = $conf['graphite_url_base'] . "/graphlot/render";
 
 # Graph settings
 $conf['default_time_range'] = '-1 hour';

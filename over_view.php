@@ -1,4 +1,4 @@
-<span class="anchor" id="clusters"></span>
+<a class="anchor" id="clusters">&nbsp;</a>
 <div class="block_title"><a href="#envs">Environments</a></div>
 
 <?php

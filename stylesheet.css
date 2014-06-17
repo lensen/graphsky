@@ -1,245 +1,224 @@
 html {
     height: 100%;
+    width: 100%;
 }
 
 body {
-    color: #000;
+    color: #444;
+    background-color: #E5E5E5;
     margin: 0px;
     font-family: helvetica;
     width: 100%;
     height: 100%;
 }
 
-a, a:visited {
-    text-decoration: none;
-    color: #33B5E5;
-}
+a, a:visited {text-decoration: none; }
 a img {border: none; }
 
+button {
+    border: 0px;
+}
+
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+
 .anchor {
-    display: block;
-    height: 45px;
-    margin-top: -45px;
-    visibility: hidden;
+    position: relative;
+    top: -35px;
 }
 
 #container {
-    background-color: #E5E5E5;
     min-height:100%;
-    overflow-x: hidden;
-}
-
-#top {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 66px;
-}
-
-#header {
-    width: 100%;
-    height: 26px;
-    background-color: #323232;
-    padding-left: 25px;
-    border-bottom: 4px solid #33B5E5;
-    background-image: url("img/logo.png");
-    background-size: 20px;
-    background-position: 5px 50%;
-    background-repeat: no-repeat;
-}
-
-.header_text,
-.header_text a {
-    font-size: 18px;
-    color: #EEE;
-    padding: 1px 0px 0px 5px;
-    text-decoration: none;
-    float: left;
+    width:100%;
+#    overflow-x: hidden;
 }
 
 #menu {
     display: table;
-    width: 100%;
-    height: 40px;
-    border-bottom: 2px solid #CCC;
-    z-index: 101;
-    background-color: #DDD;
-}
-
-.sticky {
-    position: fixed;
+    height: 100px;
     width: 100%;
     left: 0;
     top: 0;
-    border-top: 0;
+    position: fixed;
 }
 
+#top_menu {
+    display: table;
+    width: 100%;
+    height: 50px;
+    z-index: 100;
+    position: fixed;
+    background-color: #33B5E5;
+    border-bottom: 2px solid rgba(0,0,0,.2);
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform : translate3d(0, 0, 0);
+}
+
+#menu_logo,
 #selection_menu,
 .selection_menu_cell,
-.selection_menu_gt_cell,
-#datetime_menu,
+.select_name_menu_cell,
+#graph_menu,
+.graph_menu_cell,
+#title_menu,
+.title_menu_cell,
+#settings_menu,
 #datetime_nm_menu_cell,
 #datetime_sep_menu_cell,
-.menu_cell {
+.datetime_menu_cell,
+a.datetime_menu_cell,
+.button_menu_cell,
+button.button_menu_cell {
     display: table-cell;
     vertical-align: middle;
-    padding-left: 2px;
-    height: 40px;
-    color: #444;
+    height: 50px;
+    color: white;
     text-decoration: none;
 }
-#selection_menu {
+
+#menu_logo {
     float: left;
+    background-image: url("img/logo.png");
+    background-size: 25px;
+    background-position: 5px 50%;
+    background-repeat: no-repeat;
+    width: 35px;
 }
-#datetime_menu {
-    float: right;
+.title_menu_cell,
+.title_menu_cell a {
+    color: white;
+    padding-left: 5px;
+    display: table-cell;
 }
+.select_name_menu_cell {
+    color: #33B5E5;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
 #datetime_sep_menu_cell {
     display: none;
 }
+#datetime_nm_menu_cell {
+    padding: 0px 5px 0px 0px;
+}
+
+#graph_menu {
+    display: table;
+    width: 100%;
+    height: 50px;
+    z-index: 90;
+    position: fixed;
+    background-color: #FFFFFF;
+    border-bottom: 2px solid rgba(0,0,0,.2);
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2);
+    transition: top 0.2s ease-in-out;
+}
+
+.graph_menu-up {
+    top: -50px;
+}
+
+.graph_menu-down {
+    top: 50px;
+}
+
 
 #menu-checkbox {
     display: none;
 }
 
-.small_menu_button {
-    padding: 10px 35px 10px 0px;
-    background: url(img/small_menu_holo.png) no-repeat;
-    background-position: 0% 50%;
-    background-size: 30px 30px;
-}
-
-#small_menu {
-    display: none;
-}
-#small_menu.show {
-    background-color: #E8E8E8;
-    border: 1px solid #CCC;
-    box-shadow: 0px 2px 4px rgba(0,0,0,.2);
-    display: block;
-    right: 1%;
-    position: absolute;
-    overflow: auto;
-    padding: 5px;
-    z-index: 100;
-}
-
-.small_menu_cell {
-    display: table-cell;
-    height: 20px;
-    font-size: 14px;
-}
-
-.small_menu_title {
-    font-size: 18px;
-    color: #555;
-}
-
-.small_menu_cell .select,
-.small_menu_cell .select select {
-    display: block;
-    width: 115px;
-    height: 30px;
-}
-
-.small_menu_cell .select:before {
-    left: 105px;
-    bottom: 4px;
-}
-
-hr {
-    color: #33B5E5;
-    background-color: #33B5E5;
-    height: 1px;
-    border: 0px;
-}
-
 input#from_calendar,
 input#until_calendar {
-    border: solid 1px #CCC;
+    border: solid 1px rgba(0,0,0,.2);
     font-size: small;
     padding: 5px;
     width: 125px;
 }
 
 #go_button {
-    border: 0px;
-    width: 30px;
-    height: 25px;
+    width: 20px;
+    height: 100%;
     margin: 0px 5px 0px 5px;
-    padding: 0px;
-    border-radius: 2px;
-    box-shadow: 0px 2px 4px rgba(0,0,0,.2);
-    background-color: #33B5E5;
-    color: white;
-    font-size: small;
-    font-weight: bold;
+    background: url(img/submit.png) no-repeat;
+    background-position: 50%;
+    background-size: 20px;
 }
 
 select {
-    width: 120px;
+    width: 150px;
     vertical-align: middle;
     font-size: small;
     padding: 5px;
-    border: solid 1px #CCC;
+    border: solid 1px rgba(0,0,0,.2);
     color: black;
     overflow: hidden;
-    background: #FFFFFF;
+    background: url('img/arrow_down.png') no-repeat #FFF;
+    background-position: 95% 50%;
+    background-size: 15px;
     border-radius: 0.0em;
     -moz-appearance: none;
     -webkit-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: ""
 }
 select::-ms-expand {
     display: none;
 }
 
-.select:before {
-    border-right: 8px solid #888888;
-    border-top: 8px solid transparent;
-    content: "";
-    position: absolute;
-    left: 110px;
-    bottom: 10px;
+div.selection_menu_cell:first-child:before {
+    content: '';
+}
+div.selection_menu_cell:before {
+    content: " \2192 ";
+    display: table-cell;
+    height: 50px;
+    vertical-align: middle;
 }
 
 .select {
     display: table-cell;
     vertical-align: middle;
-    padding: 0px 2px 0px 2px;
+    padding: 0px 5px 0px 5px;
     height: 40px;
-    position: relative;
 }
 
 #main {
-    padding: 10px 10px 20px 10px;
+    width: 100%;
+    padding-top: 110px;
 }
 
 .block_title,
 .block_title a {
     color: #33B5E5;
-    margin: 5px 0px 5px 0px;
+    padding: 10px;
     font-weight: bold;
     font-size: 25px;
 }
 
 .banner_text,
 .banner_text a {
-    color: #9A9A9A;
-    font-weight: 300;
+    color: #444;
+    font-weight: 500;
     background: #FFF;
-    padding: 5px;
-    border-bottom: 1px solid #D1D1D1
+    padding: 5px 5px 5px 20px;
+    border-bottom: 1px solid rgba(0,0,0,.2);
 }
 
 .graph_block {
-    padding: 10px 0px 10px 0px;
+    padding: 10px;
 }
 
 .graph_card {
     background-color: #FFF;
     display: inline-block;
     border-radius: 2px;
-    box-shadow: 0px 2px 4px rgba(0,0,0,.2);
+    box-shadow: 0px 3px 2px -0.5px rgba(0,0,0,.1);
     margin: 5px 3px 5px 3px;
     padding: 3px;
 }
@@ -248,21 +227,22 @@ select::-ms-expand {
 }
 
 .graph_buttons {
-    float: right;
-    margin-right: 5px;
+    margin-right: 10px;
+}
+
+.graph_button {
+    width: 15px;
+    height: 15px;
 }
 
 .graph_name {
-    float: left;
     color: #FFF;
     font-size: 5px;
 }
 
 #footer {
-    background-color: #E5E5E5;
     width: 100%;
     height: 20px;
-    position: absolute;
     text-align: center;
     font-size: 11px;
     color: #888;
@@ -274,139 +254,155 @@ select::-ms-expand {
 }
 
 /* css for timepicker */
-#ui-datepicker-div { width: 200px; box-shadow: 0px 2px 4px rgba(0,0,0,.2); }
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { float: left; clear:left; padding: 3px 0 0 5px; }
+#ui-datepicker-div { width: 200px; box-shadow: 0px 3px 2px -0.5px rgba(0,0,0,.1); padding: 0; }
+.ui-datepicker-header { box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2); }
+.ui-datepicker-trigger { vertical-align: middle; }
+.ui-timepicker-div dl dt { float: left; clear:left; padding: 5px; }
 .ui-timepicker-div dl dd { margin: 0 10px 10px 40%; }
 .ui-timepicker-div td { font-size: 90%; }
-.ui-timepicker-select { padding: 2px; width: 100%; }
-.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-.ui_tpicker_time { margin: 7px 10px 10px 68px; padding-top: 4px; }
-.ui-datepicker-trigger { vertical-align: middle; }
+img.ui-datepicker-trigger { width: 20px; height: 20px; padding: 0px 5px 0px 5px; }
+select.ui-timepicker-select { width: 50px; }
 
 /* CSS adjustments for "mobile" screens */
 @media screen and (max-width: 1024px) {
-    #top {
-        height: 42px;
-    }
-    #header {
-        display: none;
-    }
-    #menu {
-        position: fixed;
-        background-image: url("img/logo.png");
-        background-size: 30px;
-        background-position: 20px 50%;
-        background-repeat: no-repeat;
-    }
+
     #overlay {
         visibility: hidden;
         opacity: 0;
         height: 100%;
         width: 100%;
-        background-color: rgba(0,0,0,0.7);
+        background-color: rgba(0,0,0,.8);
         overflow: hidden;
         position: fixed;
         top: 42px;
         z-index: 100;
-        -webkit-transition: visibility 0s 0.5s, opacity 0.3s linear;
-        transition: visibility 0s 0.5s, opacity 0.3s linear;
+        -webkit-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
     }
 
     input#from_calendar,
     input#until_calendar {
-        width: 100px;
+        width: 95px;
+        font-size: x-small;
     }
 
+    #menu {
+        height: 55px;
+    }
+
+    #menu_logo,
     #datetime_nm_menu_cell {
         display: none;
     }
     #datetime_sep_menu_cell {
         display: table-cell;
+        padding: 0px 5px 0px 0px;
     }
 
     .selection_menu_cell {
-        display: inline-block;
+        display: block;
     }
 
-    .selection_menu_gt_cell {
-        display: none;
+    #menu-checkbox + label {
+        display: inline-block;
+        border: none;
+        float: left;
+        height: 50px;
+        width: 50px;
+        left: 10px;
+        z-index: 101;
+        position: fixed;
+        background-position: 0% 50%;
+        background-repeat: no-repeat;
+        background-size: 25px;
+        background-color: transparent;
+        background-image: url("img/menu_button.png");
+    }
+    #menu-checkbox:focus {
+        outline: none;
     }
 
     #selection_menu {
         position: fixed;
         height: 100%;
-        top: 42px;
+        top: 52px;
         left: 0px;
-        z-index: 101;
         visibility: hidden;
-        width: 180px;
+        width: 100%;
         padding: 10px;
         color: black;
-        background-color: #323232;
+        opacity: 0;
         font-size: 20px;
-        line-height: 25px;
-        -webkit-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
+        -webkit-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
     }
 
-    #menu-checkbox + label {
-        display: inline-block;
-        position: absolute;
-        border: none;
+    #graph_menu {
+        display: block;
+        bottom: 150px;
+        z-index: 100;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0);
+        border-bottom: 0px;
+        box-shadow: none;
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+    }
+
+    .graph_menu_cell {
+        display: block;
+    }
+
+    .graph_menu_cell.right {
         float: left;
-        height: 40px;
-        width: 45px;
-        left: 0;
-        background-position: 0% 50%;
-        background-repeat: no-repeat;
-        background-size: 20px 20px;
-        background-color: transparent;
-        background-image: url("img/menu_button.png");
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        -webkit-transition: all 0.5s ease;
-        transition: all 0.5s ease;
     }
-    #menu-checkbox:focus {
-        outline: none;
+
+    .graph_menu-up,
+    .graph_menu-down {
+        top: auto;
     }
-    #menu-checkbox:checked ~ form div#selection_menu {
-        visibility: visible;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
+
+    .select_name_menu_cell {
+        width: 100px;
     }
-    #menu-checkbox:checked + label {
-        position: relative;
-        left: -7px;
-        -webkit-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-    }
-    #menu-checkbox:checked ~ form div#overlay {
+
+    #menu-checkbox:checked ~ div#top_menu div#selection_menu,
+    #menu-checkbox:checked ~ div#graph_menu,
+    #menu-checkbox:checked ~ div#overlay {
         visibility: visible;
         opacity: 1;
-        -webkit-transition: opacity 0.3s linear;
-        transition: opacity 0.3s linear;
     }
 
     select {
-        width: 160px;
+        width: 200px;
         height: 35px;
     }
-    .select:before {
-        left: 150px;
-        bottom: 7px;
+
+    div.selection_menu_cell:before {
+        content: " \27A5 ";
+    }
+
+    div.selection_menu_cell:first-child { margin-left: 0px; }
+    div.selection_menu_cell:first-child + div { margin-left: 10px; }
+    div.selection_menu_cell:first-child + div + div { margin-left: 40px; }
+    div.selection_menu_cell:first-child + div + div + div { margin-left: 70px; }
+    div.selection_menu_cell:first-child + div + div + div + div { margin-left: 100px; }
+
+    #main {
+        padding-top: 50px;
     }
 
     .graph_block {
         text-align: center;
+    }
+    .graph_card {
+        min-width: 90%;
+    }
+    img.lazy {
+        width: 100%;
+        height: 100%;
     }
 }
 

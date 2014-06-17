@@ -1,4 +1,4 @@
-<span class="anchor" id="overview"></span>
+<a class="anchor" id="overview">&nbsp;</a>
 <div class="block_title"><a href="#overview">Cluster overview</a></div>
 
 <div class="graph_block">
@@ -19,7 +19,7 @@ elseif (isset($graph_reports)) {
 }
 ?>
 </div>
-<span class="anchor" id="hosts"></span>
+<a class="anchor" id="hosts">&nbsp;</a>
 <div class="block_title"><a href="#hosts">Hosts</a></div>
 
 <?php

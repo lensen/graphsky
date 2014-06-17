@@ -1,7 +1,7 @@
       <script src="js/jquery.lazyload.min.js" type="text/javascript"></script>
       <script type="text/javascript" charset="utf-8">
       $(function() {
-        $("img.lazy").lazyload({ threshold : 200, effect: "fadeIn" });
+        $("img.lazy").lazyload({ threshold : 200 });
       });
       </script>
       <div id="footer">

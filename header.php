@@ -13,19 +13,53 @@ $title = implode(" > ", array_filter($title_array));
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta http-equiv="refresh" content="<?php print $conf['dashboard_refresh_interval']; ?>" >
-    <meta name="viewport" content="initial-scale=0.8,minimum-scale=0.8,maximum-scale=0.8,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
+    <meta name="viewport" content="initial-scale=1,width=device-width,height=device-height,user-scalable=no" />
     <meta name="mobile-web-app-capable" content="yes">
+    <link href="js/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
-    <link href="js/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" type="text/css">
-    <link href="img/favicon.ico" rel="icon" type="text/x-icon">
-    <link href="img/logo.png" rel="shortcut icon" sizes="196x196">
-    <link href="img/logo.png" rel="apple-touch-icon" sizes="196x196">
+    <link href="img/logo_icon.png" rel="icon" type="text/x-icon">
+    <link href="img/logo_icon.png" rel="shortcut icon" sizes="196x196">
+    <link href="img/logo_icon.png" rel="apple-touch-icon" sizes="196x196">
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-    Image1 = new Image(24,24)
-    Image1.src = "img/calendar_holo_24.png"
+    Image1 = new Image(15,15)
+    Image1.src = "img/arrow_down.png"
+    Image2 = new Image(20,20)
+    Image2.src = "img/calendar.png"
+
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 5;
+    var navbarHeight = $('#graph_menu').outerHeight();
+
+    $(window).scroll(function(event){
+        didScroll = true;
+    });
+
+    setInterval(function() {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 250);
+
+    function hasScrolled() {
+        var st = $(this).scrollTop();
+
+        if(Math.abs(lastScrollTop - st) <= delta)
+            return;
+        if (st > lastScrollTop && st > navbarHeight){
+            $('#graph_menu').removeClass('graph_menu-down').addClass('graph_menu-up');
+        } else {
+            if(st + $(window).height() < $(document).height()) {
+                $('#graph_menu').addClass('graph_menu-down').removeClass('graph_menu-up');
+            }
+        }
+        lastScrollTop = st;
+    }
+
     $(function(){
         $('#from_calendar').datetimepicker({
             timeFormat: "HH:mm",
@@ -33,7 +67,7 @@ $title = implode(" > ", array_filter($title_array));
             showOn: "button",
             showTime: false,
             constrainInput: false,
-            buttonImage: "img/calendar_holo_24.png",
+            buttonImage: "img/calendar.png",
             buttonImageOnly: true,
             controlType: "select"
         });
@@ -43,29 +77,9 @@ $title = implode(" > ", array_filter($title_array));
             showOn: "button",
             showTime: false,
             constrainInput: false,
-            buttonImage: "img/calendar_holo_24.png",
+            buttonImage: "img/calendar.png",
             buttonImageOnly: true,
             controlType: "select"
-        });
-        $(document).ready(function(){
-            $('a.small_menu_button').click(function() {
-                $("#small_menu").toggleClass("show");
-            });
-        });
-    });
-    $(document).ready(function() {
-        var stickyNavTop = $('#menu').offset().top;
-        var stickyNav = function(){
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > stickyNavTop) {
-                $('#menu').addClass('sticky');
-            } else {
-                $('#menu').removeClass('sticky');
-            }
-        };
-        stickyNav();
-        $(window).scroll(function() {
-            stickyNav();
         });
     });
     </script>
@@ -73,9 +87,3 @@ $title = implode(" > ", array_filter($title_array));
   </head>
   <body>
     <div id="container">
-      <div id="top">
-        <div id="header">
-          <div class="header_text">
-            <?php print "<a href=\"/\">$name</a>" ?>
-          </div>
-        </div>

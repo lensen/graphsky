@@ -7,7 +7,7 @@ Assumes you have your metrics stored in a hierarchy:
  - [optional_prefix].environment.cluster.hostname.metric
 
 It uses json based templates to specify report graphs (similar to Ganglia-web).
-In dashboards.json you can specify which report you want to see for which cluster(s).
+In dashboards.json you can specify which report you want to see for which evironment(s) / cluster(s).
 
 Works best with Collectd 5.x and the [write_graphite](https://collectd.org/wiki/index.php/Plugin:Write_Graphite) plugin with the following options:
 - Prefix "collectd."
@@ -20,7 +20,6 @@ Web interface:
 ![Sample dashboard](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot.png)
 
 Mobile interface:
-
 ![Mobile dashboard](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot%20mobile.png)
 ![Mobile dashboard menu](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot%20mobile%20menu.png)
 
@@ -40,4 +39,4 @@ Integrate your graphs in your monitoring tool by including a graph.php link:
 Make sure you specify a "service_name" matching the service_name given by your monitoring solution in your json graph template.  
 
 ***
-Icon was made using the [AndroidIcons boilerplates](https://www.androidicons.com)
+Button icons are based on [IKONS by Piotr Kwiatkowski](http://ikons.piotrkwiatkowski.co.uk/)

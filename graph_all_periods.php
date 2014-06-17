@@ -19,17 +19,17 @@ $graph_args_real = "env=$env&c=$realcluster&h=$realhost$graph$metric";
 include_once "./header.php";
 
 print "
-      <div id=\"menu\">
-        <div class=\"menu_cell\">
-          <div class=\"menu_title\">
+    <div id=\"top_menu\">
+      <a href=\"/\"><div id=\"menu_logo\"></div></a>
+        <div id==\"title_menu\" class=\"left\">
+          <div class=\"title_menu_cell\">
             <a href=\"/?$graph_args_real\">Go to $env $realcluster $realhost overview</a>
           </div>
         </div>
       </div>
-    </div>
-    <div id=\"main\">
-      <div class=\"block_title\">Timeperiod overview</div>
-      <div class=\"graph_block\">
+      <div id=\"main\">
+        <div class=\"block_title\">Timeperiod overview</div>
+        <div class=\"graph_block\">
 ";
 
 foreach ($conf["graph_all_periods_timeframes"] as $tf) {

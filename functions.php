@@ -47,7 +47,7 @@ function get_graph_domainname() {
     if ($conf['use_random_graph_domainname'])
         return str_replace("//", "//img" . rand(10,80) . ".", $conf['graph_domainname']);
 
-    return $conf['graph_domainname'];
+    return ""; #$conf['graph_domainname'];
 }
 
 #------------------------------------------------------------------------------
@@ -55,12 +55,16 @@ function get_graph_domainname() {
 function build_graphite_series( $config, $host_cluster = "" ) {
     $targets = array();
     $colors = array();
-    $function = array();
     // Keep track of stacked items
     $stacked = 0;
     $pie = 0;
+    if ( isset($config['units']) )
+        $units = $config['units'];
+    else
+        $units = "si";
 
     foreach( $config[ 'series' ] as $item ) {
+        $functions = array();
         if ( $item['type'] == "stack" )
             $stacked++;
         if ( $item['type'] == "pie" )
@@ -76,6 +80,7 @@ function build_graphite_series( $config, $host_cluster = "" ) {
             $metric = "$function($metric)";
         }
 
+#        $targets[] = "target=". urlencode( "cactiStyle(alias($metric,'${item['label']}'),'${units}')" );
         $targets[] = "target=". urlencode( "alias($metric,'${item['label']}')" );
         $colors[] = $item['color'];
     }
@@ -83,9 +88,8 @@ function build_graphite_series( $config, $host_cluster = "" ) {
     $output = implode( $targets, '&' );
     $output .= "&colorList=" . implode( $colors, ',' );
     $output .= "&vtitle=" . urlencode( isset($config[ 'vertical_label' ]) ? $config[ 'vertical_label' ] : "" );
+    $output .= "&yUnitSystem=" . $units;
 
-    if ( isset($config['units']) )
-        $output .= "&yUnitSystem=" . $config['units'];
     if ( isset($config['graph_max']) )
         $output .= "&max=" . $config['graph_max'];
 
@@ -131,19 +135,27 @@ function print_zoom_graph($args, $metric_report, $graph_size, $from, $until) {
           <a href=\"graph.php?$args&$metric_report&from=$from&until=$until&z=xlarge\">
             <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&$metric_report&z=$graph_size&from=$from&until=$until\" />
           </a>
-        </div><div class=\"graph_name\">$metric_report</div>
+        </div><div class=\"graph_name left\">$metric_report</div>
         " . show_graph_buttons("$args&$metric_report", $from, $until) . "</div>";
     return $graph_html;
 }
 
 function show_graph_buttons($args, $from, $until) {
-    $button_html = "<div class=\"graph_buttons\">
+    global $conf;
+    $button_html = "<div class=\"graph_buttons right\">
           <a href=\"graph_all_periods.php?$args\">
-            <img src=\"img/history_holo_16.png\" width=\"16\" height=\"16\" title=\"Show periodic graphs\">
-          </a>
+            <img src=\"img/historical.png\" class=\"graph_button\" title=\"Show periodic graphs\">
+          </a>&nbsp;
           <a href=\"graph.php?$args&from=$from&until=$until&z=xlarge\">
-            <img src=\"img/zoom_holo_16.png\" width=\"16\" height=\"16\" title=\"Show XL graph\">
-          </a>
+            <img src=\"img/zoom.png\" class=\"graph_button\" title=\"Show XL graph\">
+          </a>&nbsp;";
+    if (isset($conf['graphlot_url_base'])) {
+    $button_html = $button_html . "
+          <a href=\"graph.php?$args&from=$from&until=$until&graphlot=true\" target=\"_blank\">
+            <img src=\"img/graphlot.png\" class=\"graph_button\" title=\"Show Graphlot\">
+          </a>";
+    }
+    $button_html = $button_html . "
         </div>
       ";
     return $button_html;
@@ -151,14 +163,15 @@ function show_graph_buttons($args, $from, $until) {
 
 function print_period_graph($args, $timeframe) {
     global $conf;
-    $width  = $conf['graph_sizes']["large"]['width'];
-    $height = $conf['graph_sizes']["large"]['height'];
+    $graph_size = "large";
+    $width  = $conf['graph_sizes']["$graph_size"]['width'];
+    $height = $conf['graph_sizes']["$graph_size"]['height'];
 
     $graph_html = "
       <div class=\"graph_card\">
         <div class=\"graph_img\">
           <a href=\"graph.php?$args&z=xlarge&st=$timeframe+ago\">
-            <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&z=large&st=$timeframe+ago\" />
+            <img width=\"$width\" height=\"$height\" class=\"lazy\" src=\"img/blank.gif\" data-original=\"". get_graph_domainname() . "/graph.php?$args&z=$graph_size&st=$timeframe+ago\" />
           </a>
         </div>
       </div>
@@ -194,7 +207,7 @@ function find_dashboards($environment, $cluster="") {
     global $conf, $dash_config;
 
     if ( ! isset( $dash_config ) )
-    	$dash_config = json_decode(file_get_contents($conf['dashboard_config']), TRUE);
+        $dash_config = json_decode(file_get_contents($conf['dashboard_config']), TRUE);
 
     $graph_reports = array();
     foreach ($dash_config['dashboards'] as $dash) {
@@ -219,7 +232,7 @@ function show_on_dashboard($report_name, $environment, $cluster) {
     global $conf, $dash_config;
 
     if ( ! isset( $dash_config ) )
-    	$dash_config = json_decode(file_get_contents($conf['dashboard_config']), TRUE);
+        $dash_config = json_decode(file_get_contents($conf['dashboard_config']), TRUE);
     foreach ($dash_config['dashboards'] as $dash) {
         if ( preg_match($dash['environments'], $environment) && preg_match($dash['clusters'], $cluster) ){
             if ( in_array($report_name, $dash['included_reports']) ) {
