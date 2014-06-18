@@ -126,7 +126,7 @@ if (isset($m)) {
         <div class="select_name_menu_cell">Scale metric graphs</div>
         <div class="select"><select name="l" onchange="document.opts.submit()">
 <?php
-print print_dropdown_menus(["yes"], $l, "no");
+print print_dropdown_menus(array("yes"), $l, "no");
 ?>
         </select></div>
       </div>
