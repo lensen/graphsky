@@ -73,15 +73,15 @@ if (isset($_GET['s'])) {
     foreach ( $json_templates as $json_template) {
         $template = json_decode(file_get_contents($json_template), TRUE);
         if ( $template['service_name'] == $service_name) {
-            $report_name = $template['report_name'];
+            $service_report_name = $template['report_name'];
         }
     }
 }
 
 $host_cluster = $env . "." . $cluster . "." . $host;
 
-if (isset($_GET['g'])) {
-    $report_name = sanitize($_GET['g']);
+if (isset($_GET['g']) or isset($service_report_name)) {
+    $report_name = isset($service_report_name) ? sanitize($service_report_name) : sanitize($_GET['g']);
     $report_definition_file = $conf['graph_template_dir'] . "/" . $report_name . ".json";
     // Check whether report is defined in graph.d directory
     if ( is_file($report_definition_file) ) {
