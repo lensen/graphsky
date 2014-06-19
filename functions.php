@@ -280,3 +280,24 @@ function find_metrics($search_string, $group_depth=0) {
     curl_close($ch);
     return $metrics;
 }
+
+#------------------------------------------------------------------------------
+## Find graphite metrics belonging to a specific report
+function find_report_metrics($graph_report) {
+    global $conf;
+
+    $metrics = array();
+    // Generally we only have 1 report specified when using this
+    $report_definition_file = $conf['graph_template_dir'] . "/" . $graph_report . ".json";
+    if ( is_file($report_definition_file) ) {
+        $graph_config = json_decode(file_get_contents($report_definition_file), TRUE);
+    }
+    else {
+        error_log("There is no JSON config file specifying $graph_report.");
+        exit(1);
+    }
+    foreach ($graph_config['series'] as $serie) {
+        $metrics[$graph_config['title'] . " metrics"][] = $serie['metric'];
+    }
+    return $metrics;
+}
