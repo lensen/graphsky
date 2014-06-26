@@ -24,11 +24,6 @@ $title = implode(" > ", array_filter($title_array));
     <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-    Image1 = new Image(15,15)
-    Image1.src = "img/arrow_down.png"
-    Image2 = new Image(20,20)
-    Image2.src = "img/calendar.png"
-
     var didScroll;
     var lastScrollTop = 0;
     var delta = 5;
@@ -67,7 +62,7 @@ $title = implode(" > ", array_filter($title_array));
             showOn: "button",
             showTime: false,
             constrainInput: false,
-            buttonImage: "img/calendar.png",
+            buttonImage: "img/calendar.svg",
             buttonImageOnly: true,
             controlType: "select"
         });
@@ -77,7 +72,7 @@ $title = implode(" > ", array_filter($title_array));
             showOn: "button",
             showTime: false,
             constrainInput: false,
-            buttonImage: "img/calendar.png",
+            buttonImage: "img/calendar.svg",
             buttonImageOnly: true,
             controlType: "select"
         });

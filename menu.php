@@ -64,57 +64,56 @@ print print_dropdown_menus($hosts, $h, "All hosts");
       <div class="datetime_menu_cell">
         <input name="until" value="<?php print $ge; ?>" id="until_calendar"/>
       </div>
-      <div class="button_menu_cell"><button id="go_button" type="submit"></button></div>
+      <div id="button_menu_cell"><button id="go_button" type="submit"></button></div>
     </div>
   </div>
   <div id="graph_menu" class="graph_menu-down">
-    <div id="graph_menu_cell" class="left">
-      <!-- Reports -->
+    <!-- Reports -->
 <?php
 if (isset($m)) { $onchange = "document.opts.m.value = ''; document.opts.submit();"; }
 else { $onchange = "document.opts.submit();"; }
 ?>
-      <div class="graph_menu_cell">
-        <div class="select_name_menu_cell">Report:</div>
-        <div class="select"><select name="g" title="Select graph report" onchange="<?php echo $onchange; ?>">
+    <div class="graph_menu_cell left">
+      <div class="select_name_menu_cell">Report:</div>
+      <div class="select"><select name="g" title="Select graph report" onchange="<?php echo $onchange; ?>">
 <?php
 print print_dropdown_menus(find_dashboards($env, $c), $g, "All");
 ?>
-        </select></div>
-      </div>
-      <!-- /Reports -->
+      </select></div>
+    </div>
+    <!-- /Reports -->
 <?php
 if (isset($h)) {
 ?>
       <!-- Metrics -->
-      <div class="graph_menu_cell">
-        <div class="select_name_menu_cell">Metric:</div>
-        <div class="select"><select title="Jump to a metric group" onchange="location = this.options[this.selectedIndex].value;">
-          <option value="#reports" selected="selected">Jump to...</option>
+    <div class="graph_menu_cell left">
+      <div class="select_name_menu_cell">Metric:</div>
+      <div class="select"><select title="Jump to a metric group" onchange="location = this.options[this.selectedIndex].value;">
+        <option value="#reports" selected="selected">Jump to...</option>
 <?php
 $host_metrics=array_keys(find_metrics("$env.$c.$h", $conf['host_metric_group_depth']));
 foreach ($host_metrics as $metric_group) {
     print "             <option value=\"#$metric_group\">$metric_group</option>\n";
 }
 ?>
-        </select></div>
-      </div>
-      <!-- /Metrics -->
+      </select></div>
+    </div>
+    <!-- /Metrics -->
 <?php
 }
 elseif (isset($c)) {
 ?>
-      <!-- Metrics -->
-      <div class="graph_menu_cell">
-        <div class="select_name_menu_cell">Metric:</div>
-        <div class="select"><select name="m" title="Select a single metric" onchange="document.opts.g.value = ''; document.opts.submit()">
+    <!-- Metrics -->
+    <div class="graph_menu_cell left">
+      <div class="select_name_menu_cell">Metric:</div>
+      <div class="select"><select name="m" title="Select a single metric" onchange="document.opts.g.value = ''; document.opts.submit()">
 <?php
 $all_metrics=array_keys(find_metrics("$env.$c.*", "10"));
 print print_dropdown_menus($all_metrics, $m, "Select...");
 ?>
-        </select></div>
-      </div>
-      <!-- /Metrics -->
+      </select></div>
+    </div>
+    <!-- /Metrics -->
 <?php
 }
 ?>
@@ -122,18 +121,20 @@ print print_dropdown_menus($all_metrics, $m, "Select...");
 if (isset($m)) {
   if ($l == "yes" ) { $checked = "checked"; } else { $checked = ""; }
 ?>
-      <div class="graph_menu_cell">
-        <div class="select_name_menu_cell">Scale metric graphs</div>
-        <div class="select"><select name="l" onchange="document.opts.submit()">
+    <!-- Scale option -->
+    <div class="graph_menu_cell">
+      <div class="select_name_menu_cell">Scale metric graphs</div>
+      <div class="select"><select name="l" onchange="document.opts.submit()">
 <?php
 print print_dropdown_menus(array("yes"), $l, "no");
 ?>
-        </select></div>
-      </div>
+      </select></div>
+    </div>
+    <!-- /Scale option -->
 <?php
 }
 ?>
-    </div>
+    <!-- Graph size -->
     <div class="graph_menu_cell right">
       <div class="select_name_menu_cell">Graph size:</div>
       <div class="select"><select name="z" onchange="document.opts.submit()">
@@ -141,6 +142,11 @@ print print_dropdown_menus(array("yes"), $l, "no");
 print print_dropdown_menus(array_keys($conf['graph_sizes']), $z, "");
 ?>
       </select></div>
+    </div>
+    <!-- /Graph size -->
+    <div class="graph_menu_cell right" style="height: 50px;">
+      <div id="graph_menu_dropdown_button" onclick="$('.graph_menu_cell').css({'height':'50px'}); $('#graph_menu_dropdown_button').css({'display':'none'}); $('#graph_menu_slideup_button').css({'display':'table'});">&nspb;</div>
+      <div id="graph_menu_slideup_button" onclick="$('.graph_menu_cell').css({'height':'0px'}); $('#graph_menu_slideup_button').css({'display':'none'}); $('#graph_menu_dropdown_button').css({'display':'table'});">&nspb;</div>
     </div>
   </div>
  </div>

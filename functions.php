@@ -144,15 +144,15 @@ function show_graph_buttons($args, $from, $until) {
     global $conf;
     $button_html = "<div class=\"graph_buttons right\">
           <a href=\"graph_all_periods.php?$args\">
-            <img src=\"img/historical.png\" class=\"graph_button\" title=\"Show periodic graphs\">
+            <img src=\"img/historical.svg\" class=\"graph_button\" title=\"Show periodic graphs\">
           </a>&nbsp;
           <a href=\"graph.php?$args&from=$from&until=$until&z=xlarge\">
-            <img src=\"img/zoom.png\" class=\"graph_button\" title=\"Show XL graph\">
+            <img src=\"img/zoom.svg\" class=\"graph_button\" title=\"Show XL graph\">
           </a>&nbsp;";
     if (isset($conf['graphlot_url_base'])) {
     $button_html = $button_html . "
           <a href=\"graph.php?$args&from=$from&until=$until&graphlot=true\" target=\"_blank\">
-            <img src=\"img/graphlot.png\" class=\"graph_button\" title=\"Show Graphlot\">
+            <img src=\"img/graphlot.svg\" class=\"graph_button\" title=\"Show Graphlot\">
           </a>";
     }
     $button_html = $button_html . "
