@@ -27,7 +27,7 @@ print print_dropdown_menus($environments, $env, "All environments");
       </div>
       <!-- /Environments -->
 <?php
-if (isset($env)) {
+if (isset($env) && $env != "") {
 ?>
       <!-- Clusters -->
       <div class="selection_menu_cell">
