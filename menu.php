@@ -8,13 +8,13 @@
     <div id="selection_menu" class="left">
 <?php
 $environment_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "*"), TRUE);
-$environments = $environment_search['results']; natsort($environments);
+$environments = $environment_search['results']; if (sizeof($environments) > 1) { natsort($environments); }
 $environments = str_replace($conf['graphite_prefix'], "", $environments);
 $cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
-$clusters = $cluster_search['results']; natsort($clusters);
+$clusters = $cluster_search['results']; if (sizeof($clusters) > 1) { natsort($clusters); }
 $clusters = str_replace($conf['graphite_prefix'] . "$env.", "", $clusters);
 $host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.$c.*"), TRUE);
-$hosts = $host_search['results']; natsort($hosts);
+$hosts = $host_search['results']; if (sizeof($hosts) > 1) { natsort($hosts); }
 $hosts = str_replace($conf['graphite_prefix'] . "$env.$c.", "", $hosts);
 ?>
       <!-- Environments -->
