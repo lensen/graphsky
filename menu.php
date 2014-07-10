@@ -117,12 +117,22 @@ print print_dropdown_menus($all_metrics, $m, "Select...");
 <?php
 }
 ?>
+    <!-- Graph size -->
+    <div class="graph_menu_cell right">
+      <div class="select_name_menu_cell">Graph size:</div>
+      <div class="select"><select name="z" onchange="document.opts.submit()">
+<?php
+print print_dropdown_menus(array_keys($conf['graph_sizes']), $z, "");
+?>
+      </select></div>
+    </div>
+    <!-- /Graph size -->
 <?php
 if (isset($m)) {
   if ($l == "yes" ) { $checked = "checked"; } else { $checked = ""; }
 ?>
     <!-- Scale option -->
-    <div class="graph_menu_cell">
+    <div class="graph_menu_cell right">
       <div class="select_name_menu_cell">Scale metric graphs</div>
       <div class="select"><select name="l" onchange="document.opts.submit()">
 <?php
@@ -134,16 +144,6 @@ print print_dropdown_menus(array("yes"), $l, "no");
 <?php
 }
 ?>
-    <!-- Graph size -->
-    <div class="graph_menu_cell right">
-      <div class="select_name_menu_cell">Graph size:</div>
-      <div class="select"><select name="z" onchange="document.opts.submit()">
-<?php
-print print_dropdown_menus(array_keys($conf['graph_sizes']), $z, "");
-?>
-      </select></div>
-    </div>
-    <!-- /Graph size -->
     <div class="graph_menu_cell right" style="height: 50px;">
       <div id="graph_menu_dropdown_button" onclick="$('.graph_menu_cell').css({'height':'50px'}); $('#graph_menu_dropdown_button').css({'display':'none'}); $('#graph_menu_slideup_button').css({'display':'table'});">&nspb;</div>
       <div id="graph_menu_slideup_button" onclick="$('.graph_menu_cell').css({'height':'0px'}); $('#graph_menu_slideup_button').css({'display':'none'}); $('#graph_menu_dropdown_button').css({'display':'table'});">&nspb;</div>
