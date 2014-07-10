@@ -37,7 +37,6 @@ Web interface:
 Mobile interface:
 
 ![Mobile dashboard](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot%20mobile.png)
-![Mobile dashboard menu](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot%20mobile%20menu.png)
 
 ## Nagios/Icinga/Icinga-web integration
 
