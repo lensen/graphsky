@@ -126,7 +126,7 @@ else {
 
 if ($sourcetime) $title = "$title last " . str_replace(" ago","",$sourcetime);
 
-$graphite_url_args = "?width=$width&height=$height&" . $target . "&from=" . urlencode($start) . "&until=" . urlencode($end) . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&title=" . urlencode($title);
+$graphite_url_args = "?width=$width&height=$height&" . $target . "&from=" . urlencode($start) . "&until=" . urlencode($end) . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&areaAlpha=0.7&title=" . urlencode($title);
 
 if ( isset($graphlot) ) {
     $graphlot_url = $conf['graphlot_url_base'] . $graphite_url_args;
