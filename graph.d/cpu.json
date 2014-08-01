@@ -9,6 +9,7 @@
         { "metric": "cpu.*.cpu.system.value", "color": "dd0000", "label": "System", "type": "stack", "functions": ["averageSeries"] },
         { "metric": "cpu.*.cpu.nice.value", "color": "ffea00", "label": "Nice", "type": "stack", "functions": ["averageSeries"] },
         { "metric": "cpu.*.cpu.softirq.value", "color": "purple", "label": "SoftIRQ", "type": "stack", "functions": ["averageSeries"] },
+        { "metric": "cpu.*.cpu.interrupt.value", "color": "brown", "label": "IRQ", "type": "stack", "functions": ["averageSeries"] },
         { "metric": "cpu.*.cpu.wait.value", "color": "ff8a60", "label": "Wait", "type": "stack", "functions": ["averageSeries"] },
         { "metric": "cpu.*.cpu.idle.value", "color": "e2e2f2AA", "label": "Idle", "type": "stack", "functions": ["averageSeries"] }
     ]
