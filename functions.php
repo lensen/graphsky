@@ -47,7 +47,7 @@ function get_graph_domainname() {
     if ($conf['use_random_graph_domainname'])
         return str_replace("//", "//img" . rand(10,80) . ".", $conf['graph_domainname']);
 
-    return ""; #$conf['graph_domainname'];
+    return $conf['graph_domainname'];
 }
 
 #------------------------------------------------------------------------------
