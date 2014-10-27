@@ -65,6 +65,10 @@ function build_graphite_series( $config, $host_cluster = "" ) {
         if ( isset($item['hostname']) && isset($item['clustername']) )
             $host_cluster = $item['clustername'] . "." . str_replace(".","_", $item['hostname']);
         $metric = "$host_cluster.${item['metric']}";
+
+        # Work-around for gaps in metrics
+        # $metric = "keepLastValue($metric)";
+
         foreach( $functions as $function ) {
             $metric = "$function($metric)";
         }
@@ -73,9 +77,6 @@ function build_graphite_series( $config, $host_cluster = "" ) {
             $metric = "stacked($metric)";
         if ( $item['type'] == "pie" )
             $pie++;
-
-        # Work-around for gaps in metrics
-        # $metrics = "keepLastValue($metrics)";
 
 #        $targets[] = "target=". urlencode( "cactiStyle(alias($metric,'${item['label']}'),'${units}')" );
         $targets[] = "target=". urlencode( "alias($metric,'${item['label']}')" );
