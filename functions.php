@@ -78,6 +78,9 @@ function build_graphite_series( $config, $host_cluster = "" ) {
         if ( $item['type'] == "pie" )
             $pie++;
 
+        if ( isset($config['scale_to_seconds']) )
+            $metric = "scaleToSeconds($metric,".$config['scale_to_seconds'].")";
+
 #        $targets[] = "target=". urlencode( "cactiStyle(alias($metric,'${item['label']}'),'${units}')" );
         $targets[] = "target=". urlencode( "alias($metric,'${item['label']}')" );
         $colors[] = $item['color'];
