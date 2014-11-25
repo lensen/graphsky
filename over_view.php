@@ -12,7 +12,7 @@ if (sizeof($envs) > 1) {
         if (isset($g)) { $graph_reports = array($g); }
         else { $graph_reports = find_dashboards($env_name); }
 
-        if (!isset($g)) { print "<a href=\"?env=$env_name&from=$gs&until=$ge\"><div class=\"banner_text\">$env_name</div></a><div class=\"graph_block\">"; }
+        if (!isset($g)) { print "<a href=\"?env=$env_name&from=$gs&until=$ge\"><div class=\"graph_block_title\">$env_name</div></a><div class=\"graph_block\">"; }
         foreach ($graph_reports as $graph_report) {
             print print_graph("env=$env_name", "g=$graph_report", $z, $from, $until);
         }

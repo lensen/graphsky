@@ -9,6 +9,7 @@ $title_array = array($env,$c,$h,$g);
 $title = implode(" > ", array_filter($title_array));
 ?>
 <!DOCTYPE html>
+<!-- Icons by Google: https://github.com/google/material-design-icons -->
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
