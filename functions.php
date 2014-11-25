@@ -284,8 +284,10 @@ function find_report_metrics($graph_report) {
         error_log("There is no JSON config file specifying $graph_report.");
         exit(1);
     }
-    foreach ($graph_config['series'] as $serie) {
-        $metrics[$graph_config['title'] . " metrics"][] = $serie['metric'];
+    if ( isset($graph_config['series']) ) {
+        foreach ($graph_config['series'] as $serie) {
+            $metrics[$graph_config['title'] . " metrics"][] = $serie['metric'];
+        }
     }
     return $metrics;
 }
