@@ -18,9 +18,9 @@ $title = implode(" > ", array_filter($title_array));
     <meta name="mobile-web-app-capable" content="yes">
     <link href="js/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
-    <link href="img/logo_icon.png" rel="icon" sizes="196x196">
-    <link href="img/logo_icon.png" rel="shortcut icon" sizes="196x196">
-    <link href="img/logo_icon.png" rel="apple-touch-icon" sizes="196x196">
+    <link href="img/icon.png" rel="shortcut icon" sizes="196x196">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon" sizes="196x196">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon-precomposed" sizes="196x196">
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
