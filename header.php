@@ -16,6 +16,7 @@ $title = implode(" > ", array_filter($title_array));
     <meta http-equiv="refresh" content="<?php print $conf['dashboard_refresh_interval']; ?>" >
     <meta name="viewport" content="initial-scale=1,width=device-width,height=device-height,user-scalable=no" />
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#<?php print $conf['default_metric_color']; ?>" >
     <link href="js/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
     <link href="img/icon.png" rel="shortcut icon" sizes="196x196">
