@@ -120,7 +120,7 @@ elseif ( isset($metric_name) ) {
         $max = "";
     }
     // It's a simple metric graph
-    $target = "target=legendValue(alias(sumSeries(" . $conf['graphite_prefix'] . "$host_cluster.$metric_name),''),'last','max','min','si')&vtitle=" . urlencode($vlabel) . "&areaMode=all&colorList=". $conf['default_metric_color'];
+    $target = "target=legendValue(alias(sumSeries(" . $conf['graphite_prefix'] . "$host_cluster.$metric_name),''),'last','max','min','si')&vtitle=" . urlencode($vlabel) . "&areaMode=all&colorList=". $conf['theme_color'];
     $title = "$title_prefix $metric_name";
 }
 else {

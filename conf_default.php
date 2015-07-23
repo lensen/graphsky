@@ -28,7 +28,7 @@ $conf['graphite_default_env'] = "";
 
 # Graph settings
 $conf['default_time_range'] = '-1 hour';
-$conf['default_metric_color'] = '2196F3';
+$conf['theme_color'] = '2196F3';
 $conf['default_background_color'] = 'FFFFFF';
 $conf['default_foreground_color'] = '000000';
 

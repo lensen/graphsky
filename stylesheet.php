@@ -1,3 +1,8 @@
+<?php
+header("Content-type: text/css; charset: UTF-8");
+require_once "./include_conf.php";
+$themecolor = $conf['theme_color'];
+?>
 html {
     height: 100%;
     width: 100%;
@@ -53,7 +58,7 @@ button {
     height: 50px;
     z-index: 100;
     position: fixed;
-    background-color: #2196F3;
+    background-color: #<?php echo $themecolor; ?>;
     box-shadow: 0;
 }
 .top_menu_shadow {
@@ -103,7 +108,7 @@ a.datetime_menu_cell {
     display: table-cell;
 }
 .select_name_menu_cell {
-    color: #2196F3;
+    color: #<?php echo $themecolor; ?>;
     font-weight: bold;
     padding-left: 5px;
 }
@@ -201,10 +206,7 @@ div.selection_menu_cell:before {
 }
 
 .block_title {
-#    background-color: #2196F3;
-#    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     padding: 5px 20px 5px 20px;
-#    margin: 0px 10px 10px 10px;
 }
 
 .block_title a,
@@ -268,15 +270,11 @@ div.selection_menu_cell:before {
     font-weight: bold;
 }
 
-/* css for timepicker */
-#ui-datepicker-div { width: 200px; box-shadow: 0px 3px 2px -0.5px rgba(0,0,0,.1); padding: 0; }
-.ui-datepicker-header { box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2); }
+/* Extra CSS for timepicker */
+#ui-datepicker-div { width: 200px; box-shadow: 0px 3px 6px 2px rgba(0,0,0,.23); padding: 0; }
 .ui-datepicker-trigger { vertical-align: middle; }
-.ui-timepicker-div dl dt { float: left; clear:left; padding: 5px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 40%; }
-.ui-timepicker-div td { font-size: 90%; }
 img.ui-datepicker-trigger { width: 24px; height: 24px; padding: 0px 2px 0px 2px; }
-select.ui-timepicker-select { width: 50px; }
+select.ui-timepicker-select { width: 35px; }
 
 /* CSS adjustments for "mobile" screens */
 @media screen and (max-width: 1024px) {
