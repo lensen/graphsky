@@ -9,19 +9,25 @@ $title_array = array($env,$c,$h,$g);
 $title = implode(" > ", array_filter($title_array));
 ?>
 <!DOCTYPE html>
+<!-- Icons by Google: https://github.com/google/material-design-icons -->
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta http-equiv="refresh" content="<?php print $conf['dashboard_refresh_interval']; ?>" >
     <meta name="viewport" content="initial-scale=1,width=device-width,height=device-height,user-scalable=no" />
     <meta name="mobile-web-app-capable" content="yes">
-    <link href="js/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
-    <link href="stylesheet.css" rel="stylesheet" type="text/css">
-    <link href="img/logo_icon.png" rel="icon" type="text/x-icon">
-    <link href="img/logo_icon.png" rel="shortcut icon" sizes="196x196">
-    <link href="img/logo_icon.png" rel="apple-touch-icon" sizes="196x196">
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <meta name="theme-color" content="#<?php print $conf['theme_color']; ?>" >
+    <!--link rel="stylesheet" type="text/css" href="stylesheet.css"-->
+    <link rel="stylesheet" type="text/css" href="stylesheet.php">
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui.structure.min.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui.theme.min.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui-timepicker-addon.min.css">
+    <link rel="shortcut icon" href="img/icon.png" sizes="196x196">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="196x196">
+    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png" sizes="196x196">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var didScroll;
@@ -56,7 +62,7 @@ $title = implode(" > ", array_filter($title_array));
     }
 
     $(function(){
-        $('#from_calendar').datetimepicker({
+        $.datepicker.setDefaults({
             timeFormat: "HH:mm",
             dateFormat: "yy-mm-dd",
             showOn: "button",
@@ -64,21 +70,22 @@ $title = implode(" > ", array_filter($title_array));
             constrainInput: false,
             buttonImage: "img/calendar.svg",
             buttonImageOnly: true,
-            controlType: "select"
+            controlType: "select",
+            oneLine: true
+        });
+        $('#from_calendar').datetimepicker({
+            onClose: function(dateText, inst) { $(this).attr("disabled", false); },
+            beforeShow: function(dateText, inst) { $(this).attr("disabled", true); }
         });
         $('#until_calendar').datetimepicker({
-            timeFormat: "HH:mm",
-            dateFormat: "yy-mm-dd",
-            showOn: "button",
-            showTime: false,
-            constrainInput: false,
-            buttonImage: "img/calendar.svg",
-            buttonImageOnly: true,
-            controlType: "select"
+            onClose: function(dateText, inst) { $(this).attr("disabled", false); },
+            beforeShow: function(dateText, inst) { $(this).attr("disabled", true); }
         });
     });
+
     </script>
     <title><?php print "$name | $title" ?></title>
   </head>
   <body>
     <div id="container">
+

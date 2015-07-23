@@ -23,7 +23,7 @@ else { $metrics = find_metrics("$env.$c.$h", $conf['host_metric_group_depth']); 
 
 foreach ($metrics as $metric_group => $metric_array) {
     print "<a class=\"anchor\" id=\"$metric_group\">&nbsp;</a>";
-    print "<a href=\"#$metric_group\"><div class=\"banner_text\">$metric_group</div></a>";
+    print "<div class=\"graph_block_title\"><a href=\"#$metric_group\">$metric_group</a></div>";
     print "<div class=\"graph_block\">";
     foreach ($metric_array as $metric) {
         print print_zoom_graph($graph_args . "&dn=", "m=$metric", $z, $from, $until);

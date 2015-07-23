@@ -19,16 +19,16 @@ $graph_args_real = "env=$env&c=$realcluster&h=$realhost$graph$metric";
 include_once "./header.php";
 
 print "
-    <div id=\"top_menu\">
+    <div id=\"top_menu\" class=\"top_menu_shadow\">
       <a href=\"/\"><div id=\"menu_logo\"></div></a>
-        <div id==\"title_menu\" class=\"left\">
+        <div id=\"title_menu\" class=\"left\">
           <div class=\"title_menu_cell\">
-            <a href=\"/?$graph_args_real\">Go to $env $realcluster $realhost overview</a>
+            <a href=\"/?$graph_args_real\">Back to overview</a>
           </div>
         </div>
       </div>
       <div id=\"main\">
-        <div class=\"block_title\">Timeperiod overview</div>
+        <div class=\"block_title\">Historical overview</div>
         <div class=\"graph_block\">
 ";
 
