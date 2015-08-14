@@ -1,3 +1,5 @@
+# vi:syntax=css
+
 <?php
 header("Content-type: text/css; charset: UTF-8");
 require_once "./include_conf.php";
@@ -49,6 +51,7 @@ button {
     width: 100%;
     left: 0;
     top: 0;
+    z-index: 100;
     position: fixed;
 }
 
@@ -241,6 +244,7 @@ div.selection_menu_cell:before {
 }
 
 .graph_img {
+    z-index: 50;
 }
 
 .graph_buttons {
@@ -424,6 +428,10 @@ select.ui-timepicker-select { width: 35px; }
     }
     .graph_card {
         min-width: 90%;
+    }
+    .graph_button {
+        width: 24px;
+        height: 24px;
     }
     img.lazy {
         width: 100%;
