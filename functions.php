@@ -1,6 +1,5 @@
 <?php
 
-#------------------------------------------------------------------------------
 # Functions to make strings compatible
 function clean_string( $string ) {
     return htmlentities( $string );
@@ -17,7 +16,6 @@ function sanitize_datetime ( $dt ) {
     }
 }
 
-#------------------------------------------------------------------------------
 # Function to print options for dropdown menus
 function print_dropdown_menus($options, $choice, $default) {
     if ( $default != "" ) {
@@ -38,9 +36,7 @@ function print_dropdown_menus($options, $choice, $default) {
     return $option_values;
 }
 
-
-#------------------------------------------------------------------------------
-# Function to return graph  domainname.
+# Function to return graph domainname
 function get_graph_domainname() {
     global $conf;
 
@@ -50,13 +46,10 @@ function get_graph_domainname() {
     return $conf['graph_domainname'];
 }
 
-#------------------------------------------------------------------------------
-# Function to build a Graphite url based on a json report.
+# Function to build a Graphite url based on a json report
 function build_graphite_series( $config, $host_cluster = "" ) {
     $targets = array();
     $colors = array();
-    // Keep track of stacked items
-    $stacked = 0;
     $pie = 0;
     if ( isset($config['units']) )
         $units = $config['units'];
@@ -65,10 +58,6 @@ function build_graphite_series( $config, $host_cluster = "" ) {
 
     foreach( $config[ 'series' ] as $item ) {
         $functions = array();
-        if ( $item['type'] == "stack" )
-            $stacked++;
-        if ( $item['type'] == "pie" )
-            $pie++;
         if ( isset($item['functions']) )
             $functions = $item['functions'];
         else
@@ -76,9 +65,21 @@ function build_graphite_series( $config, $host_cluster = "" ) {
         if ( isset($item['hostname']) && isset($item['clustername']) )
             $host_cluster = $item['clustername'] . "." . str_replace(".","_", $item['hostname']);
         $metric = "$host_cluster.${item['metric']}";
+
+        # Work-around for gaps in metrics
+        # $metric = "keepLastValue($metric)";
+
         foreach( $functions as $function ) {
             $metric = "$function($metric)";
         }
+
+        if ( $item['type'] == "stack" )
+            $metric = "stacked($metric)";
+        if ( $item['type'] == "pie" )
+            $pie++;
+
+        if ( isset($config['scale_to_seconds']) )
+            $metric = "scaleToSeconds($metric,".$config['scale_to_seconds'].")";
 
 #        $targets[] = "target=". urlencode( "cactiStyle(alias($metric,'${item['label']}'),'${units}')" );
         $targets[] = "target=". urlencode( "alias($metric,'${item['label']}')" );
@@ -93,21 +94,14 @@ function build_graphite_series( $config, $host_cluster = "" ) {
     if ( isset($config['graph_max']) )
         $output .= "&max=" . $config['graph_max'];
 
-    if ( $stacked > 0 ) {
-        if ( $stacked > 1 )
-            $output .= "&areaMode=stacked";
-        else
-            $output .= "&areaMode=first";
-    }
-    elseif ( $pie > 0 ) {
+    if ( $pie > 0 ) {
         $output .= "&graphType=pie";
     }
 
     return $output;
 }
 
-#------------------------------------------------------------------------------
-# Functions for printing graph (cards)
+# Functions for printing graph cards
 function print_graph($args, $metric_report, $graph_size, $from, $until) {
     global $conf;
     $width  = $conf['graph_sizes'][$graph_size]['width'];
@@ -179,9 +173,7 @@ function print_period_graph($args, $timeframe) {
     return $graph_html;
 }
 
-
-#------------------------------------------------------------------------------
-# Finds the max over a set of metric graphs.
+# Finds the maximum value from a set of metric graphs
 function find_limits($environment, $cluster, $metricname, $start, $end) {
     global $conf;
 
@@ -201,8 +193,7 @@ function find_limits($environment, $cluster, $metricname, $start, $end) {
     return $max;
 }
 
-#------------------------------------------------------------------------------
-# Finds dashboards to specific environment/cluster
+# Finds dashboards for a specific environment/cluster
 function find_dashboards($environment, $cluster="") {
     global $conf, $dash_config;
 
@@ -226,8 +217,7 @@ function find_dashboards($environment, $cluster="") {
     return $graph_reports;
 }
 
-#------------------------------------------------------------------------------
-# Determines of report graphs should be shows in this dashboard
+# Function to determines if report graphs should be shown in this dashboard
 function show_on_dashboard($report_name, $environment, $cluster) {
     global $conf, $dash_config;
 
@@ -243,7 +233,6 @@ function show_on_dashboard($report_name, $environment, $cluster) {
     return False;
 }
 
-#------------------------------------------------------------------------------
 # Find graphite metrics matching regex
 function find_metrics($search_string, $group_depth=0) {
     global $conf;
@@ -281,8 +270,7 @@ function find_metrics($search_string, $group_depth=0) {
     return $metrics;
 }
 
-#------------------------------------------------------------------------------
-## Find graphite metrics belonging to a specific report
+# Find graphite metrics belonging to a specific report
 function find_report_metrics($graph_report) {
     global $conf;
 
@@ -296,8 +284,10 @@ function find_report_metrics($graph_report) {
         error_log("There is no JSON config file specifying $graph_report.");
         exit(1);
     }
-    foreach ($graph_config['series'] as $serie) {
-        $metrics[$graph_config['title'] . " metrics"][] = $serie['metric'];
+    if ( isset($graph_config['series']) ) {
+        foreach ($graph_config['series'] as $serie) {
+            $metrics[$graph_config['title'] . " metrics"][] = $serie['metric'];
+        }
     }
     return $metrics;
 }

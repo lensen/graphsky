@@ -31,7 +31,7 @@ foreach ($hosts as $host) {
     $host_name = str_replace($conf['graphite_prefix'] . "$env.$c.", "", $host);
     if ($host_name == $conf['cluster_hostname']) { continue; }
     if (isset($graph_reports)) {
-        if (!isset($g)) { print "<a href=\"?$graph_args&h=$host_name&from=$gs&until=$ge\"><div class=\"banner_text\">$host_name</div></a><div class=\"graph_block\">"; }
+        if (!isset($g)) { print "<div class=\"graph_block_title\"><a href=\"?$graph_args&h=$host_name&from=$gs&until=$ge\">$host_name</a></div><div class=\"graph_block\">"; }
         foreach ($graph_reports as $graph_report) {
             $current_graph_args = $graph_args . "&h=$host_name";
             print print_graph($current_graph_args, "g=$graph_report", $z, $from, $until);

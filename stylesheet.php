@@ -1,3 +1,10 @@
+# vi:syntax=css
+
+<?php
+header("Content-type: text/css; charset: UTF-8");
+require_once "./include_conf.php";
+$themecolor = $conf['theme_color'];
+?>
 html {
     height: 100%;
     width: 100%;
@@ -5,7 +12,7 @@ html {
 
 body {
     color: #444;
-    background-color: #E5E5E5;
+    background-color: #F5F5F5;
     margin: 0px;
     font-family: helvetica;
     width: 100%;
@@ -28,12 +35,13 @@ button {
 
 .anchor {
     position: relative;
-    top: -35px;
+    top: -40px;
 }
 
 #container {
     min-height:100%;
     width:100%;
+    -webkit-backface-visibility: hidden;
 #    overflow-x: hidden;
 }
 
@@ -43,6 +51,7 @@ button {
     width: 100%;
     left: 0;
     top: 0;
+    z-index: 100;
     position: fixed;
 }
 
@@ -52,11 +61,11 @@ button {
     height: 50px;
     z-index: 100;
     position: fixed;
-    background-color: #33B5E5;
-    border-bottom: 2px solid rgba(0,0,0,.2);
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform : translate3d(0, 0, 0);
+    background-color: #<?php echo $themecolor; ?>;
+    box-shadow: 0;
+}
+.top_menu_shadow {
+    box-shadow: 0 3px 6px rgba(0,0,0,.23);
 }
 
 #menu_logo,
@@ -84,13 +93,13 @@ a.datetime_menu_cell {
     width: 35px;
     background: url(img/submit.svg) no-repeat;
     background-position: 50%;
-    background-size: 25px;
+    background-size: 24px;
 }
 
 #menu_logo {
     float: left;
     background-image: url("img/logo_transp.png");
-    background-size: 25px;
+    background-size: 30px;
     background-position: 5px 50%;
     background-repeat: no-repeat;
     width: 35px;
@@ -102,7 +111,7 @@ a.datetime_menu_cell {
     display: table-cell;
 }
 .select_name_menu_cell {
-    color: #33B5E5;
+    color: #<?php echo $themecolor; ?>;
     font-weight: bold;
     padding-left: 5px;
 }
@@ -121,14 +130,14 @@ a.datetime_menu_cell {
     z-index: 90;
     position: fixed;
     background-color: #FFFFFF;
-    border-bottom: 2px solid rgba(0,0,0,.2);
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2);
+    box-shadow: 0 3px 6px rgba(0,0,0,.23);
     -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
 
 .graph_menu-up {
-    top: -50px;
+    top: 0px;
 }
 
 .graph_menu-down {
@@ -167,9 +176,8 @@ select {
     overflow: hidden;
     background: url('img/arrow_down.svg') no-repeat #FFF;
     background-position: 95% 50%;
-    background-size: 15px;
+    background-size: 20px;
     border-radius: 0.0em;
-    -moz-appearance: none;
     -webkit-appearance: none;
     text-indent: 0.01px;
     text-overflow: ""
@@ -197,24 +205,30 @@ div.selection_menu_cell:before {
 
 #main {
     width: 100%;
-    padding-top: 110px;
+    padding-top: 100px;
 }
 
-.block_title,
-.block_title a {
-    color: #33B5E5;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 25px;
+.block_title {
+    padding: 5px 20px 5px 20px;
 }
 
-.banner_text,
-.banner_text a {
-    color: #444;
-    font-weight: 500;
-    background: #FFF;
-    padding: 5px 5px 5px 20px;
-    border-bottom: 1px solid rgba(0,0,0,.2);
+.block_title a,
+.block_title a:visited
+{
+#    color: #FFF;
+    color: #555;
+    font-size: x-large;
+}
+
+.graph_block_title {
+    padding: 10px 0px 10px 20px;
+#    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.graph_block_title a,
+.graph_block_title a:visited {
+    color: #555;
+    font-size: large;
 }
 
 .graph_block {
@@ -224,13 +238,13 @@ div.selection_menu_cell:before {
 .graph_card {
     background-color: #FFF;
     display: inline-block;
-    border-radius: 2px;
-    box-shadow: 0px 3px 2px -0.5px rgba(0,0,0,.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     margin: 5px 3px 5px 3px;
     padding: 3px;
 }
 
 .graph_img {
+    z-index: 50;
 }
 
 .graph_buttons {
@@ -238,8 +252,8 @@ div.selection_menu_cell:before {
 }
 
 .graph_button {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
 }
 
 .graph_name {
@@ -260,31 +274,27 @@ div.selection_menu_cell:before {
     font-weight: bold;
 }
 
-/* css for timepicker */
-#ui-datepicker-div { width: 200px; box-shadow: 0px 3px 2px -0.5px rgba(0,0,0,.1); padding: 0; }
-.ui-datepicker-header { box-shadow: 0px 2px 4px 0px rgba(0,0,0,.2); }
+/* Extra CSS for timepicker */
+#ui-datepicker-div { width: 200px; box-shadow: 0px 3px 6px 2px rgba(0,0,0,.23); padding: 0; }
 .ui-datepicker-trigger { vertical-align: middle; }
-.ui-timepicker-div dl dt { float: left; clear:left; padding: 5px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 40%; }
-.ui-timepicker-div td { font-size: 90%; }
-img.ui-datepicker-trigger { width: 20px; height: 20px; padding: 0px 5px 0px 5px; }
-select.ui-timepicker-select { width: 50px; }
+img.ui-datepicker-trigger { width: 24px; height: 24px; padding: 0px 2px 0px 2px; }
+select.ui-timepicker-select { width: 35px; }
 
 /* CSS adjustments for "mobile" screens */
 @media screen and (max-width: 1024px) {
 
     #overlay {
-        visibility: hidden;
         opacity: 0;
+        right: -100%;
         height: 100%;
         width: 100%;
         background-color: rgba(0,0,0,.8);
         overflow: hidden;
         position: fixed;
-        top: 42px;
         z-index: 100;
-        -webkit-transition: all 0.25s ease-in-out;
-        transition: all 0.25s ease-in-out;
+        -webkit-transition: right 0.1s ease-in-out, opacity 0.25s ease-in-out;
+        -moz-transition: right 0.1s ease-in-out, opacity 0.25s ease-in-out;
+        transition: right 0.1s ease-in-out, opacity 0.25s ease-in-out;
     }
 
     input#from_calendar,
@@ -321,7 +331,7 @@ select.ui-timepicker-select { width: 50px; }
         position: fixed;
         background-position: 0% 50%;
         background-repeat: no-repeat;
-        background-size: 25px;
+        background-size: 24px;
         background-color: transparent;
         background-image: url("img/menu.svg");
     }
@@ -332,15 +342,15 @@ select.ui-timepicker-select { width: 50px; }
     #selection_menu {
         position: fixed;
         height: 100%;
-        top: 52px;
-        left: 0px;
-        visibility: hidden;
-        width: 100%;
+        top: 50px;
+        left: -100%;
+        width: 260px;
+#        width: 80%;
         padding: 10px;
         color: black;
-        opacity: 0;
-        font-size: 20px;
+        background-color: #F5F5F5;
         -webkit-transition: all 0.25s ease-in-out;
+        -moz-transition: all 0.25s ease-in-out;
         transition: all 0.25s ease-in-out;
     }
 
@@ -348,10 +358,12 @@ select.ui-timepicker-select { width: 50px; }
         width: 100px;
     }
 
-    #menu-checkbox:checked ~ div#top_menu div#selection_menu,
+    #menu-checkbox:checked ~ div#top_menu div#selection_menu {
+        left: 0;
+    }
     #menu-checkbox:checked ~ div#overlay {
-        visibility: visible;
         opacity: 1;
+        right: 0;
     }
 
     select {
@@ -360,7 +372,7 @@ select.ui-timepicker-select { width: 50px; }
     }
 
     .graph_menu-up {
-        top: -50px;
+        top: 0px;
     }
 
     .graph_menu-down {
@@ -374,8 +386,9 @@ select.ui-timepicker-select { width: 50px; }
     .graph_menu_cell {
         width: 100%;
         height: 0px;
-        transition: all 0.2s ease-in-out;
         -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
     }
 
     #graph_menu_dropdown_button {
@@ -384,7 +397,7 @@ select.ui-timepicker-select { width: 50px; }
         height: 50px;
         background: url('img/arrow_down.svg') no-repeat #FFF;
         background-position: 50%;
-        background-size: 25px;
+        background-size: 32px;
     }
 
     #graph_menu_slideup_button {
@@ -393,7 +406,7 @@ select.ui-timepicker-select { width: 50px; }
         height: 50px;
         background: url('img/arrow_up.svg') no-repeat #FFF;
         background-position: 50%;
-        background-size: 25px;
+        background-size: 32px;
     }
 
     .graph_menu_cell.left,
@@ -403,19 +416,22 @@ select.ui-timepicker-select { width: 50px; }
 
     div.selection_menu_cell:before {
         content: " \27A5 ";
+        color: #000;
     }
 
     div.selection_menu_cell:first-child { margin-left: 0px; }
     div.selection_menu_cell:first-child + div { margin-left: 10px; }
-    div.selection_menu_cell:first-child + div + div { margin-left: 40px; }
-    div.selection_menu_cell:first-child + div + div + div { margin-left: 70px; }
-    div.selection_menu_cell:first-child + div + div + div + div { margin-left: 100px; }
+    div.selection_menu_cell:first-child + div + div { margin-left: 35px; }
 
     .graph_block {
         text-align: center;
     }
     .graph_card {
         min-width: 90%;
+    }
+    .graph_button {
+        width: 24px;
+        height: 24px;
     }
     img.lazy {
         width: 100%;

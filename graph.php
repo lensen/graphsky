@@ -45,6 +45,9 @@ else {
     $end = "now";
 }
 
+$start = urlencode($start);
+$end = urlencode($end);
+
 // Add hostname to report graphs' title in host view
 $title_prefix = "";
 $title_prefix_array = array();
@@ -117,7 +120,7 @@ elseif ( isset($metric_name) ) {
         $max = "";
     }
     // It's a simple metric graph
-    $target = "target=legendValue(alias(sumSeries(" . $conf['graphite_prefix'] . "$host_cluster.$metric_name),''),'last','max','min','si')&vtitle=" . urlencode($vlabel) . "&areaMode=all&colorList=". $conf['default_metric_color'];
+    $target = "target=legendValue(alias(sumSeries(" . $conf['graphite_prefix'] . "$host_cluster.$metric_name),''),'last','max','min','si')&vtitle=" . urlencode($vlabel) . "&areaMode=all&colorList=". $conf['theme_color'];
     $title = "$title_prefix $metric_name";
 }
 else {
@@ -126,7 +129,7 @@ else {
 
 if ($sourcetime) $title = "$title last " . str_replace(" ago","",$sourcetime);
 
-$graphite_url_args = "?width=$width&height=$height&" . $target . "&from=" . urlencode($start) . "&until=" . urlencode($end) . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&areaAlpha=0.7&title=" . urlencode($title);
+$graphite_url_args = "?width=$width&height=$height&" . $target . "&from=" . $start . "&until=" . $end . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&areaAlpha=0.7&title=" . urlencode($title);
 
 if ( isset($graphlot) ) {
     $graphlot_url = $conf['graphlot_url_base'] . $graphite_url_args;

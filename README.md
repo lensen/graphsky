@@ -32,18 +32,15 @@ Hostname    "environment.cluster.hostname"
 
 ## Screen shots
 Web interface:
-![Sample dashboard](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot.png)
+![Sample dashboard](https://raw.github.com/lensen/graphsky/master/img/Graphsky%20screenshot.jpg)
 
 Mobile interface:
 
-![Mobile dashboard](https://raw.github.com/hyves-org/graphsky/master/img/Graphsky%20screenshot%20mobile.png)
+![Mobile dashboard](https://raw.github.com/lensen/graphsky/master/img/Graphsky%20screenshot%20mobile.jpg)
 
 ## Nagios/Icinga/Icinga-web integration
 
 Integrate your graphs in your monitoring tool by including a graph.php link:
  - http://[domainname]/graph.php?s={service_name}&c={hostgroup_name}&h={host_name}&width=1000&height=600&from=-1%20hour
 
-Make sure you specify a "service_name" matching the service_name given by your monitoring solution in your json graph template.  
-
-***
-Button icons are based on [IKONS by Piotr Kwiatkowski](http://ikons.piotrkwiatkowski.co.uk/)
+Make sure you specify a "service_name" matching the service_name given by your monitoring solution in your json graph template. 
