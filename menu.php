@@ -10,12 +10,6 @@
 $environment_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "*"), TRUE);
 $environments = $environment_search['results']; if (sizeof($environments) > 1) { natsort($environments); }
 $environments = str_replace($conf['graphite_prefix'], "", $environments);
-$cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
-$clusters = $cluster_search['results']; if (sizeof($clusters) > 1) { natsort($clusters); }
-$clusters = str_replace($conf['graphite_prefix'] . "$env.", "", $clusters);
-$host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.$c.*"), TRUE);
-$hosts = $host_search['results']; if (sizeof($hosts) > 1) { natsort($hosts); }
-$hosts = str_replace($conf['graphite_prefix'] . "$env.$c.", "", $hosts);
 ?>
       <!-- Environments -->
       <div class="selection_menu_cell">
@@ -28,12 +22,15 @@ print print_dropdown_menus($environments, $env, "All environments");
       <!-- /Environments -->
 <?php
 if (isset($env) && $env != "") {
+    $cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
+    $clusters = $cluster_search['results']; if (sizeof($clusters) > 1) { natsort($clusters); }
+    $cluster_names = str_replace($conf['graphite_prefix'] . "$env.", "", $clusters);
 ?>
       <!-- Clusters -->
       <div class="selection_menu_cell">
         <div class="select"><select name="c" title="Select cluster" onchange="if (typeof document.opts.h != 'undefined') { document.opts.h.value = '' }; document.opts.submit()">
 <?php
-print print_dropdown_menus($clusters, $c, "All clusters");
+print print_dropdown_menus($cluster_names, $c, "All clusters");
 ?>
         </select></div>
       </div>
@@ -41,12 +38,15 @@ print print_dropdown_menus($clusters, $c, "All clusters");
 <?php
 }
 if (isset($c)) {
+    $host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.$c.*"), TRUE);
+    $hosts = $host_search['results']; if (sizeof($hosts) > 1) { natsort($hosts); }
+    $host_names = str_replace($conf['graphite_prefix'] . "$env.$c.", "", $hosts);
 ?>
       <!-- Hosts -->
       <div class="selection_menu_cell">
         <div class="select"><select name="h" title="Select host" onchange="document.opts.submit()">
 <?php
-print print_dropdown_menus($hosts, $h, "All hosts");
+print print_dropdown_menus($host_names, $h, "All hosts");
 ?>
         </select></div>
       </div>
@@ -91,8 +91,8 @@ if (isset($h)) {
       <div class="select"><select title="Jump to a metric group" onchange="location = this.options[this.selectedIndex].value;">
         <option value="#reports" selected="selected">Jump to...</option>
 <?php
-$host_metrics=array_keys(find_metrics("$env.$c.$h", $conf['host_metric_group_depth']));
-foreach ($host_metrics as $metric_group) {
+$host_metrics=find_metrics("$env.$c.$h", $conf['host_metric_group_depth']);
+foreach (array_keys($host_metrics) as $metric_group) {
     print "             <option value=\"#$metric_group\">$metric_group</option>\n";
 }
 ?>
@@ -108,8 +108,8 @@ elseif (isset($c)) {
       <div class="select_name_menu_cell">Metric:</div>
       <div class="select"><select name="m" title="Select a single metric" onchange="document.opts.g.value = ''; document.opts.submit()">
 <?php
-$all_metrics=array_keys(find_metrics("$env.$c.*", "10"));
-print print_dropdown_menus($all_metrics, $m, "Select...");
+$all_metrics=find_metrics("$env.$c.*", "10");
+print print_dropdown_menus(array_keys($all_metrics, $m, "Select..."));
 ?>
       </select></div>
     </div>

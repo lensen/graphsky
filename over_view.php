@@ -2,8 +2,6 @@
 <div class="block_title"><a href="#envs">Environments</a></div>
 
 <?php
-$env_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "*"), TRUE);
-$envs = $env_search['results'];
 if (sizeof($envs) > 1) {
     natsort($envs);
     foreach ($envs as $env) {

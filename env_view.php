@@ -23,9 +23,6 @@ elseif (isset($graph_reports)) {
 <div class="block_title"><a href="#clusters">Clusters</a></div>
 
 <?php
-$cluster_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.*"), TRUE);
-$clusters = $cluster_search['results'];
-natsort($clusters);
 if (isset($g)) { print "<div class=\"graph_block\">"; }
 foreach ($clusters as $cluster) {
     $cluster_name = str_replace($conf['graphite_prefix'] . "$env.", "", $cluster);
