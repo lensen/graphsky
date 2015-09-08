@@ -129,14 +129,14 @@ else {
 
 if ($sourcetime) $title = "$title last " . str_replace(" ago","",$sourcetime);
 
-$graphite_url_args = "?width=$width&height=$height&" . $target . "&from=" . $start . "&until=" . $end . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&areaAlpha=0.7&title=" . urlencode($title);
+$graphite_url_args = "/render?width=$width&height=$height&" . $target . "&from=" . $start . "&until=" . $end . "&yMin=" . $min . "&yMax=" . $max . "&bgcolor=" . $conf['default_background_color'] . "&fgcolor=" . $conf['default_foreground_color'] . "&areaAlpha=0.7&title=" . urlencode($title);
 
 if ( isset($graphlot) ) {
-    $graphlot_url = $conf['graphlot_url_base'] . $graphite_url_args;
+    $graphlot_url = graphite_server($env) . "/graphlot" . $graphite_url_args;
     header ("Location: $graphlot_url");
 }
 else {
-    $graphite_url = $conf['graphite_render_url'] . $graphite_url_args . "&format=svg";
+    $graphite_url = graphite_server($env) . $graphite_url_args . "&format=svg";
     header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");   // Date in the past
     header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // always modified
     header ("Cache-Control: no-cache, must-revalidate");   // HTTP/1.1

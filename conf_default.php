@@ -2,6 +2,7 @@
 $base_dir = dirname(__FILE__);
 
 # Dashboard settings
+$conf['theme_color'] = '2196F3';
 $conf['dashboard_domainname'] = "graphsky.example.com";
 $conf['dashboard_config'] = $base_dir . "/dashboards.json";
 $conf['dashboard_refresh_interval'] = "60";
@@ -15,20 +16,18 @@ $conf['host_metric_group_depth'] = 2;
 $conf['cluster_hostname'] = "*";
 
 # Graphite settings
-$conf['graphite_url_base'] = "http://graphite.example.com";
-$conf['graphite_render_url'] = $conf['graphite_url_base'] . "/render";
-$conf['graphite_search_url'] = $conf['graphite_url_base'] . "/metrics/expand/?query=";
+$conf['graphite_servers'] = array(
+  'default' => 'http://graphite.example.com',
+);
+$conf['graphite_search_path'] = "/metrics/expand/?query=";
 # Don't forget the trailing . when specifying a prefix
 $conf['graphite_prefix'] = "collectd.";
 $conf['graphite_default_env'] = "";
-
-# If your Graphite installation supports Graphlot, set the following
-# in your conf.php file:
-# $conf['graphlot_url_base'] = $conf['graphite_url_base'] . "/graphlot/render";
+# Set to true if your Graphite installation supports Graphlot,
+$conf['graphlot'] = True;
 
 # Graph settings
 $conf['default_time_range'] = '-1 hour';
-$conf['theme_color'] = '2196F3';
 $conf['default_background_color'] = 'FFFFFF';
 $conf['default_foreground_color'] = '000000';
 
