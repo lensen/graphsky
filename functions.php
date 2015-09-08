@@ -37,10 +37,10 @@ function print_dropdown_menus($options, $choice, $default) {
 }
 
 # Function to return Graphite server
-function graphite_server($environment) {
+function graphite_server($environment="default") {
     global $conf;
 
-    if ( !array_key_exists($environment, $conf['graphite_servers']) or $environment = "") {
+    if ( !array_key_exists($environment, $conf['graphite_servers']) ) {
         $environment = "default"; #fallback scenario
     }
 
