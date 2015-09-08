@@ -16,7 +16,7 @@ function hex2rgb($hex) {
    return array($r, $g, $b); // returns an array with the rgb values
 }
 
-list($r,$g,$b) = hex2rgb($_GET[c]);
+list($r,$g,$b) = hex2rgb($_GET['c']);
 
 $logo = imagecreatefrompng('logo_transp.png');
 imagealphablending($logo, true);

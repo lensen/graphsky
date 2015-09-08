@@ -109,7 +109,7 @@ elseif (isset($c)) {
       <div class="select"><select name="m" title="Select a single metric" onchange="document.opts.g.value = ''; document.opts.submit()">
 <?php
 $all_metrics=find_metrics("$env.$c.*", "10");
-print print_dropdown_menus(array_keys($all_metrics, $m, "Select..."));
+print print_dropdown_menus(array_keys($all_metrics), $m, "Select...");
 ?>
       </select></div>
     </div>
