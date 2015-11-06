@@ -136,12 +136,18 @@ if ( isset($graphlot) ) {
     header ("Location: $graphlot_url");
 }
 else {
-    $graphite_url = graphite_server($env) . $graphite_url_args . "&format=svg";
+    $format = "svg";
+    $content_type = "image/svg+xml";
+    if ( isset($conf['graphite_use_png']) or strpos($graphite_url_args,'graphType=pie') ) {
+        $format = "png";
+        $content_type = "image/png";
+    }
+    $graphite_url = graphite_server($env) . $graphite_url_args . "&format=" . $format;
     header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");   // Date in the past
     header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // always modified
     header ("Cache-Control: no-cache, must-revalidate");   // HTTP/1.1
     header ("Pragma: no-cache");                     // HTTP/1.0
-    header ("Content-type: image/svg+xml");
+    header ("Content-type: " . $content_type);
 
     ob_clean(); flush();
     if ( readfile( $graphite_url ) === False ) {

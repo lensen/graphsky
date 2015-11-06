@@ -10,6 +10,11 @@ $conf['graph_template_dir'] = $base_dir . "/graph.d";
 $conf['graph_domainname'] = "http://" . $conf['dashboard_domainname'];
 $conf['use_random_graph_domainname'] = True;
 $conf['host_metric_group_depth'] = 2;
+
+# If you prefer PNG (for instance, because your Graphite installation
+# serves broken SVGs), set the following to True:
+$conf['graphite_use_png'] = False;
+
 # If you have your metrics for an entire cluster stored seperately,
 # specify that "hostname" here.
 # For example, Ganglia uses __SummaryInfo__
@@ -23,7 +28,7 @@ $conf['graphite_search_path'] = "/metrics/expand/?query=";
 # Don't forget the trailing . when specifying a prefix
 $conf['graphite_prefix'] = "collectd.";
 $conf['graphite_default_env'] = "";
-# Set to true if your Graphite installation supports Graphlot,
+# Set to True if your Graphite installation supports Graphlot
 $conf['graphlot'] = True;
 
 # Graph settings
