@@ -138,7 +138,7 @@ if ( isset($graphlot) ) {
 else {
     $format = "svg";
     $content_type = "image/svg+xml";
-    if ( isset($conf['graphite_use_png']) or strpos($graphite_url_args,'graphType=pie') ) {
+    if ( $conf['graphite_use_png'] or strpos($graphite_url_args,'graphType=pie') ) {
         $format = "png";
         $content_type = "image/png";
     }
