@@ -19,7 +19,7 @@ foreach ($graph_reports as $graph_report) {
 
 <?php
 if (isset($g)) { $metrics = find_report_metrics($graph_report); }
-else { $metrics = find_metrics("$env.$c.$h", $conf['host_metric_group_depth']); }
+else { $metrics = $host_metrics; }
 
 foreach ($metrics as $metric_group => $metric_array) {
     print "<a class=\"anchor\" id=\"$metric_group\">&nbsp;</a>";

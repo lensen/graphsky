@@ -36,6 +36,19 @@ function print_dropdown_menus($options, $choice, $default) {
     return $option_values;
 }
 
+# Function to return Graphite server
+function graphite_server($environment="default") {
+    global $conf;
+
+    if ( !array_key_exists($environment, $conf['graphite_servers']) ) {
+        $environment = "default"; #fallback scenario
+    }
+
+    $graphite_server = $conf['graphite_servers'][$environment];
+
+    return $graphite_server;
+}
+
 # Function to return graph domainname
 function get_graph_domainname() {
     global $conf;
@@ -143,8 +156,8 @@ function show_graph_buttons($args, $from, $until) {
           <a href=\"graph.php?$args&from=$from&until=$until&z=xlarge\">
             <img src=\"img/zoom.svg\" class=\"graph_button\" title=\"Show XL graph\">
           </a>&nbsp;";
-    if (isset($conf['graphlot_url_base'])) {
-    $button_html = $button_html . "
+    if ($conf['graphlot']) {
+        $button_html = $button_html . "
           <a href=\"graph.php?$args&from=$from&until=$until&graphlot=true\" target=\"_blank\">
             <img src=\"img/graphlot.svg\" class=\"graph_button\" title=\"Show Graphlot\">
           </a>";
@@ -179,7 +192,7 @@ function find_limits($environment, $cluster, $metricname, $start, $end) {
 
     $max=0;
     $target = $conf['graphite_prefix'] . "$environment.$cluster.*." . $metricname;
-    $raw_data = file_get_contents($conf['graphite_render_url'] . "?target=$target&from=$start&until=$end&format=json");
+    $raw_data = file_get_contents(graphite_server($environment) . "/render?target=$target&from=$start&until=$end&format=json");
     $data = json_decode($raw_data, TRUE);
     $maxdatapoints = array();
     foreach ( $data as $data_target ) {
@@ -234,12 +247,12 @@ function show_on_dashboard($report_name, $environment, $cluster) {
 }
 
 # Find graphite metrics matching regex
-function find_metrics($search_string, $group_depth=0) {
+function find_metrics($environment, $search_string, $group_depth=0) {
     global $conf;
 
     $metrics = array();
-    $search_url = $conf['graphite_url_base'] . "/metrics/expand/?leavesOnly=1";
-    $search_prefix = quotemeta($conf['graphite_prefix'] . $search_string);
+    $search_url = graphite_server($environment) . "/metrics/expand/?leavesOnly=1";
+    $search_prefix = quotemeta($conf['graphite_prefix'] . "$environment.$search_string");
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);

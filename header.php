@@ -23,7 +23,8 @@ $title = implode(" > ", array_filter($title_array));
     <link rel="stylesheet" type="text/css" href="js/jquery-ui.structure.min.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-ui.theme.min.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-ui-timepicker-addon.min.css">
-    <link rel="shortcut icon" href="img/icon.png" sizes="196x196">
+    <link rel="shortcut icon" href="img/favicon.php?c=<?php print $conf['theme_color']; ?>" sizes="196x196">
+    <!--link rel="shortcut icon" href="img/icon.png" sizes="196x196"-->
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="196x196">
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png" sizes="196x196">
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>

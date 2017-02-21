@@ -163,6 +163,7 @@ input#until_calendar {
 #go_button {
     width: 100%;
     height: 100%;
+    position: absolute;
     opacity: 0;
 }
 
@@ -222,13 +223,15 @@ div.selection_menu_cell:before {
 
 .graph_block_title {
     padding: 10px 0px 10px 20px;
-#    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .graph_block_title a,
 .graph_block_title a:visited {
-    color: #555;
+    color: #fff;
+    background-color: #<?php echo $themecolor; ?>;
     font-size: large;
+    padding: 6px 10px 6px 10px;
+    border-radius: 4px;
 }
 
 .graph_block {
@@ -285,16 +288,16 @@ select.ui-timepicker-select { width: 35px; }
 
     #overlay {
         opacity: 0;
-        right: -100%;
+        pointer-events: none;
         height: 100%;
         width: 100%;
         background-color: rgba(0,0,0,.8);
         overflow: hidden;
         position: fixed;
         z-index: 100;
-        -webkit-transition: right 0.1s ease-in-out, opacity 0.25s ease-in-out;
-        -moz-transition: right 0.1s ease-in-out, opacity 0.25s ease-in-out;
-        transition: right 0.1s ease-in-out, opacity 0.25s ease-in-out;
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
     }
 
     input#from_calendar,
@@ -363,7 +366,6 @@ select.ui-timepicker-select { width: 35px; }
     }
     #menu-checkbox:checked ~ div#overlay {
         opacity: 1;
-        right: 0;
     }
 
     select {

@@ -23,9 +23,6 @@ elseif (isset($graph_reports)) {
 <div class="block_title"><a href="#hosts">Hosts</a></div>
 
 <?php
-$host_search = json_decode(file_get_contents($conf['graphite_search_url'] . $conf['graphite_prefix'] . "$env.$c.*"), TRUE);
-$hosts = $host_search['results'];
-natsort($hosts);
 if (isset($g) or isset($m)) { print "<div class=\"graph_block\">"; }
 foreach ($hosts as $host) {
     $host_name = str_replace($conf['graphite_prefix'] . "$env.$c.", "", $host);
